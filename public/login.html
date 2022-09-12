@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="/login" method="post">
+      <div class="imgcontainer">
+        <img style="width:15em; border:3px solid black ;"
+          src="https://robohash.org/hola"
+          alt="Avatar"
+          class="avatar"
+        />
+      </div>
+
+      <div class="container">
+        <label for="uname"><b>Usuario</b></label>
+        <input
+          type="text"
+          placeholder="Enter Username"
+          name="usuario"
+          id="usuario"
+          required
+        />
+
+        <label for="psw"><b>Clave</b></label>
+        <input
+          type="password"
+          placeholder="Enter Password"
+          name="clave"
+          id="clave"
+          required
+        />
+
+        <button type="button" onclick="login()">Login</button> &nbsp;
+        <button type="button" onclick="logout()">Logout</button>
+        <br />
+        <p id="mensaje"></p>
+
+        <hr />
+        <button type="button" onclick="solicitarDatos()">
+          Solicitar datos
+        </button>
+        <p id="datos"></p>
+      </div>
+    </form>
+    <script>
+      async function login() {
+        sessionStorage.removeItem("accessToken");
+        sessionStorage.removeItem("refreshToken");
+
+        const req = await fetch("/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            usuario: document.getElementById("usuario").value,
+            clave: document.getElementById("clave").value,
+          }),
+        });
+        const data = await req.json();
+        document.getElementById("mensaje").innerText = data.mensaje;
+        if (data.accessToken) {
+          sessionStorage.setItem("accessToken", data.accessToken);
+        } 
+        if (data.refreshToken) {
+          sessionStorage.setItem("refreshToken", data.refreshToken);
+        }
+      }
+
+      async function logout() {
+        refreshToken = sessionStorage.getItem("refreshToken");
+        const req = await fetch("/logout", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            token: refreshToken,
+          }),
+        });
+        const data = await req.json();
+        document.getElementById("mensaje").innerText = data.mensaje;
+        sessionStorage.removeItem("refreshToken");
+        sessionStorage.removeItem("accessToken");
+      }
+
+      async function solicitarDatos() {
+        datos = document.getElementById("datos");
+        datos.innerText = "";
+        accessToken = sessionStorage.getItem("accessToken");
+        let error = false;
+        const req = await fetch("/api/jwt_articulos", {
+          method: "Get",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + accessToken,
+          },
+        }).catch((e) => (error = true));
+        const data = await req.json().catch((e) => (error = true));
+        if (error) datos.innerText = "error";
+        else datos.innerText = JSON.stringify(data);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,618 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "Pymes web api",
+    "description": "web api de la aplicacion Pymes"
+  },
+  "host": "",
+  "basePath": "",
+  "tags": [
+    {
+      "name": "ArticulosFamilias",
+      "description": "apis de ArticulosFamilias"
+    },
+    {
+      "name": "Articulos",
+      "description": "apis de Articulos"
+    },
+    {
+      "name": "Seguridad",
+      "description": "apis de Seguridad"
+    },
+    {
+      "name": "Test Formularios",
+      "description": "apis para testing de Action de Formularios"
+    }
+  ],
+  "schemes": [],
+  "securityDefinitions": {
+    "BearerAuth": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header",
+      "description": "formato: Bearer eyJhbGciOi...vwI"
+    }
+  },
+  "paths": {
+    "/api/articulos": {
+      "get": {
+        "tags": [
+          "Articulos"
+        ],
+        "summary": "obtiene todos los Articulos",
+        "description": "",
+        "parameters": [
+          {
+            "name": "Nombre",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Actvio",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "NumeroPagina",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/jwt_articulos": {
+      "get": {
+        "tags": [
+          "Articulos"
+        ],
+        "summary": "obtiene todos los Articulos, con seguridad JWT (usuario:admin, clave:123)",
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth1": []
+          }
+        ]
+      }
+    },
+    "/api/articulos/{id}": {
+      "get": {
+        "tags": [
+          "Articulos"
+        ],
+        "summary": "obtiene un Articulo",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "identificador del Articulo..."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Articulos"
+        ],
+        "summary": "actualiza un Articulo",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "identificador del Articulo..."
+          },
+          {
+            "name": "Articulo",
+            "in": "body",
+            "description": "Articulo a actualizar",
+            "schema": {
+              "$ref": "#/definitions/Articulos"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Articulos"
+        ],
+        "summary": "elimina un Articulo",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "identificador del Articulo.."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/articulos/": {
+      "post": {
+        "tags": [
+          "Articulos"
+        ],
+        "summary": "agrega un Articulos",
+        "description": "",
+        "parameters": [
+          {
+            "name": "item",
+            "in": "body",
+            "description": "nuevo Articulo",
+            "schema": {
+              "$ref": "#/definitions/Articulos"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/articulosfamilias": {
+      "get": {
+        "tags": [
+          "ArticulosFamilias"
+        ],
+        "summary": "obtiene todos los ArticulosFamilias",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/articulosfamilias/{id}": {
+      "get": {
+        "tags": [
+          "ArticulosFamilias"
+        ],
+        "summary": "obtiene un ArticuloFamilia",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "identificador del ArticulosFamilias..."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "ArticulosFamilias"
+        ],
+        "summary": "actualiza un ArticuloFamilia",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "identificador del ArticulosFamilias..."
+          },
+          {
+            "name": "ArticulosFamilias",
+            "in": "body",
+            "description": "ArticulosFamilias a actualizar",
+            "schema": {
+              "$ref": "#/definitions/ArticulosFamilias"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "ArticulosFamilias"
+        ],
+        "summary": "elimina un ArticuloFamilia",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "identificador del ArticulosFamilias..."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/articulosfamilias/": {
+      "post": {
+        "tags": [
+          "ArticulosFamilias"
+        ],
+        "summary": "agrega un ArticuloFamilia",
+        "description": "",
+        "parameters": [
+          {
+            "name": "ArticulosFamilias",
+            "in": "body",
+            "description": "nuevo ArticulosFamilias",
+            "schema": {
+              "$ref": "#/definitions/ArticulosFamilias"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/articulosfamiliasmock": {
+      "get": {
+        "tags": [
+          "articulosfamiliasmock"
+        ],
+        "summary": "obtiene todos los articulosfamiliasmock",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/articulosfamiliasmock/{id}": {
+      "get": {
+        "tags": [
+          "articulosfamiliasmock"
+        ],
+        "summary": "obtiene un ArticuloFamilia",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "identificador del articulosfamiliasmock..."
+          }
+        ],
+        "responses": {}
+      },
+      "put": {
+        "tags": [
+          "articulosfamiliasmock"
+        ],
+        "summary": "actualiza un ArticuloFamilia",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "identificador del articulosfamiliasmock..."
+          },
+          {
+            "name": "articulosfamiliasmock",
+            "in": "body",
+            "description": "articulosfamiliasmock a actualizar",
+            "schema": {
+              "$ref": "#/definitions/articulosfamiliasmock"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "articulosfamiliasmock"
+        ],
+        "summary": "elimina un ArticuloFamilia",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "identificador del articulosfamiliasmock..."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/articulosfamiliasmock/": {
+      "post": {
+        "tags": [
+          "articulosfamiliasmock"
+        ],
+        "summary": "agrega un ArticuloFamilia",
+        "description": "",
+        "parameters": [
+          {
+            "name": "articulosfamiliasmock",
+            "in": "body",
+            "description": "nuevo articulosfamiliasmock",
+            "schema": {
+              "$ref": "#/definitions/articulosfamiliasmock"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/eco": {
+      "get": {
+        "tags": [
+          "Test Formularios"
+        ],
+        "summary": "Devuelve los name:value recibidos en el querystring en forma de tabla",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Test Formularios"
+        ],
+        "summary": "Devuelve los name:value recibidos en el body en forma de tabla",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/equipos": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/jsonexterno": {
+      "get": {
+        "summary": "obtiene un json desde otro sitio, a traves del servidor",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/token": {
+      "post": {
+        "tags": [
+          "Seguridad"
+        ],
+        "summary": "refresh token",
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "token": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "tags": [
+          "Seguridad"
+        ],
+        "summary": "Login de usuarios: admin:123(rol administrador), juan:123(rol miembro)",
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "usuario": {
+                  "example": "any"
+                },
+                "clave": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/logout": {
+      "post": {
+        "tags": [
+          "Seguridad"
+        ],
+        "summary": "Logout: invalida el refresh token (no invalida el token actual!!!)",
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "token": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ArticulosFamilias": {
+      "type": "object",
+      "properties": {
+        "IdArticulo": {
+          "type": "number",
+          "example": 1
+        },
+        "Nombre": {
+          "type": "string",
+          "example": "Accesorios"
+        }
+      }
+    },
+    "Articulos": {
+      "type": "object",
+      "properties": {
+        "IdArticulo": {
+          "type": "number",
+          "example": 143
+        },
+        "Nombre": {
+          "type": "string",
+          "example": "Aire acondicionado lg 3000 fc h126tnw0"
+        },
+        "Precio": {
+          "type": "number",
+          "example": 7499
+        },
+        "CodigoDeBarra": {
+          "type": "string",
+          "example": "0779808338858"
+        },
+        "IdArticuloFamilia": {
+          "type": "number",
+          "example": 7
+        },
+        "Stock": {
+          "type": "number",
+          "example": 441
+        },
+        "FechaAlta": {
+          "type": "string",
+          "example": "2017-01-09T00:00:00"
+        },
+        "Activo": {
+          "type": "boolean",
+          "example": true
+        }
+      }
+    }
+  }
+}
