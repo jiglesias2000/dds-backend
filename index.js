@@ -1,24 +1,18 @@
 const express = require('express');
+
 require('dotenv').config();
-//dotenv.config({ path: "./config.env" });
 console.log(process.env.base);
 
-//const bodyParser = require("body-parser");
-
-const cors = require('cors');
-
 require('./base-orm/sqlite-init'); // crear base
-
 
 const app = express();
 const port = process.env.PORT || 3000;
 
+const cors = require('cors');
 app.use(cors());
 
 app.use(express.text()); // entiende tex
-app.use(express.urlencoded({ extended: false })); // forms de html
-//app.use(bodyParser.urlencoded({ extended: false }));  // forms de html
-//app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: false })); // entiende forms de html
 app.use(express.json()); // entiende json
 
 const path = require('path');
@@ -44,12 +38,10 @@ app.use(function (err, req, res, next) {
 //------------------------------------
 //-- RUTAS ---------------------------
 //------------------------------------
-console.log('inicio del index');
-
 app.get('/', (req, res) => {
   //res.send("sitio on line, hola mundo!");
   //res.json({message: 'sitio on line'});
-  //res.sendfile("index.html");
+  //res.sendfile("./public/index.html");
   //res.sendfile("./img/imagen.jpg");
   res.redirect('/index.html');
 });
@@ -64,13 +56,14 @@ const articulosRouter = require('./routes/articulos');
 const ecoRouter = require('./routes/eco');
 const seguridadRouter = require('./routes/seguridad');
 const jsonexternoRouter = require('./routes/jsonexterno');
+const equiposRouter = require('./routes/equipos');
 app.use(articulosfamiliasRouter);
 app.use(articulosfamiliasmockRouter);
 app.use(articulosRouter);
 app.use(ecoRouter);
 app.use(seguridadRouter);
 app.use(jsonexternoRouter);
-
+app.use(equiposRouter);
 
 //------------------------------------
 //-- INICIO ---------------------------

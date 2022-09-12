@@ -1,6 +1,6 @@
 // crear la base usando aa-sqlite
 
-const db = require('./aa-sqlite');
+const db = require('aa-sqlite');
 
  async function CrearBase() {
 

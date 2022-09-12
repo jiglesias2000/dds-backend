@@ -5,7 +5,7 @@ async function cargarDiv() {
 
   let contenido = '';
   items.forEach((item) => {
-    contenido += `  <div class="col mb-4"><div class="card m-3">
+    contenido += `  <div class="col-sm-4 col-md-3 col-lg-2"><div class="card m-3">
     <img src="${item.bandera}" class="card-img-top" style='width: 100%; height: 15vw; object-fit: cover;' alt="bandera">
     <div class="card-body">
       <h5 class="card-title">${item.equipo}</h5>
