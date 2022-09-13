@@ -1,0 +1,20 @@
+### test para la extension REST Client
+
+http://localhost:3000/api/articulosfamilias
+
+
+####  error ya existe en la base
+POST http://localhost:3000/api/articulosfamilias HTTP/1.1
+Content-Type: application/json
+
+ {
+    "Nombre": "Accesorioss"
+ }
+
+####  error nombre muy corto
+POST http://localhost:3000/api/articulosfamilias 
+Content-Type: application/json
+
+ {
+    "Nombre": "Ac"
+ }

@@ -1,33 +1,34 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const db = require("../base-orm/sequelize-init");
-const { Op } = require("sequelize");
-const auth = require("../seguridad/auth");
+const db = require('../base-orm/sequelize-init');
+const { Op } = require('sequelize');
+const auth = require('../seguridad/auth');
 
-router.get("/api/articulos", async function (req, res, next) {
+router.get('/api/articulos', async function (req, res, next) {
   // #swagger.tags = ['Articulos']
   // #swagger.summary = 'obtiene todos los Articulos'
-  if (req.query.Nombre || req.query.Actvio || req.query.NumeroPagina) {
-    const Nombre = req.query.Nombre;
+  if (req.query.Nombre || req.query.Activo || req.query.NumeroPagina) {
+    const Nombre = req.query.Nombre ?? '';
+    const Activo = req.query.Activo ?? null;
     const NumeroPagina = req.query.NumeroPagina ?? 1;
     const TamañoPagina = 10;
     const { count, rows } = await db.articulos
       .findAndCountAll({
         attributes: [
-          "IdArticulo",
-          "Nombre",
-          "Precio",
-          "Stock",
-          "FechaAlta",
-          "Activo",
+          'IdArticulo',
+          'Nombre',
+          'Precio',
+          'Stock',
+          'FechaAlta',
+          'Activo',
         ],
-        order: [["Nombre", "ASC"]],
+        order: [['Nombre', 'ASC']],
         where: {
           Nombre: {
-            [Op.like]: "%" + Nombre + "%",
+            [Op.like]: '%' + Nombre + '%',
           },
         },
-        offset: (NumeroPagina-1)*TamañoPagina,
+        offset: (NumeroPagina - 1) * TamañoPagina,
         limit: TamañoPagina,
       })
       .catch((err) => res.json(err));
@@ -37,14 +38,14 @@ router.get("/api/articulos", async function (req, res, next) {
     db.articulos
       .findAll({
         attributes: [
-          "IdArticulo",
-          "Nombre",
-          "Precio",
-          "Stock",
-          "FechaAlta",
-          "Activo",
+          'IdArticulo',
+          'Nombre',
+          'Precio',
+          'Stock',
+          'FechaAlta',
+          'Activo',
         ],
-        order: [["Nombre", "ASC"]],
+        order: [['Nombre', 'ASC']],
       })
       .then((datos) => {
         //console.log(datos);
@@ -57,11 +58,11 @@ router.get("/api/articulos", async function (req, res, next) {
 //-- SEGURIDAD ---------------------------
 //------------------------------------
 router.get(
-  "/api/jwt_articulos",
+  '/api/jwt_articulos',
   auth.authenticateJWT,
   function (req, res, next) {
     const { role } = req.user;
-    if (role !== "admin") {
+    if (role !== 'admin') {
       return res.sendStatus(403);
     }
     /* #swagger.security = [{
@@ -73,14 +74,14 @@ router.get(
     db.articulos
       .findAll({
         attributes: [
-          "IdArticulo",
-          "Nombre",
-          "Precio",
-          "Stock",
-          "FechaAlta",
-          "Activo",
+          'IdArticulo',
+          'Nombre',
+          'Precio',
+          'Stock',
+          'FechaAlta',
+          'Activo',
         ],
-        order: [["Nombre", "ASC"]],
+        order: [['Nombre', 'ASC']],
       })
       .then((datos) => {
         //console.log(datos);
@@ -90,21 +91,21 @@ router.get(
   }
 );
 
-router.get("/api/articulos/:id", async function (req, res, next) {
+router.get('/api/articulos/:id', async function (req, res, next) {
   // #swagger.tags = ['Articulos']
   // #swagger.summary = 'obtiene un Articulo'
   // #swagger.parameters['id'] = { description: 'identificador del Articulo...' }
   db.articulos
     .findAll({
       attributes: [
-        "IdArticulo",
-        "Nombre",
-        "Precio",
-        "CodigoDeBarra",
-        "IdArticuloFamilia",
-        "Stock",
-        "FechaAlta",
-        "Activo",
+        'IdArticulo',
+        'Nombre',
+        'Precio',
+        'CodigoDeBarra',
+        'IdArticuloFamilia',
+        'Stock',
+        'FechaAlta',
+        'Activo',
       ],
       where: { IdArticulo: req.params.id },
     })
@@ -114,7 +115,7 @@ router.get("/api/articulos/:id", async function (req, res, next) {
     .catch((err) => res.json(err));
 });
 
-router.post("/api/articulos/", (req, res) => {
+router.post('/api/articulos/', (req, res) => {
   // #swagger.tags = ['Articulos']
   // #swagger.summary = 'agrega un Articulos'
   /*    #swagger.parameters['item'] = {
@@ -142,41 +143,41 @@ router.post("/api/articulos/", (req, res) => {
         e.errors.forEach((error) => {
           let message;
           switch (error.validatorKey) {
-            case "isEmail":
-              message = "Please enter a valid email";
+            case 'isEmail':
+              message = 'Please enter a valid email';
               break;
-            case "isDate":
-              message = "Please enter a valid date";
+            case 'isDate':
+              message = 'Please enter a valid date';
               break;
-            case "len":
+            case 'len':
               if (error.validatorArgs[0] === error.validatorArgs[1]) {
-                message = "Use " + error.validatorArgs[0] + " characters";
+                message = 'Use ' + error.validatorArgs[0] + ' characters';
               } else {
                 message =
-                  "Use between " +
+                  'Use between ' +
                   error.validatorArgs[0] +
-                  " and " +
+                  ' and ' +
                   error.validatorArgs[1] +
-                  " characters";
+                  ' characters';
               }
               break;
-            case "min":
+            case 'min':
               message =
-                "Use a number greater or equal to " + error.validatorArgs[0];
+                'Use a number greater or equal to ' + error.validatorArgs[0];
               break;
-            case "max":
+            case 'max':
               message =
-                "Use a number less or equal to " + error.validatorArgs[0];
+                'Use a number less or equal to ' + error.validatorArgs[0];
               break;
-            case "isInt":
-              message = "Please use an integer number";
+            case 'isInt':
+              message = 'Please use an integer number';
               break;
-            case "is_null":
-              message = "Please complete this field";
+            case 'is_null':
+              message = 'Please complete this field';
               break;
-            case "not_unique":
-              message = error.value + " is taken. Please choose another one";
-              error.path = error.path.replace("_UNIQUE", "");
+            case 'not_unique':
+              message = error.value + ' is taken. Please choose another one';
+              error.path = error.path.replace('_UNIQUE', '');
           }
           messages[error.path] = message;
         });
@@ -184,7 +185,7 @@ router.post("/api/articulos/", (req, res) => {
     });
 });
 
-router.put("/api/articulos/:id", (req, res) => {
+router.put('/api/articulos/:id', (req, res) => {
   // #swagger.tags = ['Articulos']
   // #swagger.summary = 'actualiza un Articulo'
   // #swagger.parameters['id'] = { description: 'identificador del Articulo...' }
@@ -216,41 +217,41 @@ router.put("/api/articulos/:id", (req, res) => {
         e.errors.forEach((error) => {
           let message;
           switch (error.validatorKey) {
-            case "isEmail":
-              message = "Please enter a valid email";
+            case 'isEmail':
+              message = 'Please enter a valid email';
               break;
-            case "isDate":
-              message = "Please enter a valid date";
+            case 'isDate':
+              message = 'Please enter a valid date';
               break;
-            case "len":
+            case 'len':
               if (error.validatorArgs[0] === error.validatorArgs[1]) {
-                message = "Use " + error.validatorArgs[0] + " characters";
+                message = 'Use ' + error.validatorArgs[0] + ' characters';
               } else {
                 message =
-                  "Use between " +
+                  'Use between ' +
                   error.validatorArgs[0] +
-                  " and " +
+                  ' and ' +
                   error.validatorArgs[1] +
-                  " characters";
+                  ' characters';
               }
               break;
-            case "min":
+            case 'min':
               message =
-                "Use a number greater or equal to " + error.validatorArgs[0];
+                'Use a number greater or equal to ' + error.validatorArgs[0];
               break;
-            case "max":
+            case 'max':
               message =
-                "Use a number less or equal to " + error.validatorArgs[0];
+                'Use a number less or equal to ' + error.validatorArgs[0];
               break;
-            case "isInt":
-              message = "Please use an integer number";
+            case 'isInt':
+              message = 'Please use an integer number';
               break;
-            case "is_null":
-              message = "Please complete this field";
+            case 'is_null':
+              message = 'Please complete this field';
               break;
-            case "not_unique":
-              message = error.value + " is taken. Please choose another one";
-              error.path = error.path.replace("_UNIQUE", "");
+            case 'not_unique':
+              message = error.value + ' is taken. Please choose another one';
+              error.path = error.path.replace('_UNIQUE', '');
           }
           messages[error.path] = message;
         });
@@ -260,7 +261,7 @@ router.put("/api/articulos/:id", (req, res) => {
     });
 });
 
-router.delete("/api/articulos/:id", (req, res) => {
+router.delete('/api/articulos/:id', (req, res) => {
   // #swagger.tags = ['Articulos']
   // #swagger.summary = 'elimina un Articulo'
   // #swagger.parameters['id'] = { description: 'identificador del Articulo..' }

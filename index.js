@@ -1,7 +1,10 @@
 const express = require('express');
+const path = require('path');
+
 
 require('dotenv').config();
-console.log(process.env.base);
+
+
 
 require('./base-orm/sqlite-init'); // crear base
 
@@ -15,7 +18,7 @@ app.use(express.text()); // entiende tex
 app.use(express.urlencoded({ extended: false })); // entiende forms de html
 app.use(express.json()); // entiende json
 
-const path = require('path');
+
 app.use('/', express.static(path.join(__dirname, 'public')));
 
 //------------------------------------
@@ -25,15 +28,7 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerFile = require('./swagger/swagger_output.json'); //aqui se genera la salida
 app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
-// manejo de errores
-app.use(function (err, req, res, next) {
-  console.error(err.stack);
-  res
-    .status(500)
-    .send(
-      'Actualmente tenemos inconvenientes con procesar su solicitud, intente nuevamente mas tarde!'
-    );
-});
+
 
 //------------------------------------
 //-- RUTAS ---------------------------
@@ -44,10 +39,6 @@ app.get('/', (req, res) => {
   //res.sendfile("./public/index.html");
   //res.sendfile("./img/imagen.jpg");
   res.redirect('/index.html');
-});
-
-app.get('/testerror', (req, res) => {
-  throw 'probando desencadenar un error';
 });
 
 const articulosfamiliasRouter = require('./routes/articulosfamilias');
@@ -64,6 +55,29 @@ app.use(ecoRouter);
 app.use(seguridadRouter);
 app.use(jsonexternoRouter);
 app.use(equiposRouter);
+
+
+app.get('/testerror', (req, res) => {
+  // error sincrono
+  throw new Error('probando desencadenar un error');
+  
+});
+// manejo de errores
+app.use(function (err, req, res, next) {
+  // logueamos el error en un archivo para luego consultarlo.
+  console.error(err.stack);
+  
+  //enviamos al usuario un mensaje apropiado, sin dar detalles del error
+  res
+    .status(500)
+    .send(
+      'Actualmente tenemos inconvenientes con procesar su solicitud, intente nuevamente mas tarde!'
+    );
+});
+
+app.use(function(req, res, next) {
+  res.status(404).send('Pagina no encontrada!');
+});
 
 //------------------------------------
 //-- INICIO ---------------------------

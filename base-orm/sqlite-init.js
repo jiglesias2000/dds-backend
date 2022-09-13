@@ -36,8 +36,8 @@ const db = require('aa-sqlite');
 
     );  
 
-  var existe = false;
-  var res;
+  let existe = false;
+  let res = false;
   sql = "SELECT count(*) as contar FROM sqlite_schema WHERE type = 'table' and name= 'articulosfamilias'";
   res = await db.get(sql, []);
   if (res.contar > 0) existe = true;

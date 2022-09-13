@@ -328,7 +328,7 @@
     "/api/articulosfamiliasmock/{id}": {
       "get": {
         "tags": [
-          "articulosfamiliasmock"
+          "ArticulosFamiliasMock"
         ],
         "summary": "obtiene un ArticuloFamilia",
         "description": "",
@@ -362,7 +362,7 @@
             "in": "body",
             "description": "articulosfamiliasmock a actualizar",
             "schema": {
-              "$ref": "#/definitions/articulosfamiliasmock"
+              "$ref": "#/definitions/ArticulosFamiliasMock"
             }
           }
         ],
@@ -407,7 +407,7 @@
             "in": "body",
             "description": "nuevo articulosfamiliasmock",
             "schema": {
-              "$ref": "#/definitions/articulosfamiliasmock"
+              "$ref": "#/definitions/ArticulosFamiliasMock"
             }
           }
         ],
@@ -565,6 +565,19 @@
   },
   "definitions": {
     "ArticulosFamilias": {
+      "type": "object",
+      "properties": {
+        "IdArticulo": {
+          "type": "number",
+          "example": 1
+        },
+        "Nombre": {
+          "type": "string",
+          "example": "Accesorios"
+        }
+      }
+    },
+    "ArticulosFamiliasMock": {
       "type": "object",
       "properties": {
         "IdArticulo": {

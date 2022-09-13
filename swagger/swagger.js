@@ -11,7 +11,7 @@ const options = {
 const swaggerAutogen = require("swagger-autogen")(options);
 
 const outputFile = "./swagger/swagger_output.json";
-const endpointsFiles = ["../routes/*.js"];
+const endpointsFiles = ["./routes/*.js"];
 
 
 const doc = {
@@ -55,6 +55,10 @@ const doc = {
   }, // by default: empty object
   definitions: {
     ArticulosFamilias: {
+      IdArticulo: 1,
+      Nombre: "Accesorios",
+    },
+    ArticulosFamiliasMock: {
       IdArticulo: 1,
       Nombre: "Accesorios",
     },
