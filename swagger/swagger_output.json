@@ -49,7 +49,7 @@
             "type": "string"
           },
           {
-            "name": "Actvio",
+            "name": "Activo",
             "in": "query",
             "type": "string"
           },
@@ -213,6 +213,21 @@
         }
       }
     },
+    "/api/articulosfamilias-testerror": {
+      "get": {
+        "tags": [
+          "ArticulosFamilias"
+        ],
+        "summary": "test error asincrono",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/articulosfamilias/{id}": {
       "get": {
         "tags": [
@@ -313,7 +328,7 @@
     "/api/articulosfamiliasmock": {
       "get": {
         "tags": [
-          "articulosfamiliasmock"
+          "ArticulosFamiliasMock"
         ],
         "summary": "obtiene todos los articulosfamiliasmock",
         "description": "",
@@ -345,7 +360,7 @@
       },
       "put": {
         "tags": [
-          "articulosfamiliasmock"
+          "ArticulosFamiliasMock"
         ],
         "summary": "actualiza un ArticuloFamilia",
         "description": "",
@@ -374,7 +389,7 @@
       },
       "delete": {
         "tags": [
-          "articulosfamiliasmock"
+          "ArticulosFamiliasMock"
         ],
         "summary": "elimina un ArticuloFamilia",
         "description": "",
@@ -397,7 +412,7 @@
     "/api/articulosfamiliasmock/": {
       "post": {
         "tags": [
-          "articulosfamiliasmock"
+          "ArticulosFamiliasMock"
         ],
         "summary": "agrega un ArticuloFamilia",
         "description": "",

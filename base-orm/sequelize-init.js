@@ -39,13 +39,13 @@ const articulosfamilias = sequelize.define(
   {
     timestamps: false,
     freezeTableName: true,
-    hooks: {
-      beforeValidate: function (articulofamilia, options) {
-        if (typeof articulofamilia.Nombre === "string") {
-          articulofamilia.Nombre = articulofamilia.Nombre.toUpperCase();
-        }
-      },
-    },
+    // hooks: {
+    //   beforeValidate: function (articulofamilia, options) {
+    //     if (typeof articulofamilia.Nombre === "string") {
+    //       articulofamilia.Nombre = articulofamilia.Nombre.toUpperCase();
+    //     }
+    //   },
+    // },
   }
 );
 const articulos = sequelize.define(

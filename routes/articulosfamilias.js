@@ -8,60 +8,59 @@ router.get("/api/articulosfamilias", async function (req, res, next) {
   // #swagger.tags = ['ArticulosFamilias']
   // #swagger.summary = 'obtiene todos los ArticulosFamilias'
 
-  // promesas
-  db.articulosfamilias
-    .findAll({
-      //attributes: ["IdArticuloFamilia", "Nombre"],
-      order: [["Nombre", "ASC"]],
-    })
-    .then((items) => {
-      //console.log(datos);
-      res.json(items);
-    })
-    .catch((err) => 
-      //res.json(err)  // devuelve todo el error, no apto para produccion
-      next(err)
-    );
-
-  // alternativa a promesa con  await
-  //  let data = await  db.articulosfamilias.findAll({
-  //     attributes: ['IdArticuloFamilia', 'Nombre']
-  //   });
-  //   res.json(data);
+  let data = await db.articulosfamilias.findAll({
+    attributes: ["IdArticuloFamilia", "Nombre"],
+  });
+  res.json(data);
 });
 
-router.get("/api/articulosfamilias-testerror", async function (req, res, next) {
-  // #swagger.tags = ['ArticulosFamilias']
-  // #swagger.summary = 'test error asincrono'
-
-  // error asincrono
-  try {
-    let items = await db.articulosfamilias.findAll({
+// los errores asyncronos, sino los controlamos, por defecto hacen caer el servidor!!!!
+router.get(
+  "/api/articulosfamilias/testerrorasync",
+  async function (req, res, next) {
+    // #swagger.tags = ['ArticulosFamilias']
+    // #swagger.summary = 'test error asincrono'
+    // -----------------------------------
+    // -----------------------------------
+    // error asincrono, controlado para que pueda ser interceptado por controlador estandar de express
+    // try {
+    //   let data = await db.articulosfamilias.findAll({
+    //     attributes: ["CampoInexistenteParaGenerarUnError"],
+    //   });
+    //   res.json(data);
+    //  } catch (error) {
+    //    next(error);
+    //  }
+    // -----------------------------------
+    // -----------------------------------
+    // aun con "express-async-errors" , las promesas con error hacer caer el servidor!!!
+    // db.articulosfamilias
+    //   .findAll({
+    //     attributes: ["CampoInexistenteParaGenerarUnError"],
+    //   })
+    //   .then((data) => res.json(data));
+    // -----------------------------------
+    // -----------------------------------
+    // con "express-async-errors" debermos usar async/await
+    let data = await db.articulosfamilias.findAll({
       attributes: ["CampoInexistenteParaGenerarUnError"],
     });
-    res.json(items);
-   } catch (error) {
-     next(error);
-   }
-
-});
+    res.json(data);
+  }
+);
 
 router.get("/api/articulosfamilias/:id", async function (req, res, next) {
   // #swagger.tags = ['ArticulosFamilias']
   // #swagger.summary = 'obtiene un ArticuloFamilia'
   // #swagger.parameters['id'] = { description: 'identificador del ArticulosFamilias...' }
-  db.articulosfamilias
-    .findAll({
-      attributes: ["IdArticuloFamilia", "Nombre"],
-      where: { IdArticuloFamilia: req.params.id },
-    })
-    .then((items) => {
-      res.json(items);
-    })
-    .catch((err) => next(err));
+  let data = await db.articulosfamilias.findAll({
+    attributes: ["IdArticuloFamilia", "Nombre"],
+    where: { IdArticuloFamilia: req.params.id },
+  });
+  res.json(data);
 });
 
-router.post("/api/articulosfamilias/",  async function (req, res, next) {
+router.post("/api/articulosfamilias/", async function (req, res, next) {
   // #swagger.tags = ['ArticulosFamilias']
   // #swagger.summary = 'agrega un ArticuloFamilia'
   /*    #swagger.parameters['ArticulosFamilias'] = {
@@ -69,73 +68,70 @@ router.post("/api/articulosfamilias/",  async function (req, res, next) {
                 description: 'nuevo ArticulosFamilias',
                 schema: { $ref: '#/definitions/ArticulosFamilias' }
     } */
-
-  db.articulosfamilias
-    .create({
+  try {
+    let data = await db.articulosfamilias.create({
       Nombre: req.body.Nombre,
-    })
-    .then((resp) => {
-      res.json(resp);
-    })
-    .catch((e) => {
-      const messages = {};
-      if (e instanceof ValidationError) {
-        e.errors.forEach((error) => {
-          let message;
-          switch (error.validatorKey) {
-            case "isEmail":
-              message = "Please enter a valid email";
-              break;
-            case "isDate":
-              message = "Please enter a valid date";
-              break;
-            case "len":
-              
-              console.log("ya tiene un msj de error definido en el modelo, nos quedamos con ese mismo", error.message);
-              message = error.message;
-              
-              // if (error.validatorArgs[0] === error.validatorArgs[1]) {
-              //   message = "Use " + error.validatorArgs[0] + " characters";
-              // } else {
-              //   message =
-              //     "Use between " +
-              //     error.validatorArgs[0] +
-              //     " and " +
-              //     error.validatorArgs[1] +
-              //     " characters";
-              // }
-
-              break;
-            case "min":
-              message =
-                "Use a number greater or equal to " + error.validatorArgs[0];
-              break;
-            case "max":
-              message =
-                "Use a number less or equal to " + error.validatorArgs[0];
-              break;
-            case "isInt":
-              message = "Please use an integer number";
-              break;
-            case "is_null":
-              message = "Please complete this field";
-              break;
-            case "not_unique":
-              message = error.value + " ya existe en la base";
-              error.path = error.path.replace("_UNIQUE", "");
-              break;
-            default:
-              message = error.message;
-          }
-          messages[error.path] = message;
-        });
-      }
-
-      res.status(400).json(messages);
     });
+    res.json(data);  // devolvemos el registro agregado!
+  } catch (err) {
+    const messages = {};
+    if (err instanceof ValidationError) {
+      err.errors.forEach((error) => {
+        let message;
+        switch (error.validatorKey) {
+          case "isEmail":
+            message = "Please enter a valid email";
+            break;
+          case "isDate":
+            message = "Please enter a valid date";
+            break;
+          case "len":
+            console.log(
+              "ya tiene un msj de error definido en el modelo, nos quedamos con ese mismo",
+              error.message
+            );
+            message = error.message;
+
+            // if (error.validatorArgs[0] === error.validatorArgs[1]) {
+            //   message = "Use " + error.validatorArgs[0] + " characters";
+            // } else {
+            //   message =
+            //     "Use between " +
+            //     error.validatorArgs[0] +
+            //     " and " +
+            //     error.validatorArgs[1] +
+            //     " characters";
+            // }
+
+            break;
+          case "min":
+            message =
+              "Use a number greater or equal to " + error.validatorArgs[0];
+            break;
+          case "max":
+            message = "Use a number less or equal to " + error.validatorArgs[0];
+            break;
+          case "isInt":
+            message = "Please use an integer number";
+            break;
+          case "is_null":
+            message = "Please complete this field";
+            break;
+          case "not_unique":
+            message = error.value + " ya existe en la base";
+            error.path = error.path.replace("_UNIQUE", "");
+            break;
+          default:
+            message = error.message;
+        }
+        messages[error.path] = message;
+      });
+      res.status(400).json(messages);
+    } else throw err; // desencadeno el mismo error inicial
+  }
 });
 
-router.put("/api/articulosfamilias/:id",  async function (req, res, next) {
+router.put("/api/articulosfamilias/:id", async function (req, res, next) {
   // #swagger.tags = ['ArticulosFamilias']
   // #swagger.summary = 'actualiza un ArticuloFamilia'
   // #swagger.parameters['id'] = { description: 'identificador del ArticulosFamilias...' }
@@ -151,7 +147,8 @@ router.put("/api/articulosfamilias/:id",  async function (req, res, next) {
       { where: { IdArticuloFamilia: req.params.id } }
     )
     .then((item) => {
-      res.json(item);
+      //res.json(item);
+      res.sendStatus(200);
     })
     .catch((e) => {
       const messages = {};
@@ -189,11 +186,12 @@ router.put("/api/articulosfamilias/:id",  async function (req, res, next) {
               message = "Please use an integer number";
               break;
             case "is_null":
-              message = "Please complete this field";
+              message = "este campo es obligatorio";
               break;
             case "not_unique":
-              message = error.value + " ya existe en la base";
-              error.path = error.path.replace("_UNIQUE", "");
+              message =
+                "ya existe otro registro con este valor para este campo";
+              //error.path = error.path.replace("_UNIQUE", "");
               break;
             default:
               message = error.message;
@@ -206,7 +204,7 @@ router.put("/api/articulosfamilias/:id",  async function (req, res, next) {
     });
 });
 
-router.delete("/api/articulosfamilias/:id",  async function (req, res, next) {
+router.delete("/api/articulosfamilias/:id", async function (req, res, next) {
   // #swagger.tags = ['ArticulosFamilias']
   // #swagger.summary = 'elimina un ArticuloFamilia'
   // #swagger.parameters['id'] = { description: 'identificador del ArticulosFamilias...' }

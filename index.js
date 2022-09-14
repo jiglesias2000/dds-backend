@@ -1,3 +1,4 @@
+require("express-async-errors");  // usar async await
 const express = require('express');
 const path = require('path');
 
