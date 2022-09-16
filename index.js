@@ -3,8 +3,9 @@ const express = require('express');
 const path = require('path');
 
 
+// leer archivo de configuracion
 require('dotenv').config();
-
+console.log('NODE_ENV', process.env.NODE_ENV);
 
 
 require('./base-orm/sqlite-init'); // crear base
@@ -16,7 +17,7 @@ const cors = require('cors');
 app.use(cors());
 
 app.use(express.text()); // entiende tex
-app.use(express.urlencoded({ extended: false })); // entiende forms de html
+app.use(express.urlencoded({ extended: false })); // for parsing application/x-www-form-urlencoded
 app.use(express.json()); // entiende json
 
 
@@ -39,7 +40,7 @@ app.get('/', (req, res) => {
   //res.json({message: 'sitio on line'});
   //res.sendfile("./public/index.html");
   //res.sendfile("./img/imagen.jpg");
-  res.redirect('/index.html');
+  res.redirect('/index.html');   // no haria falta, valor por defecto usado por express.static
 });
 
 const articulosfamiliasRouter = require('./routes/articulosfamilias');
@@ -63,11 +64,18 @@ app.get('/testerror', (req, res) => {
   throw new Error('probando desencadenar un error');
   
 });
+
+
 // manejo de errores
-app.use(function (err, req, res, next) {
+const fs = require('fs/promises');
+app.use( async function (err, req, res, next) {
   // logueamos el error en un archivo para luego consultarlo.
   console.error(err.stack);
   
+  dato = (new Date).toISOString() + '\n' +  err.stack + '\n' + '\n'
+  await fs.writeFile("./log.txt", dato, { flag:'a'});
+  //const logFile = fs.readFile("log.txt",'utf-8');
+
   //enviamos al usuario un mensaje apropiado, sin dar detalles del error
   res
     .status(500)
