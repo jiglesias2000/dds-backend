@@ -1,4 +1,10 @@
 {
+  "appService.zipIgnorePattern": [
+    "node_modules{,/**}",
+    ".vscode{,/**}"
+  ],
+  "appService.defaultWebAppToDeploy": "/subscriptions/7cbef891-89c2-4557-8f8c-a556e25662e9/microsoft.web/sites/subscriptions/7cbef891-89c2-4557-8f8c-a556e25662e9/resourceGroups/GrupoRecursoNode/providers/Microsoft.Web/sites/dds-express",
+  "appService.deploySubpath": "."
   /**
    * Controls whether suggestions should be accepted on commit characters.
    * For example, in JavaScript, the semi-colon (;) can be a commit character that accepts a suggestion and types that character.

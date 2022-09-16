@@ -79,7 +79,7 @@ body {
   }
   
   /* todos los labels menos los de los radio y check */
-  label:not([class^='custom-control']) {
+  label:not([class^='custom-control']):not('.no-css') {
     background-color: #d7dfe7;
     border-radius: 0.625em 0.2em 0rem 0.625em;
     border-bottom: solid;
