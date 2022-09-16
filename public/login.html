@@ -1,110 +1,233 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta charset="utf-8" />
+    <title>Pymes 2023</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="icon"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/svgs/solid/industry.svg"
+    />
+    <script src="https://kit.fontawesome.com/e1a460f812.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/estilos.css" />
   </head>
+
   <body>
-    <form action="/login" method="post">
-      <div class="imgcontainer">
-        <img style="width:15em; border:3px solid black ;"
-          src="https://robohash.org/hola"
-          alt="Avatar"
-          class="avatar"
-        />
+    <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+      <nav class="navbar navbar-light bg-ligth text-white">PYMES</nav>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html"
+              >Inicio <span class="sr-only">(current)</span></a
+            >
+          </li>
+
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="articulosfamilias.html"
+              title="Listado Articulos Familia"
+              >ArticulosFamilias</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="articulos.html"
+              title="Gestionar Articulos"
+              >Articulos</a
+            >
+          </li>
+
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" href="acercade.html">Acerca de</a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="login.html">Bienvenido: Carlos Villan</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="">Cerrar Session</a>
+          </li>
+        </ul>
       </div>
+    </nav>
 
-      <div class="container">
-        <label for="uname"><b>Usuario</b></label>
-        <input
-          type="text"
-          placeholder="Enter Username"
-          name="usuario"
-          id="usuario"
-          required
-        />
-
-        <label for="psw"><b>Clave</b></label>
-        <input
-          type="password"
-          placeholder="Enter Password"
-          name="clave"
-          id="clave"
-          required
-        />
-
-        <button type="button" onclick="login()">Login</button> &nbsp;
-        <button type="button" onclick="logout()">Logout</button>
-        <br />
-        <p id="mensaje"></p>
-
-        <hr />
-        <button type="button" onclick="solicitarDatos()">
-          Solicitar datos
-        </button>
-        <p id="datos"></p>
-      </div>
-    </form>
-    <script>
-      async function login() {
-        sessionStorage.removeItem("accessToken");
-        sessionStorage.removeItem("refreshToken");
-
-        const req = await fetch("/login", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            usuario: document.getElementById("usuario").value,
-            clave: document.getElementById("clave").value,
-          }),
-        });
-        const data = await req.json();
-        document.getElementById("mensaje").innerText = data.mensaje;
-        if (data.accessToken) {
-          sessionStorage.setItem("accessToken", data.accessToken);
-        } 
-        if (data.refreshToken) {
-          sessionStorage.setItem("refreshToken", data.refreshToken);
+    <div class="divBody">
+      
+      <form action="/login" method="post">
+        <div class="container">
+        
+        <div >
+          <h3>Usuario:clave validos</h3>
+          <h3> admin:123 y juan:123</h3>
+  
+          <label for="uname"><b>Usuario</b></label>
+          <input
+            type="text"
+            placeholder="Enter Username"
+            name="usuario"
+            id="usuario"
+            required
+          />
+  
+          <label  for="psw"><b>Clave</b></label>
+          <input
+            type="password"
+            placeholder="Enter Password"
+            name="clave"
+            id="clave"
+            required
+          />
+  
+          <button type="button" onclick="login()">Login</button> &nbsp;
+          <button type="button" onclick="logout()">Logout</button>
+          <br />
+          <p id="mensaje"></p>
+  
+          <hr />
+          <button type="button" onclick="solicitarDatos()">
+            Solicitar datos (solo usuario admin:123)
+          </button>
+          <p id="datos"></p>
+        </div>
+        </div>
+      </form>
+      <script>
+        async function login() {
+          sessionStorage.removeItem("accessToken");
+          sessionStorage.removeItem("refreshToken");
+  
+          const req = await fetch("/api/login", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              usuario: document.getElementById("usuario").value,
+              clave: document.getElementById("clave").value,
+            }),
+          });
+          const data = await req.json();
+          document.getElementById("mensaje").innerText = data.mensaje;
+          if (data.accessToken) {
+            sessionStorage.setItem("accessToken", data.accessToken);
+          } 
+          if (data.refreshToken) {
+            sessionStorage.setItem("refreshToken", data.refreshToken);
+          }
         }
-      }
+  
+        async function logout() {
+          refreshToken = sessionStorage.getItem("refreshToken");
+          const req = await fetch("/api/logout", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              token: refreshToken,
+            }),
+          });
+          const data = await req.json();
+          document.getElementById("mensaje").innerText = data.mensaje;
+          sessionStorage.removeItem("refreshToken");
+          sessionStorage.removeItem("accessToken");
+        }
+  
+        async function solicitarDatos() {
+          datos = document.getElementById("datos");
+          datos.innerText = "";
+          accessToken = sessionStorage.getItem("accessToken");
+          let error = false;
+          const req = await fetch("/api/jwt/articulos", {
+            method: "Get",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + accessToken,
+            },
+          }).catch((e) => (error = true));
+          const data = await req.json().catch((e) => (error = true));
+          if (error) datos.innerText = "error";
+          else datos.innerText = JSON.stringify(data);
+        }
+      </script>
 
-      async function logout() {
-        refreshToken = sessionStorage.getItem("refreshToken");
-        const req = await fetch("/logout", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            token: refreshToken,
-          }),
-        });
-        const data = await req.json();
-        document.getElementById("mensaje").innerText = data.mensaje;
-        sessionStorage.removeItem("refreshToken");
-        sessionStorage.removeItem("accessToken");
-      }
+    </div>
 
-      async function solicitarDatos() {
-        datos = document.getElementById("datos");
-        datos.innerText = "";
-        accessToken = sessionStorage.getItem("accessToken");
-        let error = false;
-        const req = await fetch("/api/jwt_articulos", {
-          method: "Get",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + accessToken,
-          },
-        }).catch((e) => (error = true));
-        const data = await req.json().catch((e) => (error = true));
-        if (error) datos.innerText = "error";
-        else datos.innerText = JSON.stringify(data);
-      }
-    </script>
-  </body>
+    <footer class="text-center">
+      <small>
+        <span>© Pymes 2023</span>
+        <span class="m-4">-</span>
+        <a href="tel:113"> <span class="fa fa-phone"></span> 0810-888-1234 </a>
+        <span class="m-4">-</span>
+        Seguinos en
+        <a
+          class="redes"
+          href="https://www.facebook.com"
+          style="background-color: #2962ff"
+          target="_blank"
+        >
+          <i title="Facebook" class="fab fa-facebook-f"></i>
+        </a>
+        <a
+          class="redes"
+          href="https://twitter.com"
+          style="background-color: #5ba4d6"
+          target="_blank"
+        >
+          <i title="Twitter" class="fab fa-twitter"></i>
+        </a>
+        <a
+          class="redes"
+          style="background-color: #ec4c51"
+          href="https://www.instagram.com"
+          target="_blank"
+        >
+          <i title="Instagram" class="fab fa-instagram"></i>
+        </a>
+        <a
+          class="redes"
+          style="background-color: #00e676"
+          href="https://www.whatsapp.com"
+          target="_blank"
+        >
+          <i title="Whatsapp" class="fab fa-whatsapp"></i>
+        </a>
+      </small>
+    </footer>
+
+      </body>
 </html>
+ 
