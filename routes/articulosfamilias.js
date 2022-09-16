@@ -68,11 +68,14 @@ router.post("/api/articulosfamilias/", async function (req, res, next) {
                 description: 'nuevo ArticulosFamilias',
                 schema: { $ref: '#/definitions/ArticulosFamilias' }
     } */
+
+  // controlamos los errores "esperables" para cambiar el texto para hacerlo amigable al usuario.
+  // los errores inesperados siguen el camino habitual por el controlador global (loguear e informar)
   try {
     let data = await db.articulosfamilias.create({
       Nombre: req.body.Nombre,
     });
-    res.json(data);  // devolvemos el registro agregado!
+    res.status(204).json(data);  // devolvemos el registro agregado!
   } catch (err) {
     const messages = {};
     if (err instanceof ValidationError) {
@@ -141,19 +144,18 @@ router.put("/api/articulosfamilias/:id", async function (req, res, next) {
                 schema: { $ref: '#/definitions/ArticulosFamilias' }
     } */
 
-  db.articulosfamilias
-    .update(
-      { Nombre: req.body.Nombre },
-      { where: { IdArticuloFamilia: req.params.id } }
-    )
-    .then((item) => {
-      //res.json(item);
+    try {
+      let data = await db.articulosfamilias
+      .update(
+        { Nombre: req.body.Nombre },
+        { where: { IdArticuloFamilia: req.params.id } }
+      );
       res.sendStatus(200);
-    })
-    .catch((e) => {
+      //res.json(data);  // devolvemos el registro modificado!
+    } catch (err) {
       const messages = {};
-      if (e instanceof ValidationError) {
-        e.errors.forEach((error) => {
+      if (err instanceof ValidationError) {
+        err.errors.forEach((error) => {
           let message;
           switch (error.validatorKey) {
             case "isEmail":
@@ -163,45 +165,51 @@ router.put("/api/articulosfamilias/:id", async function (req, res, next) {
               message = "Please enter a valid date";
               break;
             case "len":
-              if (error.validatorArgs[0] === error.validatorArgs[1]) {
-                message = "Use " + error.validatorArgs[0] + " characters";
-              } else {
-                message =
-                  "Use between " +
-                  error.validatorArgs[0] +
-                  " and " +
-                  error.validatorArgs[1] +
-                  " characters";
-              }
+              console.log(
+                "ya tiene un msj de error definido en el modelo, nos quedamos con ese mismo",
+                error.message
+              );
+              message = error.message;
+  
+              // if (error.validatorArgs[0] === error.validatorArgs[1]) {
+              //   message = "Use " + error.validatorArgs[0] + " characters";
+              // } else {
+              //   message =
+              //     "Use between " +
+              //     error.validatorArgs[0] +
+              //     " and " +
+              //     error.validatorArgs[1] +
+              //     " characters";
+              // }
+  
               break;
             case "min":
               message =
                 "Use a number greater or equal to " + error.validatorArgs[0];
               break;
             case "max":
-              message =
-                "Use a number less or equal to " + error.validatorArgs[0];
+              message = "Use a number less or equal to " + error.validatorArgs[0];
               break;
             case "isInt":
               message = "Please use an integer number";
               break;
             case "is_null":
-              message = "este campo es obligatorio";
+              message = "Please complete this field";
               break;
             case "not_unique":
-              message =
-                "ya existe otro registro con este valor para este campo";
-              //error.path = error.path.replace("_UNIQUE", "");
+              message = (error.value ?? 'el valor de este campo') + " ya existe en la base";
+              error.path = error.path.replace("_UNIQUE", "");
               break;
             default:
               message = error.message;
           }
           messages[error.path] = message;
         });
-      }
+        res.status(400).json(messages);
+      } else throw err; // desencadeno el mismo error inicial
+    }
 
-      res.status(400).json(messages);
-    });
+
 });
 
 router.delete("/api/articulosfamilias/:id", async function (req, res, next) {
@@ -209,14 +217,12 @@ router.delete("/api/articulosfamilias/:id", async function (req, res, next) {
   // #swagger.summary = 'elimina un ArticuloFamilia'
   // #swagger.parameters['id'] = { description: 'identificador del ArticulosFamilias...' }
 
-  db.articulosfamilias
+  let data = await db.articulosfamilias
     .destroy({
       where: { IdArticuloFamilia: req.params.id },
-    })
-    .then((item) => {
-      res.json(item);
-    })
-    .catch((err) => next(err));
+    });
+    if (data==1) res.sendStatus(200);
+    else res.sendStatus(404);
 });
 
 module.exports = router;

@@ -46,13 +46,13 @@ let arr_ArticulosFamiliasMock = [
 
 router.get('/api/articulosfamiliasmock', async function (req, res) {
   // #swagger.tags = ['ArticulosFamiliasMock']
-  // #swagger.summary = 'obtiene todos los articulosfamiliasmock'
+  // #swagger.summary = 'obtiene todos los ArticulosFamilias'
   res.json(arr_ArticulosFamiliasMock);
 });
 
 router.get('/api/articulosfamiliasmock/:id', async function (req, res) {
   // #swagger.tags = ['ArticulosFamiliasMock']
-  // #swagger.summary = 'obtiene un ArticuloFamilia'
+  // #swagger.summary = 'obtiene un ArticulosFamiliasMock'
   // #swagger.parameters['id'] = { description: 'identificador del articulosfamiliasmock...' }
   let articuloFamilia = arr_ArticulosFamiliasMock.find(
     (x) => x.IdArticuloFamilia == req.params.id
@@ -63,7 +63,7 @@ router.get('/api/articulosfamiliasmock/:id', async function (req, res) {
 
 router.post('/api/articulosfamiliasmock/', (req, res) => {
   // #swagger.tags = ['ArticulosFamiliasMock']
-  // #swagger.summary = 'agrega un ArticuloFamilia'
+  // #swagger.summary = 'agrega un ArticulosFamilias'
   /*    #swagger.parameters['articulosfamiliasmock'] = {
                 in: 'body',
                 description: 'nuevo articulosfamiliasmock',
@@ -78,12 +78,12 @@ router.post('/api/articulosfamiliasmock/', (req, res) => {
   // aqui agregar a la coleccion
   arr_ArticulosFamiliasMock.push(articuloFamilia);
 
-  res.json(articuloFamilia);
+  res.status(204).json(articuloFamilia);
 });
 
 router.put('/api/articulosfamiliasmock/:id', (req, res) => {
   // #swagger.tags = ['ArticulosFamiliasMock']
-  // #swagger.summary = 'actualiza un ArticuloFamilia'
+  // #swagger.summary = 'actualiza un ArticulosFamilias'
   // #swagger.parameters['id'] = { description: 'identificador del articulosfamiliasmock...' }
   /*    #swagger.parameters['articulosfamiliasmock'] = {
                 in: 'body',
@@ -97,22 +97,16 @@ router.put('/api/articulosfamiliasmock/:id', (req, res) => {
 
   if (articuloFamilia) {
     const { Nombre } = req.body;
-    let articuloFamilia = {
-      Nombre,
-      IdArticuloFamilia: arr_ArticulosFamiliasMock.length,
-    };
-    arr_ArticulosFamiliasMock = arr_ArticulosFamiliasMock.map(
-      (x == x.IdArticuloFamilia) == req.params.id ? articuloFamilia : x
-    );
+    articuloFamilia.Nombre = Nombre;
     res.json({ mensaje: 'articulofamilia actualizado' });
   } else {
-    res.json({ mensaje: 'articulofamilia no encontrado' });
+    res.status(404).json({ mensaje: 'articulofamilia no encontrado' })
   }
 });
 
 router.delete('/api/articulosfamiliasmock/:id', (req, res) => {
   // #swagger.tags = ['ArticulosFamiliasMock']
-  // #swagger.summary = 'elimina un ArticuloFamilia'
+  // #swagger.summary = 'elimina un ArticulosFamilias'
   // #swagger.parameters['id'] = { description: 'identificador del articulosfamiliasmock...' }
 
   let articuloFamilia = arr_ArticulosFamiliasMock.find(
@@ -125,7 +119,7 @@ router.delete('/api/articulosfamiliasmock/:id', (req, res) => {
     );
     res.json({ mensaje: 'articulofamilia eliminado' });
   } else {
-    res.json({ mensaje: 'articulofamilia no econtrado!' });
+    res.status(404).json({ mensaje: 'articulofamilia no encontrado' })
   }
 });
 

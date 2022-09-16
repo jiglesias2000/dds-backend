@@ -57,8 +57,12 @@ router.get('/api/articulos', async function (req, res, next) {
 //------------------------------------
 //-- SEGURIDAD ---------------------------
 //------------------------------------
+/* 
+curl --location --request GET 'http://localhost:3000/api/jwt/articulos' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjoiYWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NjMxODAyMzIsImV4cCI6MTY2MzE4MTQzMn0.1Fbep2gPiTrmLmEhNmk4FCo-EICnDHOcoLdyamY2ra0' \
+*/
 router.get(
-  '/api/jwt_articulos',
+  '/api/jwt/articulos',
   auth.authenticateJWT,
   function (req, res, next) {
     const { role } = req.user;

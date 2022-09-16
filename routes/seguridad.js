@@ -18,7 +18,7 @@ const users = [
   },
 ];
 
-router.post("/token", (req, res) => {
+router.post("/api/token", (req, res) => {
   // #swagger.tags = ['Seguridad']
   // #swagger.summary = 'refresh token'
   const { token } = req.body;
@@ -48,7 +48,7 @@ router.post("/token", (req, res) => {
   });
 });
 
-router.post("/login", (req, res) => {
+router.post("/api/login", (req, res) => {
   // #swagger.tags = ['Seguridad']
   // #swagger.summary = 'Login de usuarios: admin:123(rol administrador), juan:123(rol miembro)'
 
@@ -84,7 +84,7 @@ router.post("/login", (req, res) => {
   }
 });
 
-router.post("/logout", (req, res) => {
+router.post("/api/logout", (req, res) => {
   // #swagger.tags = ['Seguridad']
   // #swagger.summary = 'Logout: invalida el refresh token (no invalida el token actual!!!)'
 
