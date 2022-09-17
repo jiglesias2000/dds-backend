@@ -469,6 +469,10 @@
     },
     "/api/equipos": {
       "get": {
+        "tags": [
+          "Equipos Qatar"
+        ],
+        "summary": "Devuelve los equipos y sus bandera desde un array harcodeado",
         "description": "",
         "parameters": [],
         "responses": {
@@ -480,6 +484,9 @@
     },
     "/api/jsonexterno": {
       "get": {
+        "tags": [
+          "json externo"
+        ],
         "summary": "obtiene un json desde otro sitio, a traves del servidor",
         "description": "",
         "parameters": [],

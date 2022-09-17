@@ -4,7 +4,6 @@
   "scripts": {
     "swagger-autogen": "node ./swagger/swagger.js",
     "dev": "nodemon index.js",
-    "test": "set NODE_ENV=test&& node index.js",
     "start": "node index.js"
   },
   "dependencies": {

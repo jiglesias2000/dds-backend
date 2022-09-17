@@ -5,22 +5,22 @@ const path = require('path');
 
 // leer archivo de configuracion
 require('dotenv').config();
-console.log('NODE_ENV', process.env.NODE_ENV);
+console.log('base', process.env.base);
 
+require('./base-orm/sqlite-init'); // crear base si no existe
 
-require('./base-orm/sqlite-init'); // crear base
-
+// crear servidor
 const app = express();
-const port = process.env.PORT || 3000;
 
+// configurar servidor
 const cors = require('cors');
 app.use(cors());
 
-app.use(express.text()); // entiende tex
+app.use(express.text()); // entiende texto
 app.use(express.urlencoded({ extended: false })); // for parsing application/x-www-form-urlencoded
 app.use(express.json()); // entiende json
 
-
+// sirve archivos estaticos
 app.use('/', express.static(path.join(__dirname, 'public')));
 
 //------------------------------------
@@ -59,10 +59,9 @@ app.use(jsonexternoRouter);
 app.use(equiposRouter);
 
 
+// test error sincrono
 app.get('/testerror', (req, res) => {
-  // error sincrono
   throw new Error('probando desencadenar un error');
-  
 });
 
 
@@ -72,7 +71,7 @@ app.use( async function (err, req, res, next) {
   // logueamos el error en un archivo para luego consultarlo.
   console.error(err.stack);
   
-  dato = (new Date).toISOString() + '\n' +  err.stack + '\n' + '\n'
+  dato = (new Date).toLocaleString() + '\n' +  err.stack + '\n' + '\n'
   await fs.writeFile("./log.txt", dato, { flag:'a'});
   //const logFile = fs.readFile("log.txt",'utf-8');
 
@@ -84,6 +83,7 @@ app.use( async function (err, req, res, next) {
     );
 });
 
+// captura toda las peticiones que no han sido capturadas anteriormente
 app.use(function(req, res, next) {
   res.status(404).send('Pagina no encontrada!');
 });
@@ -91,6 +91,7 @@ app.use(function(req, res, next) {
 //------------------------------------
 //-- INICIO ---------------------------
 //------------------------------------
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`sitio escuchando en el puerto ${port}`);
 });

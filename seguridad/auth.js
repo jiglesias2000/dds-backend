@@ -31,11 +31,14 @@ module.exports = {authenticateJWT, accessTokenSecret, refreshTokenSecret};
 //-- SEGURIDAD ---------------------------
 //------------------------------------
 // app.get("/paginasegura", auth.authenticateJWT, (req, res) => {
-//   const { role } = req.user;
 
+//  paso la autenticacion
+//  const { role } = req.user;
+
+// ahora controlamos autorizacion
 //   if (role !== "admin") {
 //     return res.sendStatus(403);
 //   }
 
-//   res.send("pagina segura accedida!");
+//   res.send("pagina segura accedida solo por administradores!");
 // });

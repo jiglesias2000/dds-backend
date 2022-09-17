@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/api/equipos', async function (req, res, next) {
+  // #swagger.tags = ['Equipos Qatar']
+  // #swagger.summary = 'Devuelve los equipos y sus bandera desde un array harcodeado'
+
   // promesas
   res.setHeader('Cross-Origin-Opener-Policy', 'cross-origin');
   const items = [
