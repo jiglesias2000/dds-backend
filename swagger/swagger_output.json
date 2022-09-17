@@ -485,9 +485,9 @@
     "/api/jsonexterno": {
       "get": {
         "tags": [
-          "json externo"
+          "Json externo"
         ],
-        "summary": "obtiene un json desde otro sitio, a traves del servidor",
+        "summary": "Obtiene un json desde otro sitio, a traves del servidor",
         "description": "",
         "parameters": [],
         "responses": {
