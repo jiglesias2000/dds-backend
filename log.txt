@@ -1,46 +1,6 @@
-2022-09-16T12:17:57.832Z
-Error
-    at Database.<anonymous> (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\dialects\sqlite\query.js:179:27)
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\dialects\sqlite\query.js:177:50
-    at new Promise (<anonymous>)
-    at Query.run (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\dialects\sqlite\query.js:177:12)
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\sequelize.js:311:28
-    at async SQLiteQueryInterface.select (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
-    at async Function.findAll (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\model.js:1134:21)
-    at async C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\routes\articulosfamilias.js:45:162022-09-16T12:18:23.698Z
-Error
-    at Database.<anonymous> (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\dialects\sqlite\query.js:179:27)
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\dialects\sqlite\query.js:177:50
-    at new Promise (<anonymous>)
-    at Query.run (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\dialects\sqlite\query.js:177:12)
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\sequelize.js:311:28
-    at async SQLiteQueryInterface.select (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
-    at async Function.findAll (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\model.js:1134:21)
-    at async C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\routes\articulosfamilias.js:45:162022-09-16T12:19:16.475Z
-Error
-    at Database.<anonymous> (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\dialects\sqlite\query.js:179:27)
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\dialects\sqlite\query.js:177:50
-    at new Promise (<anonymous>)
-    at Query.run (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\dialects\sqlite\query.js:177:12)
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\sequelize.js:311:28
-    at async SQLiteQueryInterface.select (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
-    at async Function.findAll (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\model.js:1134:21)
-    at async C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\routes\articulosfamilias.js:45:16
-
-2022-09-16T12:19:28.689Z
-Error
-    at Database.<anonymous> (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\dialects\sqlite\query.js:179:27)
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\dialects\sqlite\query.js:177:50
-    at new Promise (<anonymous>)
-    at Query.run (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\dialects\sqlite\query.js:177:12)
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\sequelize.js:311:28
-    at async SQLiteQueryInterface.select (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
-    at async Function.findAll (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\model.js:1134:21)
-    at async C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\routes\articulosfamilias.js:45:16
-
-2022-09-16T12:19:43.560Z
+20/9/2022, 14:45:43
 Error: probando desencadenar un error
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\index.js:63:9
+    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\routes\errores.js:8:9
     at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
     at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
     at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:144:13)
@@ -50,349 +10,89 @@ Error: probando desencadenar un error
     at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:284:15
     at Function.process_params (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:346:12)
     at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:280:10)
-
-2022-09-16T12:29:55.673Z
-Error
-    at Database.<anonymous> (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\dialects\sqlite\query.js:179:27)
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\dialects\sqlite\query.js:177:50
-    at new Promise (<anonymous>)
-    at Query.run (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\dialects\sqlite\query.js:177:12)
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\sequelize.js:311:28
-    at async SQLiteQueryInterface.select (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
-    at async Function.findAll (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\model.js:1134:21)
-    at async C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\routes\articulosfamilias.js:45:16
-
-2022-09-16T13:48:59.016Z
-Error
-    at Database.<anonymous> (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\dialects\sqlite\query.js:179:27)
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\dialects\sqlite\query.js:177:50
-    at new Promise (<anonymous>)
-    at Query.run (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\dialects\sqlite\query.js:177:12)
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\sequelize.js:311:28
-    at async SQLiteQueryInterface.select (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
-    at async Function.findAll (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\model.js:1134:21)
-    at async C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\routes\articulosfamilias.js:45:16
-
-2022-09-16T13:49:41.765Z
-Error
-    at Database.<anonymous> (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\dialects\sqlite\query.js:179:27)
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\dialects\sqlite\query.js:177:50
-    at new Promise (<anonymous>)
-    at Query.run (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\dialects\sqlite\query.js:177:12)
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\sequelize.js:311:28
-    at async SQLiteQueryInterface.select (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
-    at async Function.findAll (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\model.js:1134:21)
-    at async C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\routes\articulosfamilias.js:45:16
-
-2022-09-16T13:55:49.397Z
-Error
-    at Database.<anonymous> (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\dialects\sqlite\query.js:179:27)
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\dialects\sqlite\query.js:177:50
-    at new Promise (<anonymous>)
-    at Query.run (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\dialects\sqlite\query.js:177:12)
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\sequelize.js:311:28
-    at async SQLiteQueryInterface.select (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
-    at async Function.findAll (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\sequelize\lib\model.js:1134:21)
-    at async C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\routes\articulosfamilias.js:45:16
-
-17/9/2022, 0:22:25
-Error: probando desencadenar un error
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\index.js:64:9
+    at Function.handle (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:47:12)
     at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
     at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:114:3)
-    at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:284:15
+    at trim_prefix (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:286:9
     at Function.process_params (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:346:12)
     at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:280:10)
-
-20/9/2022, 9:17:49
-Error: probando desencadenar un error sincrono
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\index.js:63:9
+    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:646:15
+    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:47:12)
     at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
     at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:114:3)
-    at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:284:15
+    at trim_prefix (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:286:9
     at Function.process_params (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:346:12)
     at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:280:10)
-
-20/9/2022, 9:18:07
-Error: probando desencadenr un error asincrono
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\index.js:67:24
+    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:646:15
+    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:47:12)
     at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
     at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:114:3)
-    at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:284:15
+    at trim_prefix (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:286:9
     at Function.process_params (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:346:12)
     at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:280:10)
-
-20/9/2022, 9:18:36
-Error: probando desencadenar un error sincrono
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\index.js:63:9
+    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:646:15
+    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:47:12)
     at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
     at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:114:3)
-    at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:284:15
+    at trim_prefix (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:286:9
     at Function.process_params (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:346:12)
     at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:280:10)
-
-20/9/2022, 9:18:57
-Error: probando desencadenr un error asincrono
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\index.js:67:24
+    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:646:15
+    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:47:12)
     at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
     at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:114:3)
-    at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:284:15
+    at trim_prefix (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:286:9
     at Function.process_params (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:346:12)
     at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:280:10)
-
-20/9/2022, 9:19:07
-Error: probando desencadenr un error asincrono
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\index.js:67:24
+    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:646:15
+    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:47:12)
     at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
     at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:114:3)
-    at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:284:15
+    at trim_prefix (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:286:9
     at Function.process_params (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:346:12)
     at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:280:10)
-
-20/9/2022, 9:47:00
-Error: probando desencadenr un error asincrono
-    at err (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\index.js:68:32)
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\index.js:68:87
+    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:646:15
+    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:47:12)
     at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
     at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:114:3)
-    at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:284:15
-    at Function.process_params (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:346:12)
-
-20/9/2022, 11:30:59
-undefined
-
-20/9/2022, 11:36:40
-undefined
-
-20/9/2022, 11:43:41
-undefined
-
-20/9/2022, 11:44:30
-Error: probando desencadenar un error sincrono
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\index.js:63:9
-    at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:114:3)
-    at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:284:15
+    at trim_prefix (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:286:9
     at Function.process_params (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:346:12)
     at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:280:10)
-
-20/9/2022, 11:44:52
-Error: probando desencadenar un error sincrono
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\index.js:63:9
+    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:646:15
+    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:47:12)
     at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
     at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:114:3)
-    at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:284:15
+    at trim_prefix (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:286:9
     at Function.process_params (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:346:12)
     at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:280:10)
-
-20/9/2022, 11:46:04
-Error: probando desencadenar un error sincrono
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\index.js:63:9
-    at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:114:3)
-    at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:284:15
-    at Function.process_params (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:280:10)
-
-20/9/2022, 11:47:31
-Error: probando desencadenar un error sincrono
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\index.js:63:9
-    at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:114:3)
-    at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:284:15
-    at Function.process_params (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:280:10)
-
-20/9/2022, 11:47:50
-Error: probando desencadenr un error asincrono
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\index.js:68:25
-    at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:114:3)
-    at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:284:15
-    at Function.process_params (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:280:10)
-
-20/9/2022, 11:47:52
-Error: probando desencadenr un error asincrono
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\index.js:68:25
-    at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:114:3)
-    at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:284:15
-    at Function.process_params (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:280:10)
-
-20/9/2022, 11:47:54
-Error: probando desencadenr un error asincrono
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\index.js:68:25
-    at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:114:3)
-    at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:284:15
-    at Function.process_params (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:280:10)
-
-20/9/2022, 11:53:55
-Error: probando desencadenr un error asincrono
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\index.js:68:25
-    at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:114:3)
-    at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:284:15
-    at Function.process_params (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:280:10)
-
-20/9/2022, 11:56:46
-Error: probando desencadenar un error sincrono2
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\index.js:75:9
-    at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:114:3)
-    at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:284:15
-    at Function.process_params (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:280:10)
-
-20/9/2022, 12:06:49
-Error: probando desencadenr un error asincrono 1
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\index.js:66:24
-    at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:114:3)
-    at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:284:15
-    at Function.process_params (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:280:10)
-
-20/9/2022, 12:06:52
-Error: probando desencadenr un error asincrono 2
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\index.js:70:9
-    at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:114:3)
-    at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:284:15
-    at Function.process_params (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:280:10)
-
-20/9/2022, 12:17:36
-Error: probando desencadenr un error asincrono 2
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\index.js:65:9
-    at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:114:3)
-    at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:284:15
-    at Function.process_params (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:280:10)
-
-20/9/2022, 12:18:41
-Error: probando desencadenr un error asincrono 1, Server crash!
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\index.js:65:9
-    at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:114:3)
-    at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:284:15
-    at Function.process_params (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:280:10)
-
-20/9/2022, 12:18:55
-Error: probando desencadenr un error asincrono 3, Server No crash!
-    at Timeout._onTimeout (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\index.js:80:29)
-    at listOnTimeout (node:internal/timers:559:17)
-    at processTimers (node:internal/timers:502:7)
-
-20/9/2022, 12:20:43
-Error: probando desencadenr un error asincrono 3, Server No crash!
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\index.js:83:24
-    at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:114:3)
-    at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:284:15
-    at Function.process_params (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:280:10)
-
-20/9/2022, 12:20:46
-Error: probando desencadenr un error asincrono 3, Server No crash!
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\index.js:83:24
-    at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\route.js:114:3)
-    at newFn (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:284:15
-    at Function.process_params (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\express\lib\router\index.js:280:10)
+    at SendStream.error (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\serve-static\index.js:121:7)
+    at SendStream.emit (node:events:520:28)
+    at SendStream.error (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\send\index.js:270:17)
+    at SendStream.onStatError (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\send\index.js:417:12)
+    at next (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\send\index.js:731:16)
+    at onstat (C:\Users\jigle\OneDrive\Documentos\DDS\dds-express\node_modules\send\index.js:720:14)
+    at FSReqCallback.oncomplete (node:fs:198:21)
 

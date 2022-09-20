@@ -482,6 +482,50 @@
         }
       }
     },
+    "/testerrorsincrono": {
+      "get": {
+        "tags": [
+          "Test Error"
+        ],
+        "summary": "Desencadena un error sincrono",
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/testerrorasincrono1": {
+      "get": {
+        "tags": [
+          "Test Error"
+        ],
+        "summary": "Desencadena un error asincrono: controlado",
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/testerrorasincrono2": {
+      "get": {
+        "tags": [
+          "Test Error"
+        ],
+        "summary": "Desencadena un error asincrono con promesas then/catch: NO controlado",
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/testerrorasincrono3": {
+      "get": {
+        "tags": [
+          "Test Error"
+        ],
+        "summary": "Desencadena un error asincrono con promesas async/await: Controlado",
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
     "/api/jsonexterno": {
       "get": {
         "tags": [
