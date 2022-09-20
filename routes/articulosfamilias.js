@@ -33,7 +33,7 @@ router.get(
     //  }
     // -----------------------------------
     // -----------------------------------
-    // aun con "express-async-errors" , las promesas con error hacer caer el servidor!!!
+    // aun con "express-async-errors" , las promesas con error sin cath hacer caer el servidor!!!
     // db.articulosfamilias
     //   .findAll({
     //     attributes: ["CampoInexistenteParaGenerarUnError"],
