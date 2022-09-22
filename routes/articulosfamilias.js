@@ -57,7 +57,8 @@ router.get("/api/articulosfamilias/:id", async function (req, res, next) {
     attributes: ["IdArticuloFamilia", "Nombre"],
     where: { IdArticuloFamilia: req.params.id },
   });
-  res.json(data);
+  if (data.length > 0 ) res.json(data[0]);
+  else res.status(404).json({mensaje:'No econtrado!!'})
 });
 
 router.post("/api/articulosfamilias/", async function (req, res, next) {

@@ -1,6 +1,14 @@
 const express = require("express");
 const router = express.Router();
 
+// para verificar si el sitio esta funcionando, o hay que recuperarlo de un crash
+router.get('/_isalive', (req, res) => {
+  // #swagger.tags = ['Test Error']
+  // #swagger.summary = 'Verifica que la aplicacion esta ejecutando correctamente!'
+  res.status(200).send('ok')
+})
+
+
 // test error sincrono
 router.get('/testerrorsincrono', (req, res) => {
   // #swagger.tags = ['Test Error']

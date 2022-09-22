@@ -65,10 +65,11 @@ router.get(
   '/api/jwt/articulos',
   auth.authenticateJWT,
   function (req, res, next) {
-    const { role } = req.user;
-    if (role !== 'admin') {
-      return res.sendStatus(403);
-    }
+    // const { role } = req.user;
+    // if (role !== 'admin') {
+    //   return res.sendStatus(403);
+    // }
+
     /* #swagger.security = [{
                "bearerAuth1": []
         }] */

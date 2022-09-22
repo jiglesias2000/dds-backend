@@ -4,7 +4,7 @@
   "scripts": {
     "swagger-autogen": "node ./swagger/swagger.js",
     "dev": "nodemon index.js",
-    "start": "cross-env node index.js",
+    "start": "node index.js",
     "test": "cross-env NODE_ENV=test jest --testTimeout=10000"
   },
   "dependencies": {

@@ -23,12 +23,21 @@ describe("Tesetear error sincrono", () => {
   });
 });
 
-describe("GET /api/articulosfamilias/:id", function () {
-  it("respond with json containing a single artciulosfamilias", function (done) {
-    request(app)
-      .get("/api/articulosfamilias/1")
-      .set("Accept", "application/json")
-      .expect("Content-Type", /json/)
-      .expect(200, done);
+describe("## Varios", () => {
+  describe("#GET _isalive", () => {
+    it("Deberia devolver ok", async () => {
+      const res = await request(app).get("/_isalive");
+      expect(res.statusCode).toEqual(200);
+      expect(res.text).toBe("ok");
+    });
+  });
+
+  describe("# GET 404", () => {
+    it("should return 404 status", async () => {
+      const res = await request(app).get("/urlinexistente");
+      expect(res.statusCode).toEqual(404);
+      expect(res.text).toBe("No encontrada!");
+      //expect(res.header).toHaveProperty('token');
+    });
   });
 });

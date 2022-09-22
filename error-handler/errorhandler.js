@@ -1,3 +1,6 @@
+// best practices
+// https://blog.heroku.com/best-practices-nodejs-errors
+
 // manejo de errores
 const fs = require("fs/promises");
 const errorHandler = async function (err, req, res, next) {
@@ -18,7 +21,15 @@ const errorHandler = async function (err, req, res, next) {
 
 // captura toda las peticiones que no han sido capturadas anteriormente
 const _404Handler = function (req, res, next) {
-    res.status(404).send("Pagina no encontrada!");
+    res.status(404).send("No encontrada!");
 }
+
+process.on('uncaughtException', err => {
+  console.log(`Uncaught Exception: ${err.message}`)
+  process.exit(1)   
+  // el servidor se cae, tendria que haber otra app monitoriando (ruta /_isalive)
+  // y  que al  detectar que esta caido, lo reincie.-
+})
+
 
 module.exports = {errorHandler, _404Handler}
