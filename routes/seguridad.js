@@ -9,12 +9,12 @@ const users = [
   {
     usuario: "admin",
     clave: "123",
-    role: "admin",
+    rol: "admin",
   },
   {
     usuario: "juan",
     clave: "123",
-    role: "member",
+    rol: "member",
   },
 ];
 
@@ -37,7 +37,7 @@ router.post("/api/token", (req, res) => {
     }
 
     const accessToken = jwt.sign(
-      { usuario: user.usuario, role: user.role },
+      { usuario: user.usuario, rol: user.rol },
       auth.accessTokenSecret,
       { expiresIn: "20m" }
     );
@@ -63,12 +63,12 @@ router.post("/api/login", (req, res) => {
     // Generate an access token
     // generate an access token
     const accessToken = jwt.sign(
-      { usuario: user.usuario, role: user.role },
+      { usuario: user.usuario, rol: user.rol },
       auth.accessTokenSecret,
       { expiresIn: "20m" }
     );
     const refreshToken = jwt.sign(
-      { usuario: user.usuario, role: user.role },
+      { usuario: user.usuario, rol: user.rol },
       auth.refreshTokenSecret
     );
 

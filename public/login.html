@@ -77,11 +77,9 @@
 
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="login.html">Bienvenido: Carlos Villan</a>
+            <a class="nav-link" href="login.html">Login</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="">Cerrar Session</a>
-          </li>
+          
         </ul>
       </div>
     </nav>
@@ -92,8 +90,8 @@
         <div class="container">
         
         <div >
-          <h3>Usuario:clave validos</h3>
-          <h3> admin:123 y juan:123</h3>
+          <h3>Usuario y clave validos: <small> admin:123 (rol:admin) y juan:123 (rol:member)</small> </h3>
+          
   
           <label for="uname"><b>Usuario</b></label>
           <input
@@ -103,7 +101,7 @@
             id="usuario"
             required
           />
-  
+          <br>
           <label  for="psw"><b>Clave</b></label>
           <input
             type="password"
@@ -112,15 +110,15 @@
             id="clave"
             required
           />
-  
-          <button type="button" onclick="login()">Login</button> &nbsp;
-          <button type="button" onclick="logout()">Logout</button>
+          <br>
+          <button type="button" onclick="login()" class="btn btn-info">Login</button> &nbsp;
+          <button type="button" onclick="logout()" class="btn btn-warning">Logout</button>
           <br />
           <p id="mensaje"></p>
   
           <hr />
-          <button type="button" onclick="solicitarDatos()">
-            Solicitar datos (solo usuario admin:123)
+          <button type="button" class="btn btn-primary" onclick="solicitarDatos()">
+            Solicitar datos (solo valido para administradores)
           </button>
           <p id="datos"></p>
         </div>

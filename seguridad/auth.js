@@ -12,7 +12,7 @@ const authenticateJWT = (req, res, next) => {
     jwt.verify(token, accessTokenSecret, (err, user) => {
       if (err) {
         //return res.sendStatus(403);
-        return res.status(400).json({ error: "token no es válido" });
+        return res.status(400).json({ mensaje: "token no es valido" });
       }
 
       req.user = user;
@@ -20,25 +20,10 @@ const authenticateJWT = (req, res, next) => {
     });
   } else {
     //res.sendStatus(401);
-    res.status(401).json({ error: "Acceso denegado" });
+    res.status(401).json({ mensaje: "Acceso denegado" });
   }
 };
 
 
 module.exports = { authenticateJWT, accessTokenSecret, refreshTokenSecret };
 
-//------------------------------------
-//-- SEGURIDAD ---------------------------
-//------------------------------------
-// app.get("/paginasegura", auth.authenticateJWT, (req, res) => {
-
-//  paso la autenticacion
-//  const { role } = req.user;
-
-// ahora controlamos autorizacion
-//   if (role !== "admin") {
-//     return res.sendStatus(403);
-//   }
-
-//   res.send("pagina segura accedida solo por administradores!");
-// });

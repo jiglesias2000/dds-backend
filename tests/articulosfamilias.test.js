@@ -27,11 +27,7 @@ describe("GET /api/articulosfamilias", function () {
 describe("GET /api/articulosfamilias/:id", function () {
   it("respond with json containing a single artciulosfamilias", async function () {
     const res = await request(app)
-      .get("/api/articulosfamilias/1")
-      .set("Accept", "application/json");
-    expect(res.headers["content-type"]).toEqual(
-      "application/json; charset=utf-8"
-    );
+      .get("/api/articulosfamilias/1");
     expect(res.statusCode).toEqual(200);
     expect(res.body).toEqual(
       expect.objectContaining({

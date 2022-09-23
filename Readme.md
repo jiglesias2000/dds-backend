@@ -1,7 +1,7 @@
-# Ejemplo de Backend
-## pero es muy bueno
-* opcion 1
-* opcion 2
+# Desarrollo de Sotware: Backend
+## Express
+* Server
+* Archivos estaticos
     * opcion 3
     * opcion 4 que es *muy **bueno***
     * es un texto ~~tachado~~

@@ -7,7 +7,6 @@ require("dotenv").config();
 console.log("base", process.env.base);
 console.log("NODE_ENV", process.env.NODE_ENV);
 
-
 require("./base-orm/sqlite-init"); // crear base si no existe
 
 // crear servidor
@@ -59,25 +58,22 @@ app.use(jsonexternoRouter);
 app.use(equiposRouter);
 app.use(erroresRouter);
 
-
 //------------------------------------
 //-- Control de errores --------------
 //------------------------------------
-const {errorHandler, _404Handler} = require("./error-handler/errorhandler");
+const { errorHandler, _404Handler } = require("./error-handler/errorhandler");
 app.use(errorHandler);
 app.use(_404Handler);
-
 
 //------------------------------------
 //-- INICIO ---------------------------
 //------------------------------------
-if (process.env.NODE_ENV != 'test') {
-
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`sitio escuchando en el puerto ${port}`);
-});
-
+//if (process.env.NODE_ENV != "test") {
+if (!module.parent) {
+  const port = process.env.PORT || 3000;
+  app.listen(port, () => {
+    console.log(`sitio escuchando en el puerto ${port}`);
+  });
 }
 
-module.exports = app;  // para testing
+module.exports = app; // para testing
