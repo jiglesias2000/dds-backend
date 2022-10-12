@@ -1,8 +1,9 @@
 # Desarrollo de Sotware: Backend
 
+## Etapa1
 ## Crear proyecto basico
-* crear carpeta: dds-express
-* En la carpeta, inicializar proyecto node
+* creamos la carpeta del proyecto: dds-express
+* Ubicado en la carpeta, inicializamos el proyecto node
     * comando: npm init
 
   |parametro | valor |
@@ -13,9 +14,10 @@
   |etc| etc|
 
 
-  * instalar libreria express: npm i express
-  * crear archivo inicial de la aplicacion: index.js
-    * codificar la aplicacion web basica
+  * instalamos la libreria express: 
+    * comando: npm i express
+  * creamos el archivo inicial de la aplicacion: index.js
+    * codificamos la aplicacion web basica:
 
 ```javascript
 const express = require("express");
@@ -34,13 +36,14 @@ app.listen(port, () => {
     console.log(`sitio escuchando en el puerto ${port}`);
 });
 ```
-* Ejecutar el proyecto
-  * comando: node index.js
+  * Ejecutamos el proyecto
+    * comando: node index.js
+  * testeamos la aplicacion desde el explorador, url: localhost:3000
+  * inicializamos repositorio y hacemos el primer commit.
+    * comando: git init
+    * agregamos el archivo .gitignore
+      * contenido: node_modules/
+    * comando: git add 
+    * comando: git commit -m "etapa 1 completa"
+    * comando: git branch etapa1
 
-* inicializar repositorio
-  * comando: git init
-  * agregar archivo .gitignore
-    * contenido: node_modules/
-  * comando: git add 
-  * comando: git commit -m "proyecto basico completo"
-  * comando: git branch Etapa1

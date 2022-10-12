@@ -4,7 +4,7 @@
   "description": "backend con express",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node index.js",
     "test": "test/test.js"
   },
   "author": "",
