@@ -2,10 +2,6 @@
 const { Sequelize, DataTypes } = require("sequelize");
 const sequelize = new Sequelize("sqlite:./.data/pymes.db");
 
-const DISABLE_SEQUELIZE_DEFAULTS = {
-  timestamps: false,
-  freezeTableName: true,
-};
 
 // definicion del modelo de datos
 const articulosfamilias = sequelize.define(
@@ -41,7 +37,7 @@ const articulosfamilias = sequelize.define(
     //     }
     //   },
     // },
-    ... DISABLE_SEQUELIZE_DEFAULTS
+    timestamps: false
   }
 );
 
@@ -54,12 +50,33 @@ const articulos = sequelize.define(
       autoIncrement: true
     },
     Nombre: { 
+      type: DataTypes.STRING(60), 
+      allowNull: false 
+    },
+    Precio: {
+      type: DataTypes.DECIMAL(10, 2),
+      allowNull: false 
+    },
+    CodigoDeBarra: { 
+      type: DataTypes.STRING(50), 
+      allowNull: false 
+    },
+    Stock: {
+      type: DataTypes.INTEGER,
+      allowNull: false 
+    },
+    FechaAlta: { 
       type: DataTypes.STRING, 
       allowNull: false 
+    },
+    Activo: { 
+      type: DataTypes.INTEGER, 
+      allowNull: false 
     }
+
   },
   {
-    DISABLE_SEQUELIZE_DEFAULTS
+    timestamps: false,
   }
 );
 

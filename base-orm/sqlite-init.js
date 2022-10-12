@@ -79,4 +79,4 @@ async function CrearBaseSiNoExiste() {
 }
 
 CrearBaseSiNoExiste();
-export default CrearBaseSiNoExiste;
+module.exports =  CrearBaseSiNoExiste;

@@ -2,6 +2,7 @@ const express = require("express");
 
 // crear servidor
 const app = express();
+app.use(express.json()); // para poder leer json en el body
 
 // controlar ruta
 app.get("/", (req, res) => {
@@ -10,6 +11,8 @@ app.get("/", (req, res) => {
 
 const articulosfamiliasRouter = require("./routes/articulosfamilias");
 app.use(articulosfamiliasRouter);
+const articulosRouter = require("./routes/articulos");
+app.use(articulosRouter);
 
 // levantar servidor
 const port = 3000;
