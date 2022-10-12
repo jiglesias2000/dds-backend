@@ -8,6 +8,9 @@ app.get("/", (req, res) => {
   res.send("Backend inicial DDS-EXPRESS!");
 });
 
+const articulosfamiliasRouter = require("./routes/articulosfamilias");
+app.use(articulosfamiliasRouter);
+
 // levantar servidor
 const port = 3000;
 app.listen(port, () => {

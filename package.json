@@ -10,6 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
+    "aa-sqlite": "^1.0.29",
+    "express": "^4.18.2",
+    "sequelize": "^6.25.0",
+    "sqlite3": "^5.1.2"
   }
 }
