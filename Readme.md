@@ -45,5 +45,5 @@ app.listen(port, () => {
       * contenido: node_modules/
     * comando: git add 
     * comando: git commit -m "etapa 1 completa"
-    * comando: git branch etapa1
+    
 
