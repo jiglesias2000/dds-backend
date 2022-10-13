@@ -1,3 +1,5 @@
+# base de datos
+.data
 # Logs
 logs
 *.log

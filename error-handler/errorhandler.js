@@ -27,10 +27,11 @@ const _404Handler = function (req, res, next) {
 }
 
 process.on('uncaughtException', err => {
+  // si se cae el sevidor, logueamos la causa para poder analizarlo y corregirlo a posterior.
   console.log(`Uncaught Exception: ${err.message}`)
   process.exit(1)   
-  // el servidor se cae, tendria que haber otra app monitoriando (ruta /_isalive)
-  // y  que al  detectar que esta caido, lo reincie.-
+  // el servidor se cae, tendria que haber otra app monitoriando el servidor y levantandolo nuevamente, ej pm2 (Process Manager 2)
+
 })
 
 

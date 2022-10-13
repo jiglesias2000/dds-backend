@@ -11,11 +11,11 @@ const authenticateJWT = (req, res, next) => {
 
     jwt.verify(token, accessTokenSecret, (err, user) => {
       if (err) {
-        //return res.sendStatus(403);
-        return res.status(400).json({ mensaje: "token no es valido" });
+        return res.sendStatus(403);
+        //return res.status(400).json({ mensaje: "token no es valido" });
       }
-
-      req.user = user;
+      
+      res.locals.user = user;
       next();
     });
   } else {

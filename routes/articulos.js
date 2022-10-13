@@ -1,12 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../base-orm/sequelize-init");
-const { Op } = require("sequelize");
+const { Op, ValidationError } = require("sequelize");
 const auth = require("../seguridad/auth");
 
 router.get("/api/articulos", async function (req, res, next) {
   // #swagger.tags = ['Articulos']
   // #swagger.summary = 'obtiene todos los Articulos'
+  // consulta de articulos con filtros y paginacion
   if (req.body.Nombre || req.body.Activo || req.body.NumeroPagina) {
     let where = {};
     if (req.body.Nombre != undefined) {
@@ -36,23 +37,18 @@ router.get("/api/articulos", async function (req, res, next) {
 
     return res.json({ items: rows, totalRegistros: count });
   } else {
-    db.articulos
-      .findAll({
-        attributes: [
-          "IdArticulo",
-          "Nombre",
-          "Precio",
-          "Stock",
-          "FechaAlta",
-          "Activo",
-        ],
-        order: [["Nombre", "ASC"]],
-      })
-      .then((datos) => {
-        //console.log(datos);
-        res.json(datos);
-      });
-    //.catch((err) => res.json(err));   // no capturar el error de la promesa
+    let items = await db.articulos.findAll({
+      attributes: [
+        "IdArticulo",
+        "Nombre",
+        "Precio",
+        "Stock",
+        "FechaAlta",
+        "Activo",
+      ],
+      order: [["Nombre", "ASC"]],
+    });
+    res.json(items);
   }
 });
 //------------------------------------
@@ -65,8 +61,8 @@ curl --location --request GET 'http://localhost:3000/api/jwt/articulos' \
 router.get(
   "/api/jwt/articulos",
   auth.authenticateJWT,
-  function (req, res, next) {
-    const { rol } = req.user;
+  async function (req, res, next) {
+    const { rol } = res.locals.user;
     if (rol !== "admin") {
       return res.status(403).json({ mensaje: "usuario no autorizado!" });
     }
@@ -77,23 +73,18 @@ router.get(
 
     // #swagger.tags = ['Articulos']
     // #swagger.summary = 'obtiene todos los Articulos, con seguridad JWT, solo para rol: admin (usuario:admin, clave:123)'
-    db.articulos
-      .findAll({
-        attributes: [
-          "IdArticulo",
-          "Nombre",
-          "Precio",
-          "Stock",
-          "FechaAlta",
-          "Activo",
-        ],
-        order: [["Nombre", "ASC"]],
-      })
-      .then((datos) => {
-        //console.log(datos);
-        res.json(datos);
-      })
-      .catch((err) => res.json(err));
+    let items = await db.articulos.findAll({
+      attributes: [
+        "IdArticulo",
+        "Nombre",
+        "Precio",
+        "Stock",
+        "FechaAlta",
+        "Activo",
+      ],
+      order: [["Nombre", "ASC"]],
+    });
+    res.json(items);
   }
 );
 
@@ -101,27 +92,23 @@ router.get("/api/articulos/:id", async function (req, res, next) {
   // #swagger.tags = ['Articulos']
   // #swagger.summary = 'obtiene un Articulo'
   // #swagger.parameters['id'] = { description: 'identificador del Articulo...' }
-  db.articulos
-    .findAll({
-      attributes: [
-        "IdArticulo",
-        "Nombre",
-        "Precio",
-        "CodigoDeBarra",
-        "IdArticuloFamilia",
-        "Stock",
-        "FechaAlta",
-        "Activo",
-      ],
-      where: { IdArticulo: req.params.id },
-    })
-    .then((items) => {
-      res.json(items);
-    })
-    .catch((err) => res.json(err));
+  let items = await db.articulos.findAll({
+    attributes: [
+      "IdArticulo",
+      "Nombre",
+      "Precio",
+      "CodigoDeBarra",
+      "IdArticuloFamilia",
+      "Stock",
+      "FechaAlta",
+      "Activo",
+    ],
+    where: { IdArticulo: req.params.id },
+  });
+  res.json(items);
 });
 
-router.post("/api/articulos/", (req, res) => {
+router.post("/api/articulos/", async (req, res) => {
   // #swagger.tags = ['Articulos']
   // #swagger.summary = 'agrega un Articulos'
   /*    #swagger.parameters['item'] = {
@@ -129,9 +116,8 @@ router.post("/api/articulos/", (req, res) => {
                 description: 'nuevo Articulo',
                 schema: { $ref: '#/definitions/Articulos' }
     } */
-
-  db.articulos
-    .create({
+  try {
+    let data = await db.articulos.create({
       Nombre: req.body.Nombre,
       Precio: req.body.Precio,
       CodigoDeBarra: req.body.CodigoDeBarra,
@@ -139,59 +125,29 @@ router.post("/api/articulos/", (req, res) => {
       Stock: req.body.Stock,
       FechaAlta: req.body.FechaAlta,
       Activo: req.body.Activo,
-    })
-    .then((result) => {
-      res.json(result);
-    })
-    .catch((err) => {
-      const messages = {};
-      if (e instanceof ValidationError) {
-        e.errors.forEach((error) => {
-          let message;
-          switch (error.validatorKey) {
-            case "isEmail":
-              message = "Please enter a valid email";
-              break;
-            case "isDate":
-              message = "Please enter a valid date";
-              break;
-            case "len":
-              if (error.validatorArgs[0] === error.validatorArgs[1]) {
-                message = "Use " + error.validatorArgs[0] + " characters";
-              } else {
-                message =
-                  "Use between " +
-                  error.validatorArgs[0] +
-                  " and " +
-                  error.validatorArgs[1] +
-                  " characters";
-              }
-              break;
-            case "min":
-              message =
-                "Use a number greater or equal to " + error.validatorArgs[0];
-              break;
-            case "max":
-              message =
-                "Use a number less or equal to " + error.validatorArgs[0];
-              break;
-            case "isInt":
-              message = "Please use an integer number";
-              break;
-            case "is_null":
-              message = "Please complete this field";
-              break;
-            case "not_unique":
-              message = error.value + " is taken. Please choose another one";
-              error.path = error.path.replace("_UNIQUE", "");
-          }
-          messages[error.path] = message;
-        });
-      }
     });
+    res.status(200).json(data.dataValues); // devolvemos el registro agregado!
+  } catch (err) {
+    const messages = {};
+    if (err instanceof ValidationError) {
+      err.errors.forEach((error) => {
+        let message;
+        switch (error.validatorKey) {
+          case "not_unique":
+            message = (error.value ?? 'el valor de este campo') + " ya existe en la tabla";
+            error.path = error.path.replace("_UNIQUE", "");
+            break;
+          default:
+            message = error.message;  // msg del modelo o por defecto
+        }
+        messages[error.path] = message;
+      });
+      res.status(400).json(messages);
+    } else throw err; // desencadeno el mismo error inicial (error desconocido)
+  }
 });
 
-router.put("/api/articulos/:id", (req, res) => {
+router.put("/api/articulos/:id", async (req, res) => {
   // #swagger.tags = ['Articulos']
   // #swagger.summary = 'actualiza un Articulo'
   // #swagger.parameters['id'] = { description: 'identificador del Articulo...' }
@@ -201,7 +157,8 @@ router.put("/api/articulos/:id", (req, res) => {
                 schema: { $ref: '#/definitions/Articulos' }
     } */
 
-  db.articulosfamilias
+    try {
+      let data = await db.articulos
     .update(
       {
         Nombre: req.body.Nombre,
@@ -213,73 +170,38 @@ router.put("/api/articulos/:id", (req, res) => {
         Activo: req.body.Activo,
       },
       { where: { IdArticulo: req.params.id } }
-    )
-    .then((item) => {
-      res.json(item);
-    })
-    .catch((err) => {
-      const messages = {};
-      if (e instanceof ValidationError) {
-        e.errors.forEach((error) => {
-          let message;
-          switch (error.validatorKey) {
-            case "isEmail":
-              message = "Please enter a valid email";
-              break;
-            case "isDate":
-              message = "Please enter a valid date";
-              break;
-            case "len":
-              if (error.validatorArgs[0] === error.validatorArgs[1]) {
-                message = "Use " + error.validatorArgs[0] + " characters";
-              } else {
-                message =
-                  "Use between " +
-                  error.validatorArgs[0] +
-                  " and " +
-                  error.validatorArgs[1] +
-                  " characters";
-              }
-              break;
-            case "min":
-              message =
-                "Use a number greater or equal to " + error.validatorArgs[0];
-              break;
-            case "max":
-              message =
-                "Use a number less or equal to " + error.validatorArgs[0];
-              break;
-            case "isInt":
-              message = "Please use an integer number";
-              break;
-            case "is_null":
-              message = "Please complete this field";
-              break;
-            case "not_unique":
-              message = error.value + " is taken. Please choose another one";
-              error.path = error.path.replace("_UNIQUE", "");
-          }
-          messages[error.path] = message;
-        });
-      }
-
-      res.json(messages);
-    });
+    );
+    res.status(200).json(data.dataValues); // devolvemos el registro modificado!
+  } catch (err) {
+    const messages = {};
+    if (err instanceof ValidationError) {
+      err.errors.forEach((error) => {
+        let message;
+        switch (error.validatorKey) {
+          case "not_unique":
+            message = (error.value ?? 'el valor de este campo') + " ya existe en la tabla";
+            error.path = error.path.replace("_UNIQUE", "");
+            break;
+          default:
+            message = error.message;  // msg del modelo o por defecto
+        }
+        messages[error.path] = message;
+      });
+      res.status(400).json(messages);
+    } else throw err; // desencadeno el mismo error inicial (error desconocido)
+  }
 });
 
-router.delete("/api/articulos/:id", (req, res) => {
+router.delete("/api/articulos/:id", async (req, res) => {
   // #swagger.tags = ['Articulos']
   // #swagger.summary = 'elimina un Articulo'
   // #swagger.parameters['id'] = { description: 'identificador del Articulo..' }
 
-  db.articulos
-    .destroy({
-      where: { IdArticulo: req.params.id },
-    })
-    .then((item) => {
-      res.json(item);
-    })
-    .catch((err) => res.json(err));
+  let data = await db.articulos.destroy({
+    where: { IdArticulo: req.params.id },
+  });
+  if (data==1) res.sendStatus(200);
+  else res.sendStatus(404);
 });
 
 module.exports = router;

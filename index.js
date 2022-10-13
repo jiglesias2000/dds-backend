@@ -18,7 +18,7 @@ app.use(cors());
 
 app.use(express.text()); // entiende texto
 app.use(express.urlencoded({ extended: false })); // for parsing application/x-www-form-urlencoded
-app.use(express.json()); // entiende json
+app.use(express.json()); // para poder leer json en el body
 
 // sirve archivos estaticos
 app.use("/", express.static(path.join(__dirname, "public")));
@@ -68,9 +68,10 @@ app.use(_404Handler);
 //------------------------------------
 //-- INICIO ---------------------------
 //------------------------------------
-//if (process.env.NODE_ENV != "test") {
-if (!module.parent) {
-  const port = process.env.PORT || 3000;
+
+if (!module.parent) { // si no es llamado por otro modulo, es decir, si es el modulo principal
+  const port = process.env.PORT || 3000;   // en produccion se usa el puerto de la variable de entorno PORT
+  app.locals.fechaInicio = new Date();
   app.listen(port, () => {
     console.log(`sitio escuchando en el puerto ${port}`);
   });

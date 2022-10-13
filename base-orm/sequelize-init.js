@@ -1,32 +1,22 @@
-// configura ORM sequelize
-
+// configurar ORM sequelize
 const { Sequelize, DataTypes } = require("sequelize");
-
-//const sequelize = new Sequelize('sqlite::memory:');
 const sequelize = new Sequelize("sqlite:./.data/pymes.db");
 
-const DISABLE_SEQUELIZE_DEFAULTS = {
-  timestamps: false,
-  freezeTableName: true,
-};
 
+// definicion del modelo de datos
 const articulosfamilias = sequelize.define(
   "articulosfamilias",
   {
-    // Model attributes are defined here
     IdArticuloFamilia: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
-    //Nombre: DataTypes.STRING,
-
     Nombre: {
       type: DataTypes.STRING(30),
       allowNull: false,
       // https://sequelize.org/docs/v6/core-concepts/validations-and-constraints/
       validate: {
-        // is: /^[0-9a-f]{64}$/i ,
         notEmpty: {
           args: true,
           msg: "este dato no puede estar vacio",
@@ -39,8 +29,7 @@ const articulosfamilias = sequelize.define(
     },
   },
   {
-    timestamps: false,
-    freezeTableName: true,
+    // pasar a mayusculas
     // hooks: {
     //   beforeValidate: function (articulofamilia, options) {
     //     if (typeof articulofamilia.Nombre === "string") {
@@ -48,20 +37,46 @@ const articulosfamilias = sequelize.define(
     //     }
     //   },
     // },
+    timestamps: false
   }
 );
+
 const articulos = sequelize.define(
   "articulos",
   {
     IdArticulo: {
       type: DataTypes.INTEGER,
       primaryKey: true,
-      autoIncrement: true,
+      autoIncrement: true
     },
-    Nombre: { type: DataTypes.STRING, allowNull: false },
+    Nombre: { 
+      type: DataTypes.STRING(60), 
+      allowNull: false 
+    },
+    Precio: {
+      type: DataTypes.DECIMAL(10, 2),
+      allowNull: false 
+    },
+    CodigoDeBarra: { 
+      type: DataTypes.STRING(50), 
+      allowNull: false 
+    },
+    Stock: {
+      type: DataTypes.INTEGER,
+      allowNull: false 
+    },
+    FechaAlta: { 
+      type: DataTypes.STRING, 
+      allowNull: false 
+    },
+    Activo: { 
+      type: DataTypes.INTEGER, 
+      allowNull: false 
+    }
+
   },
   {
-    DISABLE_SEQUELIZE_DEFAULTS,
+    timestamps: false,
   }
 );
 

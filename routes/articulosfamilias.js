@@ -83,50 +83,12 @@ router.post("/api/articulosfamilias/", async function (req, res, next) {
       err.errors.forEach((error) => {
         let message;
         switch (error.validatorKey) {
-          case "isEmail":
-            message = "Please enter a valid email";
-            break;
-          case "isDate":
-            message = "Please enter a valid date";
-            break;
-          case "len":
-            console.log(
-              "ya tiene un msj de error definido en el modelo, nos quedamos con ese mismo",
-              error.message
-            );
-            message = error.message;
-
-            // if (error.validatorArgs[0] === error.validatorArgs[1]) {
-            //   message = "Use " + error.validatorArgs[0] + " characters";
-            // } else {
-            //   message =
-            //     "Use between " +
-            //     error.validatorArgs[0] +
-            //     " and " +
-            //     error.validatorArgs[1] +
-            //     " characters";
-            // }
-
-            break;
-          case "min":
-            message =
-              "Use a number greater or equal to " + error.validatorArgs[0];
-            break;
-          case "max":
-            message = "Use a number less or equal to " + error.validatorArgs[0];
-            break;
-          case "isInt":
-            message = "Please use an integer number";
-            break;
-          case "is_null":
-            message = "Please complete this field";
-            break;
           case "not_unique":
-            message = error.value + " ya existe en la base";
+            message = (error.value ?? 'el valor de este campo') + " ya existe en la base";
             error.path = error.path.replace("_UNIQUE", "");
             break;
           default:
-            message = error.message;
+            message = error.message;  // msg del modelo o por defecto
         }
         messages[error.path] = message;
       });
@@ -159,50 +121,12 @@ router.put("/api/articulosfamilias/:id", async function (req, res, next) {
         err.errors.forEach((error) => {
           let message;
           switch (error.validatorKey) {
-            case "isEmail":
-              message = "Please enter a valid email";
-              break;
-            case "isDate":
-              message = "Please enter a valid date";
-              break;
-            case "len":
-              console.log(
-                "ya tiene un msj de error definido en el modelo, nos quedamos con ese mismo",
-                error.message
-              );
-              message = error.message;
-  
-              // if (error.validatorArgs[0] === error.validatorArgs[1]) {
-              //   message = "Use " + error.validatorArgs[0] + " characters";
-              // } else {
-              //   message =
-              //     "Use between " +
-              //     error.validatorArgs[0] +
-              //     " and " +
-              //     error.validatorArgs[1] +
-              //     " characters";
-              // }
-  
-              break;
-            case "min":
-              message =
-                "Use a number greater or equal to " + error.validatorArgs[0];
-              break;
-            case "max":
-              message = "Use a number less or equal to " + error.validatorArgs[0];
-              break;
-            case "isInt":
-              message = "Please use an integer number";
-              break;
-            case "is_null":
-              message = "Please complete this field";
-              break;
             case "not_unique":
-              message = (error.value ?? 'el valor de este campo') + " ya existe en la base";
+              message = (error.value ?? 'el valor de este campo') + " ya existe en la tabla";
               error.path = error.path.replace("_UNIQUE", "");
               break;
             default:
-              message = error.message;
+              message = error.message;  // msg del modelo o por defecto
           }
           messages[error.path] = message;
         });
