@@ -42,6 +42,8 @@ router.get("/api/articulos", async function (req, res, next) {
         "IdArticulo",
         "Nombre",
         "Precio",
+        "CodigoDeBarra",
+        "IdArticuloFamilia",
         "Stock",
         "FechaAlta",
         "Activo",
@@ -51,42 +53,6 @@ router.get("/api/articulos", async function (req, res, next) {
     res.json(items);
   }
 });
-//------------------------------------
-//-- SEGURIDAD ---------------------------
-//------------------------------------
-/* 
-curl --location --request GET 'http://localhost:3000/api/jwt/articulos' \
---header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjoiYWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NjMxODAyMzIsImV4cCI6MTY2MzE4MTQzMn0.1Fbep2gPiTrmLmEhNmk4FCo-EICnDHOcoLdyamY2ra0' \
-*/
-router.get(
-  "/api/jwt/articulos",
-  auth.authenticateJWT,
-  async function (req, res, next) {
-    const { rol } = res.locals.user;
-    if (rol !== "admin") {
-      return res.status(403).json({ mensaje: "usuario no autorizado!" });
-    }
-
-    /* #swagger.security = [{
-               "bearerAuth1": []
-        }] */
-
-    // #swagger.tags = ['Articulos']
-    // #swagger.summary = 'obtiene todos los Articulos, con seguridad JWT, solo para rol: admin (usuario:admin, clave:123)'
-    let items = await db.articulos.findAll({
-      attributes: [
-        "IdArticulo",
-        "Nombre",
-        "Precio",
-        "Stock",
-        "FechaAlta",
-        "Activo",
-      ],
-      order: [["Nombre", "ASC"]],
-    });
-    res.json(items);
-  }
-);
 
 router.get("/api/articulos/:id", async function (req, res, next) {
   // #swagger.tags = ['Articulos']
@@ -128,22 +94,14 @@ router.post("/api/articulos/", async (req, res) => {
     });
     res.status(200).json(data.dataValues); // devolvemos el registro agregado!
   } catch (err) {
-    const messages = {};
     if (err instanceof ValidationError) {
-      err.errors.forEach((error) => {
-        let message;
-        switch (error.validatorKey) {
-          case "not_unique":
-            message = (error.value ?? 'el valor de este campo') + " ya existe en la tabla";
-            error.path = error.path.replace("_UNIQUE", "");
-            break;
-          default:
-            message = error.message;  // msg del modelo o por defecto
-        }
-        messages[error.path] = message;
-      });
+      // si son errores de validacion, los devolvemos
+      const messages = err.errors.map(x => x.message); 
       res.status(400).json(messages);
-    } else throw err; // desencadeno el mismo error inicial (error desconocido)
+    } else {
+      // si son errores desconocidos, los dejamos que los controle el middleware de errores
+      throw err; 
+    }
   }
 });
 
@@ -157,9 +115,8 @@ router.put("/api/articulos/:id", async (req, res) => {
                 schema: { $ref: '#/definitions/Articulos' }
     } */
 
-    try {
-      let data = await db.articulos
-    .update(
+  try {
+    let data = await db.articulos.update(
       {
         Nombre: req.body.Nombre,
         Precio: req.body.Precio,
@@ -173,22 +130,14 @@ router.put("/api/articulos/:id", async (req, res) => {
     );
     res.status(200).json(data.dataValues); // devolvemos el registro modificado!
   } catch (err) {
-    const messages = {};
     if (err instanceof ValidationError) {
-      err.errors.forEach((error) => {
-        let message;
-        switch (error.validatorKey) {
-          case "not_unique":
-            message = (error.value ?? 'el valor de este campo') + " ya existe en la tabla";
-            error.path = error.path.replace("_UNIQUE", "");
-            break;
-          default:
-            message = error.message;  // msg del modelo o por defecto
-        }
-        messages[error.path] = message;
-      });
+      // si son errores de validacion, los devolvemos
+      const messages = err.errors.map(x => x.message); 
       res.status(400).json(messages);
-    } else throw err; // desencadeno el mismo error inicial (error desconocido)
+    } else {
+      // si son errores desconocidos, los dejamos que los controle el middleware de errores
+      throw err; 
+    }
   }
 });
 
@@ -197,11 +146,46 @@ router.delete("/api/articulos/:id", async (req, res) => {
   // #swagger.summary = 'elimina un Articulo'
   // #swagger.parameters['id'] = { description: 'identificador del Articulo..' }
 
-  let data = await db.articulos.destroy({
+  let filasBorradas = await db.articulos.destroy({
     where: { IdArticulo: req.params.id },
   });
-  if (data==1) res.sendStatus(200);
+  if (filasBorradas == 1) res.sendStatus(200);
   else res.sendStatus(404);
 });
+
+//------------------------------------
+//-- SEGURIDAD ---------------------------
+//------------------------------------
+router.get(
+  "/api/jwt/articulos",
+  auth.authenticateJWT,
+  async function (req, res, next) {
+    /* #swagger.security = [{
+               "bearerAuth1": []
+        }] */
+
+    // #swagger.tags = ['Articulos']
+    // #swagger.summary = 'obtiene todos los Articulos, con seguridad JWT, solo para rol: admin (usuario:admin, clave:123)'
+    const { rol } = res.locals.user;
+    if (rol !== "admin") {
+      return res.status(403).json({ mensaje: "usuario no autorizado!" });
+    }
+
+    let items = await db.articulos.findAll({
+      attributes: [
+        "IdArticulo",
+        "Nombre",
+        "Precio",
+        "CodigoDeBarra",
+        "IdArticuloFamilia",
+        "Stock",
+        "FechaAlta",
+        "Activo",
+      ],
+      order: [["Nombre", "ASC"]],
+    });
+    res.json(items);
+  }
+);
 
 module.exports = router;

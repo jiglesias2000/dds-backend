@@ -15,15 +15,14 @@ const articulosfamilias = sequelize.define(
     Nombre: {
       type: DataTypes.STRING(30),
       allowNull: false,
-      // https://sequelize.org/docs/v6/core-concepts/validations-and-constraints/
       validate: {
         notEmpty: {
           args: true,
-          msg: "este dato no puede estar vacio",
+          msg: "Nombre no puede estar vacio",
         },
         len: {
           args: [5, 30],
-          msg: "dato tipo carateres, entre 5 y 30",
+          msg: "Nombre debe ser tipo carateres, entre 5 y 30 de longitud",
         },
       },
     },
@@ -51,7 +50,22 @@ const articulos = sequelize.define(
     },
     Nombre: { 
       type: DataTypes.STRING(60), 
-      allowNull: false 
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: "Nombre no puede estar vacio",
+        },
+        len: {
+          args: [5, 60],
+          msg: "Nombre debe ser tipo carateres, entre 5 y 60 de longitud",
+        },
+       
+      },
+      unique : {
+        args: true,
+        msg: 'este Nombre ya existe en la tabla!',
+      } 
     },
     Precio: {
       type: DataTypes.DECIMAL(10, 2),
@@ -60,6 +74,10 @@ const articulos = sequelize.define(
     CodigoDeBarra: { 
       type: DataTypes.STRING(50), 
       allowNull: false 
+    },
+    IdArticuloFamilia: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
     Stock: {
       type: DataTypes.INTEGER,

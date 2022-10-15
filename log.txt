@@ -4863,3 +4863,72 @@ Error
     at async Function.create (D:\DDS\dds-express\node_modules\sequelize\lib\model.js:1344:12)
     at async D:\DDS\dds-express\routes\articulos.js:120:16
 
+14/10/2022, 11:53:22
+ReferenceError: message is not defined
+    at D:\DDS\dds-express\routes\articulos.js:100:32
+    at Array.forEach (<anonymous>)
+    at D:\DDS\dds-express\routes\articulos.js:99:18
+
+14/10/2022, 11:53:56
+ReferenceError: message is not defined
+    at D:\DDS\dds-express\routes\articulos.js:100:32
+    at Array.forEach (<anonymous>)
+    at D:\DDS\dds-express\routes\articulos.js:99:18
+
+14/10/2022, 11:55:45
+ReferenceError: message is not defined
+    at D:\DDS\dds-express\routes\articulos.js:100:32
+    at Array.forEach (<anonymous>)
+    at D:\DDS\dds-express\routes\articulos.js:99:18
+
+14/10/2022, 12:19:16
+Error
+    at Database.<anonymous> (D:\DDS\dds-express\node_modules\sequelize\lib\dialects\sqlite\query.js:179:27)
+    at D:\DDS\dds-express\node_modules\sequelize\lib\dialects\sqlite\query.js:177:50
+    at new Promise (<anonymous>)
+    at Query.run (D:\DDS\dds-express\node_modules\sequelize\lib\dialects\sqlite\query.js:177:12)
+    at D:\DDS\dds-express\node_modules\sequelize\lib\sequelize.js:311:28
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async SQLiteQueryInterface.insert (D:\DDS\dds-express\node_modules\sequelize\lib\dialects\abstract\query-interface.js:308:21)
+    at async model.save (D:\DDS\dds-express\node_modules\sequelize\lib\model.js:2432:35)
+    at async Function.create (D:\DDS\dds-express\node_modules\sequelize\lib\model.js:1344:12)
+    at async D:\DDS\dds-express\routes\articulos.js:86:16
+
+14/10/2022, 12:22:09
+Error
+    at Database.<anonymous> (D:\DDS\dds-express\node_modules\sequelize\lib\dialects\sqlite\query.js:179:27)
+    at D:\DDS\dds-express\node_modules\sequelize\lib\dialects\sqlite\query.js:177:50
+    at new Promise (<anonymous>)
+    at Query.run (D:\DDS\dds-express\node_modules\sequelize\lib\dialects\sqlite\query.js:177:12)
+    at D:\DDS\dds-express\node_modules\sequelize\lib\sequelize.js:311:28
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async SQLiteQueryInterface.insert (D:\DDS\dds-express\node_modules\sequelize\lib\dialects\abstract\query-interface.js:308:21)
+    at async model.save (D:\DDS\dds-express\node_modules\sequelize\lib\model.js:2432:35)
+    at async Function.create (D:\DDS\dds-express\node_modules\sequelize\lib\model.js:1344:12)
+    at async D:\DDS\dds-express\routes\articulos.js:86:16
+
+14/10/2022, 12:28:59
+Error
+    at Database.<anonymous> (D:\DDS\dds-express\node_modules\sequelize\lib\dialects\sqlite\query.js:179:27)
+    at D:\DDS\dds-express\node_modules\sequelize\lib\dialects\sqlite\query.js:177:50
+    at new Promise (<anonymous>)
+    at Query.run (D:\DDS\dds-express\node_modules\sequelize\lib\dialects\sqlite\query.js:177:12)
+    at D:\DDS\dds-express\node_modules\sequelize\lib\sequelize.js:311:28
+    at async SQLiteQueryInterface.insert (D:\DDS\dds-express\node_modules\sequelize\lib\dialects\abstract\query-interface.js:308:21)
+    at async model.save (D:\DDS\dds-express\node_modules\sequelize\lib\model.js:2432:35)
+    at async Function.create (D:\DDS\dds-express\node_modules\sequelize\lib\model.js:1344:12)
+    at async D:\DDS\dds-express\routes\articulos.js:86:16
+
+14/10/2022, 12:29:52
+Error
+    at Database.<anonymous> (D:\DDS\dds-express\node_modules\sequelize\lib\dialects\sqlite\query.js:179:27)
+    at D:\DDS\dds-express\node_modules\sequelize\lib\dialects\sqlite\query.js:177:50
+    at new Promise (<anonymous>)
+    at Query.run (D:\DDS\dds-express\node_modules\sequelize\lib\dialects\sqlite\query.js:177:12)
+    at D:\DDS\dds-express\node_modules\sequelize\lib\sequelize.js:311:28
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async SQLiteQueryInterface.insert (D:\DDS\dds-express\node_modules\sequelize\lib\dialects\abstract\query-interface.js:308:21)
+    at async model.save (D:\DDS\dds-express\node_modules\sequelize\lib\model.js:2432:35)
+    at async Function.create (D:\DDS\dds-express\node_modules\sequelize\lib\model.js:1344:12)
+    at async D:\DDS\dds-express\routes\articulos.js:86:16
+

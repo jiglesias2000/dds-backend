@@ -1,36 +1,12 @@
-// acceder a la base usando aa-sqlite
-const db = require("aa-sqlite");
+create table if not exists 
+articulosfamilias( IdArticuloFamilia INTEGER PRIMARY KEY AUTOINCREMENT, Nombre text NOT NULL UNIQUE);
 
-async function CrearBaseSiNoExiste() {
-  // abrir base, si no existe el archivo/base lo crea
-  await db.open("./.data/pymes.db");
+DELETE FROM articulosfamilias;
 
-  let existe = false;
-  let res = null;
+insert or IGNORE into articulosfamilias values	(1,'Accesorioss'),(2,'Audio'),(3,'Celulares'),(4,'Cuidado Personal'),(5,'Dvd'),(6,'Fotografia'),(7,'Frio-Calor'),(8,'Gps'),(9,'Informatica'),(10,'Led - Lcd');
 
-  res = await db.get(
-    "SELECT count(*) as contar FROM sqlite_schema WHERE type = 'table' and name= 'articulosfamilias'",
-    []
-  );
-  if (res.contar > 0) existe = true;
-  if (!existe) {
-    await db.run(
-      "CREATE table articulosfamilias( IdArticuloFamilia INTEGER PRIMARY KEY AUTOINCREMENT, Nombre text NOT NULL UNIQUE);"
-    );
-    console.log("tabla articulosfamilias creada!");
-    await db.run(
-      "insert into articulosfamilias values	(1,'Accesorioss'),(2,'Audio'),(3,'Celulares'),(4,'Cuidado Personal'),(5,'Dvd'),(6,'Fotografia'),(7,'Frio-Calor'),(8,'Gps'),(9,'Informatica'),(10,'Led - Lcd');"
-    );
-  }
-
-  existe = false;
-  sql =
-    "SELECT count(*) as contar FROM sqlite_schema WHERE type = 'table' and name= 'articulos'";
-  res = await db.get(sql, []);
-  if (res.contar > 0) existe = true;
-  if (!existe) {
-    await db.run(
-      `CREATE table articulos( 
+create table if not exists 
+     articulos( 
               IdArticulo INTEGER PRIMARY KEY AUTOINCREMENT
             , Nombre TEXT NOT NULL UNIQUE
             , Precio REAL NOT NULL
@@ -40,12 +16,9 @@ async function CrearBaseSiNoExiste() {
             , FechaAlta text NOT NULL
             , Activo boolean NOT NULL,
             FOREIGN KEY (IdArticuloFamilia) REFERENCES articulosfamilias (IdArticuloFamilia)
-            );`
-    );
-    console.log("tabla articulos creada!");
-
-    await db.run(
-      `insert into articulos values
+     );
+DELETE FROM articulos;
+insert or ignore into articulos values
           (143,'Aire acondicionado lg 3000 fc h126tnw0',7499,'0779808338858',7,441,'2017-01-09T00:00:00',1),
           (144,'Aire acondicionado lg 4500 fc h1865nw0',10399,'0779808338859',7,971,'2016-12-23T00:00:00',1),
           (145,'Aire acondicionado lg 5500 fc h2465nw0',12699,'0779808338860',7,648,'2017-01-15T00:00:00',1),
@@ -70,14 +43,3 @@ async function CrearBaseSiNoExiste() {
           (158,'Calefactor sin salida 4000 kcal volcan',1159,'0779703781219',7,598,'2016-12-23T00:00:00',1),
           (159,'Calefactor sin salida orbis 4200 kcal',1469,'0779703781123',7,504,'2017-01-11T00:00:00',0),
           (170,'Caloventor 2000 w axel ax-ca100',249,'0779811896139',7,780,'2017-01-10T00:00:00',1);
-          `
-    );
-  }
-
-  // cerrar la base
-  db.close();
-}
-
-CrearBaseSiNoExiste();
-
-module.exports =  CrearBaseSiNoExiste;

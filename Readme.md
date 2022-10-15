@@ -13,6 +13,7 @@
   |entry point| index.js|
   |etc| etc|
 
+    * ??? Podriamos usar la sintaxis de import en lugar de require, agregando en el package.json: "type":"module".
 
   * instalamos la libreria express: 
     * comando: npm i express
@@ -46,6 +47,14 @@ app.listen(port, () => {
     * comando: git add 
     * comando: git commit -m "etapa 1 completa"
 
+  * para mejorar la experiencia de desarrollo, haremos uso de nodemon
+    * instalamos nodemon, comando: npm i nodemon -D
+    * agregamos a package.json en "scripts" el siguiente script
+       "dev": "nodemon index.js"
+    * finalmente para ejecutar el proyecto de aqui en adelante usaremos:
+       * comando: npm run dev
+    
+     
 ---
 ---
 ## Etapa2
