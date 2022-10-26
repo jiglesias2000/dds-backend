@@ -75,4 +75,24 @@ router.get("/testerrorasincrono3", async function (req, res, next) {
   // await Promise.reject(new Error("probando desencadenr un error asincrono 3, Server No crash!"));
 });
 
+
+router.get("/testeventloop", async function (req, res, next) {
+  let peticion = req.query.peticion ?? 1;
+  console.log('Inicio ' , peticion);
+  setTimeout(() => {
+    console.log('Timeout ' ,  peticion);
+  }, 500);
+
+  // testar con 
+  //  for (let i = 0; i < 10; i++) {
+  //    setTimeout(() => {
+  //      fetch()}, i*10);
+  //        fetch('http://localhost:3000/testeventloop?peticion=' + i)
+  //       .then(response => response.json())  // convertir a json
+  //       .then(json => console.log(json)), 500   
+  //   }
+
+  res.json("peticion " + peticion + " ejecutada");
+});
+
 module.exports = router;

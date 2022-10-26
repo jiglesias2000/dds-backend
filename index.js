@@ -16,6 +16,13 @@ const app = express();
 const cors = require("cors");
 app.use(cors());
 
+var allowCrossDomain = function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  //res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+}
+
 app.use(express.text()); // entiende texto
 app.use(express.urlencoded({ extended: false })); // for parsing application/x-www-form-urlencoded
 app.use(express.json()); // para poder leer json en el body

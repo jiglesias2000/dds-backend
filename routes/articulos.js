@@ -8,17 +8,18 @@ router.get("/api/articulos", async function (req, res, next) {
   // #swagger.tags = ['Articulos']
   // #swagger.summary = 'obtiene todos los Articulos'
   // consulta de articulos con filtros y paginacion
-  if (req.body.Nombre || req.body.Activo || req.body.NumeroPagina) {
+
+  if (req.query.Pagina) {
     let where = {};
-    if (req.body.Nombre != undefined) {
+    if (req.query.Nombre != undefined && req.query.Nombre !== "") {
       where.Nombre = {
-        [Op.like]: "%" + req.body.Nombre + "%",
+        [Op.like]: "%" + req.query.Nombre + "%",
       };
     }
-    if (req.body.Activo != undefined) {
-      where.Activo = req.body.Activo; // 1 o 0
+    if (req.query.Activo != undefined && req.query.Activo !== "") {
+      where.Activo = req.query.Activo; // 1 o 0
     }
-    const NumeroPagina = req.body.NumeroPagina ?? 1;
+    const Pagina = req.query.Pagina ?? 1;
     const TamañoPagina = 10;
     const { count, rows } = await db.articulos.findAndCountAll({
       attributes: [
@@ -31,11 +32,11 @@ router.get("/api/articulos", async function (req, res, next) {
       ],
       order: [["Nombre", "ASC"]],
       where,
-      offset: (NumeroPagina - 1) * TamañoPagina,
+      offset: (Pagina - 1) * TamañoPagina,
       limit: TamañoPagina,
     });
 
-    return res.json({ items: rows, totalRegistros: count });
+    return res.json({ Items: rows, RegistrosTotal: count });
   } else {
     let items = await db.articulos.findAll({
       attributes: [
@@ -58,7 +59,7 @@ router.get("/api/articulos/:id", async function (req, res, next) {
   // #swagger.tags = ['Articulos']
   // #swagger.summary = 'obtiene un Articulo'
   // #swagger.parameters['id'] = { description: 'identificador del Articulo...' }
-  let items = await db.articulos.findAll({
+  let items = await db.articulos.findOne({
     attributes: [
       "IdArticulo",
       "Nombre",
@@ -96,11 +97,11 @@ router.post("/api/articulos/", async (req, res) => {
   } catch (err) {
     if (err instanceof ValidationError) {
       // si son errores de validacion, los devolvemos
-      const messages = err.errors.map(x => x.message); 
+      const messages = err.errors.map((x) => x.message);
       res.status(400).json(messages);
     } else {
       // si son errores desconocidos, los dejamos que los controle el middleware de errores
-      throw err; 
+      throw err;
     }
   }
 });
@@ -132,11 +133,11 @@ router.put("/api/articulos/:id", async (req, res) => {
   } catch (err) {
     if (err instanceof ValidationError) {
       // si son errores de validacion, los devolvemos
-      const messages = err.errors.map(x => x.message); 
+      const messages = err.errors.map((x) => x.message);
       res.status(400).json(messages);
     } else {
       // si son errores desconocidos, los dejamos que los controle el middleware de errores
-      throw err; 
+      throw err;
     }
   }
 });
@@ -146,11 +147,34 @@ router.delete("/api/articulos/:id", async (req, res) => {
   // #swagger.summary = 'elimina un Articulo'
   // #swagger.parameters['id'] = { description: 'identificador del Articulo..' }
 
-  let filasBorradas = await db.articulos.destroy({
-    where: { IdArticulo: req.params.id },
-  });
-  if (filasBorradas == 1) res.sendStatus(200);
-  else res.sendStatus(404);
+  let bajaFisica = false;
+
+  if (bajaFisica) {
+    let filasBorradas = await db.articulos.destroy({
+      where: { IdArticulo: req.params.id },
+    });
+    if (filasBorradas == 1) res.sendStatus(200);
+    else res.sendStatus(404);
+  } else {
+    try {
+      let data = await db.sequelize.query(
+        "UPDATE articulos SET Activo = case when Activo = 1 then 0 else 1 end WHERE IdArticulo = :IdArticulo",
+        {
+          replacements: { IdArticulo: +req.params.id },
+        }
+      );
+      res.sendStatus(200);
+    } catch (err) {
+      if (err instanceof ValidationError) {
+        // si son errores de validacion, los devolvemos
+        const messages = err.errors.map((x) => x.message);
+        res.status(400).json(messages);
+      } else {
+        // si son errores desconocidos, los dejamos que los controle el middleware de errores
+        throw err;
+      }
+    }
+  }
 });
 
 //------------------------------------

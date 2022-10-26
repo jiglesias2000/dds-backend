@@ -13,6 +13,7 @@ const articulosfamilias = sequelize.define(
       autoIncrement: true,
     },
     Nombre: {
+      // todo evitar que string autocomplete con espacios en blanco, deberia ser varchar sin espacios 
       type: DataTypes.STRING(30),
       allowNull: false,
       validate: {
@@ -88,7 +89,7 @@ const articulos = sequelize.define(
       allowNull: false 
     },
     Activo: { 
-      type: DataTypes.INTEGER, 
+      type: DataTypes.BOOLEAN, 
       allowNull: false 
     }
 

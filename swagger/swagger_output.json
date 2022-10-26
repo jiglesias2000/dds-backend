@@ -42,63 +42,12 @@
         ],
         "summary": "obtiene todos los Articulos",
         "description": "",
-        "parameters": [
-          {
-            "name": "Nombre",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "Activo",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "NumeroPagina",
-            "in": "query",
-            "type": "string"
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
           }
         }
-      }
-    },
-    "/api/jwt/articulos": {
-      "get": {
-        "tags": [
-          "Articulos"
-        ],
-        "summary": "obtiene todos los Articulos, con seguridad JWT (usuario:admin, clave:123)",
-        "description": "",
-        "parameters": [
-          {
-            "name": "authorization",
-            "in": "header",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth1": []
-          }
-        ]
       }
     },
     "/api/articulos/{id}": {
@@ -149,6 +98,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       },
@@ -170,6 +122,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
           }
         }
       }
@@ -194,8 +149,43 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
+      }
+    },
+    "/api/jwt/articulos": {
+      "get": {
+        "tags": [
+          "Articulos"
+        ],
+        "summary": "obtiene todos los Articulos, con seguridad JWT, solo para rol: admin (usuario:admin, clave:123)",
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth1": []
+          }
+        ]
       }
     },
     "/api/articulosfamilias": {
@@ -482,6 +472,21 @@
         }
       }
     },
+    "/_isalive": {
+      "get": {
+        "tags": [
+          "Test Error"
+        ],
+        "summary": "Verifica que la aplicacion esta ejecutando correctamente!",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/testerrorsincrono": {
       "get": {
         "tags": [
@@ -512,7 +517,11 @@
         "summary": "Desencadena un error asincrono con promesas then/catch: NO controlado",
         "description": "",
         "parameters": [],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/testerrorasincrono3": {
