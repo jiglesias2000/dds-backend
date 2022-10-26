@@ -17,7 +17,9 @@ router.get("/api/articulos", async function (req, res, next) {
       };
     }
     if (req.query.Activo != undefined && req.query.Activo !== "") {
-      where.Activo = req.query.Activo; // 1 o 0
+      // true o false en el modelo, en base de datos es 1 o 0
+      // convierto el string a booleano
+      where.Activo = (req.query.Activo === 'true'); 
     }
     const Pagina = req.query.Pagina ?? 1;
     const TamañoPagina = 10;
@@ -97,8 +99,9 @@ router.post("/api/articulos/", async (req, res) => {
   } catch (err) {
     if (err instanceof ValidationError) {
       // si son errores de validacion, los devolvemos
-      const messages = err.errors.map((x) => x.message);
-      res.status(400).json(messages);
+      let messages = '';
+      err.errors.forEach((x) => messages += (x.path ?? 'campo') + ": " + x.message + '\n');
+      res.status(400).json({message : messages});
     } else {
       // si son errores desconocidos, los dejamos que los controle el middleware de errores
       throw err;
@@ -133,8 +136,9 @@ router.put("/api/articulos/:id", async (req, res) => {
   } catch (err) {
     if (err instanceof ValidationError) {
       // si son errores de validacion, los devolvemos
-      const messages = err.errors.map((x) => x.message);
-      res.status(400).json(messages);
+      let messages = '';
+      err.errors.forEach((x) => messages += x.path + ": " + x.message + '\n');
+      res.status(400).json({message : messages});
     } else {
       // si son errores desconocidos, los dejamos que los controle el middleware de errores
       throw err;

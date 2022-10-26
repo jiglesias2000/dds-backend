@@ -77,23 +77,16 @@ router.post("/api/articulosfamilias/", async function (req, res, next) {
       Nombre: req.body.Nombre,
     });
     res.status(204).json(data);  // devolvemos el registro agregado!
-  } catch (err) {
-    const messages = {};
+  }  catch (err) {
     if (err instanceof ValidationError) {
-      err.errors.forEach((error) => {
-        let message;
-        switch (error.validatorKey) {
-          case "not_unique":
-            message = (error.value ?? 'el valor de este campo') + " ya existe en la base";
-            error.path = error.path.replace("_UNIQUE", "");
-            break;
-          default:
-            message = error.message;  // msg del modelo o por defecto
-        }
-        messages[error.path] = message;
-      });
-      res.status(400).json(messages);
-    } else throw err; // desencadeno el mismo error inicial
+      // si son errores de validacion, los devolvemos
+      let messages = '';
+      err.errors.forEach((x) => messages += x.path + ": " + x.message + '\n');
+      res.status(400).json({message : messages});
+    } else {
+      // si son errores desconocidos, los dejamos que los controle el middleware de errores
+      throw err;
+    }
   }
 });
 
@@ -115,27 +108,19 @@ router.put("/api/articulosfamilias/:id", async function (req, res, next) {
       );
       res.sendStatus(200);
       //res.json(data);  // devolvemos el registro modificado!
-    } catch (err) {
-      const messages = {};
+    }  catch (err) {
       if (err instanceof ValidationError) {
-        err.errors.forEach((error) => {
-          let message;
-          switch (error.validatorKey) {
-            case "not_unique":
-              message = (error.value ?? 'el valor de este campo') + " ya existe en la tabla";
-              error.path = error.path.replace("_UNIQUE", "");
-              break;
-            default:
-              message = error.message;  // msg del modelo o por defecto
-          }
-          messages[error.path] = message;
-        });
-        res.status(400).json(messages);
-      } else throw err; // desencadeno el mismo error inicial
+        // si son errores de validacion, los devolvemos
+        let messages = '';
+        err.errors.forEach((x) => messages += x.path + ": " + x.message + '\n');
+        res.status(400).json({message : messages});
+      } else {
+        // si son errores desconocidos, los dejamos que los controle el middleware de errores
+        throw err;
+      }
     }
-
-
-});
+  }
+  );
 
 router.delete("/api/articulosfamilias/:id", async function (req, res, next) {
   // #swagger.tags = ['ArticulosFamilias']
