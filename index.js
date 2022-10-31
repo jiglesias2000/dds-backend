@@ -4,6 +4,16 @@ const path = require("path");
 
 // leer archivo de configuracion
 require("dotenv").config();
+console.log("WEBSITE_SITE_NAME", process.env.WEBSITE_SITE_NAME);
+
+// configurar si corre en azure
+if (process.env.WEBSITE_SITE_NAME) { 
+  // ejecutando en azure, usamos un carpeta de escritura/lectura persistente 
+  //process.env.base = "/archivos/pymes.db";
+  process.env.base = process.env.base_azure;
+  process.env.logErrores = process.env.logErrores_azure;
+}
+
 console.log("base", process.env.base);
 console.log("NODE_ENV", process.env.NODE_ENV);
 
@@ -14,7 +24,9 @@ const app = express();
 
 // configurar servidor
 const cors = require("cors");
-app.use(cors());
+app.use(cors({
+  origin: '*'
+}));
 
 var allowCrossDomain = function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');

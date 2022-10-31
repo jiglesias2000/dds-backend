@@ -114,7 +114,7 @@
           <button type="button" onclick="login()" class="btn btn-info">Login</button> &nbsp;
           <button type="button" onclick="logout()" class="btn btn-warning">Logout</button>
           <br />
-          <p id="mensaje"></p>
+          <p id="message"></p>
   
           <hr />
           <button type="button" class="btn btn-primary" onclick="solicitarDatos()">
@@ -140,7 +140,7 @@
             }),
           });
           const data = await req.json();
-          document.getElementById("mensaje").innerText = data.mensaje;
+          document.getElementById("message").innerText = data.message;
           if (data.accessToken) {
             sessionStorage.setItem("accessToken", data.accessToken);
           } 
@@ -161,7 +161,7 @@
             }),
           });
           const data = await req.json();
-          document.getElementById("mensaje").innerText = data.mensaje;
+          document.getElementById("message").innerText = data.message;
           sessionStorage.removeItem("refreshToken");
           sessionStorage.removeItem("accessToken");
         }

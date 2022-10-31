@@ -135,7 +135,7 @@ router.get('/api/articulosfamiliasmock/:id', async function (req, res) {
     (x) => x.IdArticuloFamilia == req.params.id
   );
   if (articuloFamilia) res.json(articuloFamilia);
-  else res.status(404).json({ mensaje: 'articulofamilia no encontrado' });
+  else res.status(404).json({ message: 'articulofamilia no encontrado' });
 });
 ```
   * Observe:
@@ -184,9 +184,9 @@ router.put('/api/articulosfamiliasmock/:id', (req, res) => {
   if (articuloFamilia) {
     const { Nombre } = req.body;
     articuloFamilia.Nombre = Nombre;
-    res.json({ mensaje: 'articulofamilia actualizado' });
+    res.json({ message: 'articulofamilia actualizado' });
   } else {
-    res.status(404).json({ mensaje: 'articulofamilia no encontrado' })
+    res.status(404).json({ message: 'articulofamilia no encontrado' })
   }
 });
 ```
@@ -208,9 +208,9 @@ router.delete('/api/articulosfamiliasmock/:id', (req, res) => {
     arr_ArticulosFamiliasMock = arr_ArticulosFamiliasMock.filter(
       (x) => x.IdArticuloFamilia != req.params.id
     );
-    res.json({ mensaje: 'articulofamilia eliminado' });
+    res.json({ message: 'articulofamilia eliminado' });
   } else {
-    res.status(404).json({ mensaje: 'articulofamilia no encontrado' })
+    res.status(404).json({ message: 'articulofamilia no encontrado' })
   }
 });
 ```

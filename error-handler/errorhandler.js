@@ -9,14 +9,18 @@ const errorHandler = async function (err, req, res, next) {
 
   dato = new Date().toLocaleString() + "\n" + err.stack + "\n" + "\n";
   // fs usa ruta siempre desde root 
-  await fs.writeFile("./log.txt", dato, { flag: "a" });
+  let archivo = process.env.logErrores  // './logerrores.txt'
+  await fs.writeFile(archivo, dato, { flag: "a" });
   //const logFile = fs.readFile("log.txt",'utf-8');
 
-  //enviamos al usuario un mensaje apropiado, sin dar detalles del error
+  
+  
   res
     .status(500)
     .json( {
-      mensaje: "Actualmente tenemos inconvenientes con procesar su solicitud, intente nuevamente mas tarde!"
+      //enviamos al usuario un mensaje apropiado, sin dar detalles del error
+      // pero por ahora lo mostramos para aprender!
+      message: "Actualmente tenemos inconvenientes en el servidor, por favor intente más tarde \n" + err.message
     }
     );
     }

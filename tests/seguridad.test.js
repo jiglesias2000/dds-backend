@@ -22,7 +22,7 @@ describe("POST /api/login admin", function () {
       .send({ usuario: "admin", clave: "erronea" });
 
     expect(res.statusCode).toEqual(200);
-    expect(res.body.mensaje).toEqual("usuario or clave incorrecto");
+    expect(res.body.message).toEqual("usuario or clave incorrecto");
   });
 
   it("Devolveria el token para usuario admin", async function () {
@@ -38,17 +38,17 @@ describe("GET /api/jwt/articulos", () => {
   it("Devolveria error, porque falta token de autorizacion", async function () {
     const res = await request(app).get("/api/jwt/articulos");
     expect(res.statusCode).toEqual(401);
-    expect(res.body.mensaje).toEqual("Acceso denegado");
+    expect(res.body.message).toEqual("Acceso denegado");
   });
 
   it("Devolveria error, porque el token no es valido", async function () {
     const res = await request(app).get("/api/jwt/articulos")
     .set("Authorization", 'Bearer invalido');
-    expect(res.statusCode).toEqual(400);
-    expect(res.body.mensaje).toEqual("token no es valido");
+    expect(res.statusCode).toEqual(403);
+    expect(res.body.message).toEqual("token no es valido");
   });
 
-  it("Devolveria todos los artciulos, solo autorizado para administradores", async function () {
+  it("Devolveria todos los articulos, solo autorizado para administradores", async function () {
     const res1 = await request(app)
     .post("/api/login")
     .set("Content-type", "application/json")
@@ -67,11 +67,11 @@ describe("GET /api/jwt/articulos", () => {
           IdArticulo: expect.any(Number),
           Nombre: expect.any(String),
           Precio: expect.any(Number),
-          //CodigoDeBarra: expect.any(String), //falta en el script de sql
-          //IdArticuloFamilia: expect.any(Number), //falta en el script de sql
+          CodigoDeBarra: expect.any(String),
+          IdArticuloFamilia: expect.any(Number),
           Stock: expect.any(Number),
           FechaAlta: expect.any(String),
-          Activo: expect.any(Number), // no hay booleanos en sqlite
+          Activo: expect.any(Boolean),
         }),
       ])
     );
@@ -90,7 +90,7 @@ describe("GET /api/jwt/articulos", () => {
       .set("Authorization", `Bearer ${token}`);
 
     expect(res.statusCode).toEqual(403);
-    expect(res.body.mensaje).toEqual('usuario no autorizado!');
+    expect(res.body.message).toEqual('usuario no autorizado!');
   });
 
 });

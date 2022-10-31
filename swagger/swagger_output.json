@@ -42,7 +42,23 @@
         ],
         "summary": "obtiene todos los Articulos",
         "description": "",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "Pagina",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Nombre",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Activo",
+            "in": "query",
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -122,6 +138,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           },
           "404": {
             "description": "Not Found"
@@ -533,6 +552,23 @@
         "description": "",
         "parameters": [],
         "responses": {}
+      }
+    },
+    "/testeventloop": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "peticion",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/api/jsonexterno": {

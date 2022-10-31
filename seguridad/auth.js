@@ -11,8 +11,8 @@ const authenticateJWT = (req, res, next) => {
 
     jwt.verify(token, accessTokenSecret, (err, user) => {
       if (err) {
-        return res.sendStatus(403);
-        //return res.status(400).json({ mensaje: "token no es valido" });
+        //return res.sendStatus(400);
+        return res.status(403).json({ message: "token no es valido" });
       }
       
       res.locals.user = user;
@@ -20,7 +20,7 @@ const authenticateJWT = (req, res, next) => {
     });
   } else {
     //res.sendStatus(401);
-    res.status(401).json({ mensaje: "Acceso denegado" });
+    res.status(401).json({ message: "Acceso denegado" });
   }
 };
 

@@ -1,6 +1,25 @@
 const request = require("supertest");
 const app = require("../index");
-const articulo = { IdArticulo: 1, Nombre: "Articulo 1", Precio: 10.5 };
+const articuloAlta = {
+  Nombre: "Articulo " + (( ) => (Math.random() + 1).toString(36).substring(2))(),  // Genera un nombre aleatorio
+  Precio: 10.5,
+  CodigoDeBarra: "1234567890123",
+  IdArticuloFamilia: 1,
+  Stock: 11,
+  FechaAlta: new Date().toISOString(),
+  Activo: true,
+};
+const articuloModificacion = {
+  IdArticulo: 1,
+  Nombre: "Articulo " + (( ) => (Math.random() + 1).toString(36).substring(2))(),  // Genera un nombre aleatorio
+  Precio: 10.5,
+  CodigoDeBarra: "1234567890123",
+  IdArticuloFamilia: 1,
+  Stock: 11,
+  FechaAlta: new Date().toISOString(),
+  Activo: true,
+};
+
 
 // test route/articulos GET
 describe("GET /api/articulos", () => {
@@ -13,10 +32,14 @@ describe("GET /api/articulos", () => {
           IdArticulo: expect.any(Number),
           Nombre: expect.any(String),
           Precio: expect.any(Number),
+          CodigoDeBarra: expect.any(String),
+          IdArticuloFamilia: expect.any(Number),
+          Stock: expect.any(Number),
+          FechaAlta: expect.any(String),
+          Activo: expect.any(Boolean),
         }),
       ])
     );
-    
   });
 });
 
@@ -30,6 +53,11 @@ describe("GET /api/articulos/:id", () => {
         IdArticulo: expect.any(Number),
         Nombre: expect.any(String),
         Precio: expect.any(Number),
+        CodigoDeBarra: expect.any(String),
+        IdArticuloFamilia: expect.any(Number),
+        Stock: expect.any(Number),
+        FechaAlta: expect.any(String),
+        Activo: expect.any(Boolean),
       })
     );
   });
@@ -38,13 +66,18 @@ describe("GET /api/articulos/:id", () => {
 // test route/articulos POST
 describe("POST /api/articulos", () => {
   it("Deberia devolver el articulo que acabo de crear", async () => {
-    const res = await request(app).post("/api/articulos").send(articulo);
+    const res = await request(app).post("/api/articulos").send(articuloAlta);
     expect(res.statusCode).toEqual(200);
     expect(res.body).toEqual(
       expect.objectContaining({
         IdArticulo: expect.any(Number),
         Nombre: expect.any(String),
         Precio: expect.any(Number),
+        CodigoDeBarra: expect.any(String),
+        IdArticuloFamilia: expect.any(Number),
+        Stock: expect.any(Number),
+        FechaAlta: expect.any(String),
+        Activo: expect.any(Boolean),
       })
     );
   });
@@ -53,15 +86,8 @@ describe("POST /api/articulos", () => {
 // test route/articulos/:id PUT
 describe("PUT /api/articulos/:id", () => {
   it("Deberia devolver el articulo con el id 1 modificado", async () => {
-    const res = await request(app).put("/api/articulos/1").send(articulo);
+    const res = await request(app).put("/api/articulos/1").send(articuloModificacion);
     expect(res.statusCode).toEqual(200);
-    expect(res.body).toEqual(
-      expect.objectContaining({
-        IdArticulo: expect.any(Number),
-        Nombre: expect.any(String),
-        Precio: expect.any(Number),
-      })
-    );
   });
 });
 
@@ -70,12 +96,15 @@ describe("DELETE /api/articulos/:id", () => {
   it("Deberia devolver el articulo con el id 1 borrado", async () => {
     const res = await request(app).delete("/api/articulos/1");
     expect(res.statusCode).toEqual(200);
-    expect(res.body).toEqual(
-      expect.objectContaining({
-        IdArticulo: expect.any(Number),
-        Nombre: expect.any(String),
-        Precio: expect.any(Number),
-      })
-    );
+    
+    // baja logica, no se borra realmente
+    // expect(res.body).toEqual(
+    //   expect.objectContaining({
+    //     IdArticulo: expect.any(Number),
+    //     Nombre: expect.any(String),
+    //     Precio: expect.any(Number),
+    //   })
+    // );
+
   });
 });

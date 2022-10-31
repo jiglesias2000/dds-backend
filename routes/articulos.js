@@ -132,7 +132,7 @@ router.put("/api/articulos/:id", async (req, res) => {
       },
       { where: { IdArticulo: req.params.id } }
     );
-    res.status(200).json(data.dataValues); // devolvemos el registro modificado!
+    res.sendStatus(200);
   } catch (err) {
     if (err instanceof ValidationError) {
       // si son errores de validacion, los devolvemos
@@ -196,7 +196,7 @@ router.get(
     // #swagger.summary = 'obtiene todos los Articulos, con seguridad JWT, solo para rol: admin (usuario:admin, clave:123)'
     const { rol } = res.locals.user;
     if (rol !== "admin") {
-      return res.status(403).json({ mensaje: "usuario no autorizado!" });
+      return res.status(403).json({ message: "usuario no autorizado!" });
     }
 
     let items = await db.articulos.findAll({

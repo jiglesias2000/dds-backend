@@ -77,10 +77,10 @@ router.post("/api/login", (req, res) => {
     res.json({
       accessToken,
       refreshToken,
-      mensaje: "Bienvenido " + user.usuario + "!",
+      message: "Bienvenido " + user.usuario + "!",
     });
   } else {
-    res.json({ mensaje: "usuario or clave incorrecto" });
+    res.json({ message: "usuario or clave incorrecto" });
   }
 });
 
@@ -89,15 +89,15 @@ router.post("/api/logout", (req, res) => {
   // #swagger.summary = 'Logout: invalida el refresh token (no invalida el token actual!!!)'
 
   // recordar que el token sigue valido hasta que expire, aqui evitamos que pueda renovarse cuando expire!
-  let mensaje = "Logout invalido!";
+  let message = "Logout invalido!";
   const { token } = req.body;
   if (refreshTokens.includes(token)) {
-    mensaje = "Usuario deslogueado correctamente!";
+    message = "Usuario deslogueado correctamente!";
   }
 
   refreshTokens = refreshTokens.filter((t) => t !== token);
 
-  res.json({ mensaje });
+  res.json({ message });
 });
 
 module.exports = router;

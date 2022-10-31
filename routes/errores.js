@@ -7,7 +7,7 @@ router.get("/_isalive", (req, res) => {
   // #swagger.summary = 'Verifica que la aplicacion esta ejecutando correctamente!'
   res
     .status(200)
-    .send("Ejecutandose desde: " + req.app.locals.fechaInicio.toLocaleString());
+    .send("Ejecutandose desde: " + req.app.locals.fechaInicio?.toLocaleString());
 });
 
 // test error sincrono

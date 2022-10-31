@@ -14,10 +14,10 @@ describe("## Varios", () => {
   
 
   describe("#GET _isalive", () => {
-    it("Deberia devolver ok", async () => {
+    it("Deberia devolver ejecutandose desde ...", async () => {
       const res = await request(app).get("/_isalive");
       expect(res.statusCode).toEqual(200);
-      expect(res.text).toEqual("ok");
+      expect(res.text).toContain('Ejecutandose desde:');
     });
   });
 
