@@ -1,4 +1,7 @@
 # Desarrollo de Sotware: Backend
+Objetivo: crear una aplicación backend con una interface WebApiRest,  programada en NodeJs/Javascritp, usando el framework expresss y con acceso a una base de datos (sqlite) mediante un ORM (Sequelize)
+
+* Version final del proyecto: https://dds-express.azurewebsites.net
 
 ## Etapa1
 ## Crear proyecto basico

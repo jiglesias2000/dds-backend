@@ -34,7 +34,7 @@ function generarTabla(datos) {
 // alternativa
 // router.route("/eco1").allOf(["get", "post"], function (req, res) {
 //   //req.method can be used to alter handler behavior.
-//   let table = generarTabla(req.query ?? req.params);
+//   let table = generarTabla(req.body ?? req.params);
 //   res.send(table);
 // });
 
