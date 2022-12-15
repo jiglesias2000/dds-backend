@@ -123,6 +123,7 @@ module.exports = router;
     * el controlador GET de la ruta "/api/articulosfamilasmock" que devolvera serializado como json el array de datos.
     * la funcion se define como asincrona "async", que aunque no tenga sentido actualmente, la usamos previendo cuando obtengamos datos desde la base de datos donde sera necesaria.
 
+
 * Una vez defindo el controlador de nuestro recurso debemos vincularlo a nuestra aplicacion express, cargando el modulo de ruta en el archivo index.js antes de levantar el servidor
 ```javascript
 const articulosfamiliasmockRouter = require("./routes/articulosfamiliasmock");
@@ -608,12 +609,18 @@ module.exports = router;
 ## Etapa 5
 
 * seguridad
-  * Autenticacion: login
-  * logout
-  * refresh tocken
+  * Autenticacion: 
+    * login
+    * logout
+    * refresh token
   * Autorizacion: ruta segura segun rol
 ---
 ## Etapa 6
 
 * test unitarios
+  * test varios simples
+  * test get articulofamilias
+  * test crud articulos
+  * test seguridad JWT
+
 
