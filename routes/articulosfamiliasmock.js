@@ -71,8 +71,8 @@ router.post('/api/articulosfamiliasmock/', (req, res) => {
     } */
   const { Nombre } = req.body;
   let articuloFamilia = {
-    Nombre,
-    IdArticuloFamilia: arr_ArticulosFamiliasMock.length,
+    IdArticuloFamilia: arr_ArticulosFamiliasMock.length+1,
+    Nombre
   };
 
   // aqui agregar a la coleccion
