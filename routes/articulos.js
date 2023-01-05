@@ -155,12 +155,14 @@ router.delete("/api/articulos/:id", async (req, res) => {
   let bajaFisica = false;
 
   if (bajaFisica) {
+    // baja fisica
     let filasBorradas = await db.articulos.destroy({
       where: { IdArticulo: req.params.id },
     });
     if (filasBorradas == 1) res.sendStatus(200);
     else res.sendStatus(404);
   } else {
+    // baja logica
     try {
       let data = await db.sequelize.query(
         "UPDATE articulos SET Activo = case when Activo = 1 then 0 else 1 end WHERE IdArticulo = :IdArticulo",

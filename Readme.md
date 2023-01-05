@@ -7,9 +7,9 @@ Objetivo: crear una aplicación backend con una interface WebApiRest,  programad
 ## Crear proyecto basico
 * creamos la carpeta del proyecto: dds-express
 * Ubicado en la carpeta, inicializamos el proyecto node, con el comando:
-  ```
+  ````
   npm init
-  ```
+  ````
 
   |parametro | valor |
   |--- |--|
@@ -21,13 +21,13 @@ Objetivo: crear una aplicación backend con una interface WebApiRest,  programad
   * Nota: Podriamos usar la sintaxis de import en lugar de require, agregando en el package.json: "type":"module".
 
   * instalamos la libreria express, con el comando:
-    ```
+    ````
     npm i express
-    ```
+    ````
   * creamos el archivo inicial de la aplicacion: index.js
     * codificamos la aplicacion web basica:
 
-```javascript
+````javascript
 const express = require("express");
 
 // crear servidor
@@ -43,38 +43,38 @@ const port = 3000;
 app.listen(port, () => {
     console.log(`sitio escuchando en el puerto ${port}`);
 });
-```
+````
   * Ejecutamos el proyecto:
-    ```
+    ````
     node index.js
-    ```
+    ````
   * Testeamos la aplicacion desde el explorador, url: localhost:3000
   * Inicializamos repositorio y hacemos el primer commit.
-    ```
+    ````
     git init
-    ```
+    ````
     * agregamos el archivo .gitignore
       * contenido: node_modules/
     * ejecutamos: 
-    ```
+    ````
     git add 
-    ```
+    ````
     * y luego hacemos commit
-    ```
+    ````
     git commit -m "etapa 1 completa"
-    ```
+    ````
 
   * para mejorar la experiencia de desarrollo, haremos uso de nodemon
     * instalamos nodemon, comando: 
-      ```
+      ````
       npm i nodemon -D
-      ```
+      ````
     * agregamos a package.json en "scripts" el siguiente script
        "dev": "nodemon index.js"
     * finalmente para ejecutar el proyecto de aqui en adelante usaremos:
-      ```
+      ````
       npm run dev
-      ```
+      ````
     
      
 
@@ -84,7 +84,7 @@ app.listen(port, () => {
 Esta api no accede a base de datos sino que simulando dicho acceso trabaja con un array de datos harcodeados.
 * Agregamos al proyecto la carpeta "routes" en donde pondremos los controladores de las diferentes rutas de los recursos de la webapi
 * en la carpeta routes creamos el archivo "articulosfamiliasmock.js que gestionara el recurso articulosfamiliasmock, con el siguiente codigo:
-```javascript
+````javascript
 const express = require('express');
 const router = express.Router();
 
@@ -135,24 +135,24 @@ router.get('/api/articulosfamiliasmock', async function (req, res) {
   res.json(arr_ArticulosFamiliasMock);
 });
 module.exports = router;
-```
-  * observe:
-    *  la clase express.Router para crear controladores de rutas montables y modulares.
+````
+  **Observe:**
+    * la clase express.Router para crear controladores de rutas montables y modulares.
     * la definicion mockeada del array de datos de articulosfamilias.
     * el controlador GET de la ruta "/api/articulosfamilasmock" que devolvera serializado como json el array de datos.
     * la funcion se define como asincrona "async", que aunque no tenga sentido actualmente, la usamos previendo cuando obtengamos datos desde la base de datos donde sera necesaria.
 
 
 * Una vez defindo el controlador de nuestro recurso debemos vincularlo a nuestra aplicacion express, cargando el modulo de ruta en el archivo index.js antes de levantar el servidor
-```javascript
+````javascript
 const articulosfamiliasmockRouter = require("./routes/articulosfamiliasmock");
 app.use(articulosfamiliasmockRouter);
- ```
+ ````
 * Para testear nuestro recurso, iniciemos nuestra aplicacion y consultemos desde el explorador la siguiente url: http://localhost:3000/api/articulosfamiliasmock
 
 ---
 * Agregaremos ahora el metodo GET que permite obtener un recurso segun su id, al archivo articulosfamiliasmock.js le agregamos este codigo, antes del export
-```javascript
+````javascript
 router.get('/api/articulosfamiliasmock/:id', async function (req, res) {
   let articuloFamilia = arr_ArticulosFamiliasMock.find(
     (x) => x.IdArticuloFamilia == req.params.id
@@ -160,8 +160,8 @@ router.get('/api/articulosfamiliasmock/:id', async function (req, res) {
   if (articuloFamilia) res.json(articuloFamilia);
   else res.status(404).json({ message: 'articulofamilia no encontrado' });
 });
-```
-  * Observe:
+````
+  **Observe:**
     * como se recupera el id del segmento de la url, mediante la coleccion params
     * como se busca en el array el dato solicitado
       * si se encuentra se devuelve el mismo en formato de json 
@@ -171,7 +171,7 @@ router.get('/api/articulosfamiliasmock/:id', async function (req, res) {
   * testemos cambiando el numero final de la url que indica el id del recurso a buscar.
 ---
 * Agregamos ahora el metodo post, que permite a agregar un recurso, usaremos el siguiente codigo:
-```javascript
+````javascript
 router.post('/api/articulosfamiliasmock/', (req, res) => {
   const { Nombre } = req.body;
   let articuloFamilia = {
@@ -184,21 +184,21 @@ router.post('/api/articulosfamiliasmock/', (req, res) => {
 
   res.status(204).json(articuloFamilia);
 });
-```
-  * Observe:
+````
+  **Observe:**
     * como se recupera el dato del Nombre desde el objeto "body" del request
     * el campo IdArticuloFamilia, en base de datos seria un autonumerico, aqui usamos un solucion no muy fiable pero sencilla, solo valida para una demostracion
     * devolvemos el codigo de status 204 y el objeto recien creado; tal ves quien consuma esta api buscara alli, entre otros valores, el IdArticuloFamilia recien generado.
 
 * para que este metodo funcione, express necesita un midleware que le permita interpretar el json que recibe en el body, para lo cual agregamos en el index.js, luego de crear la constante app, el codigo siguiente:
-```javascript
+````javascript
 app.use(express.json()); // para poder leer json en el body
-```
+````
 * Testeamos este metodo, con la ayuda de la  aplicacion Postman que nos facilitara invocar la url con el verbo Post y los parametros necesarios. (importar archivo postman_articulos_familias.json)
 ---
 * Agregamos ahora el metodo PUT, que permite a modificar un recurso, usaremos el siguiente codigo:
 
-```javascript
+````javascript
 router.put('/api/articulosfamiliasmock/:id', (req, res) => {
   let articuloFamilia = arr_ArticulosFamiliasMock.find(
     (x) => x.IdArticuloFamilia == req.params.id
@@ -212,8 +212,8 @@ router.put('/api/articulosfamiliasmock/:id', (req, res) => {
     res.status(404).json({ message: 'articulofamilia no encontrado' })
   }
 });
-```
-  * Observe:
+````
+  **Observe:**
     * 1
     * 2
     * 3
@@ -221,7 +221,7 @@ router.put('/api/articulosfamiliasmock/:id', (req, res) => {
 ---
 * Finalmente agregamos el metodo DELETE, que permite a eliminar un recurso, usaremos el siguiente codigo:
 
-```javascript
+````javascript
 router.delete('/api/articulosfamiliasmock/:id', (req, res) => {
   let articuloFamilia = arr_ArticulosFamiliasMock.find(
     (x) => x.IdArticuloFamilia == req.params.id
@@ -236,8 +236,8 @@ router.delete('/api/articulosfamiliasmock/:id', (req, res) => {
     res.status(404).json({ message: 'articulofamilia no encontrado' })
   }
 });
-```
-  * Observe:
+````
+  **Observe:**
     * 1
     * 2
     * 3
@@ -257,12 +257,12 @@ Esta api accedera a la base de datos sqlite: Pymes.db, mediante el orm Sequelize
 * Agregamos al proyecto la carpeta ".data" en donde se alojara el archivo de base de datos de sqlite: "pymes.db", el mismo sera creado mediante codigo.
 * Agregamos al proyecto la carpeta "base-orm" en donde pondremos el codigo relacionado a la base de datos
   * Inicialmente instalaremos los paquetes necesarios para acceder a la base de datos "sqlite3", una libreria para simplificar el acceso asicrono "aa-sqlite" y el ORM elegido "sequelize".
-    ```
+    ````
     npm i sqlite3 aa-sqlite sequelize
-    ```
+    ````
   * Agregamos el archivo "sqlite-init.js" que contiene el codigo con la ejecucion del script para crear la base de datos:
 
-```javascript
+````javascript
 // acceder a la base usando aa-sqlite
 const db = require("aa-sqlite");
 
@@ -345,20 +345,21 @@ async function CrearBaseSiNoExiste() {
 
 CrearBaseSiNoExiste();
 export default CrearBaseSiNoExiste;
-´´´
+````
 
-    * Observe:
-      1 inicialmente se crea el archivo/base: pymes.db
-      2 se verifica consultado el esquema de sqlite si existe la tabla articulosfamilias y si corresponde, se la crea.
-      3 si se creo la tabla, se insertan un conjunto de registros
-      4 se verifica consultando el equema de sqlite si existe la tabla articulos y si corresponde, se la crea.
-      5 si se creo la tabla articulos, se insertan un conjunto de registros.
+**Observe:**
+  1 inicialmente se crea el archivo/base: pymes.db
+  2 se verifica consultado el esquema de sqlite si existe la tabla articulosfamilias y si corresponde, se la crea.
+  3 si se creo la tabla, se insertan un conjunto de registros
+  4 se verifica consultando el equema de sqlite si existe la tabla articulos y si corresponde, se la crea.
+  5 si se creo la tabla articulos, se insertan un conjunto de registros.
     
-    * Ahora ejecutaremos unicamente el codigo recien creado, para testear su correcto funcionamiento, verificando si efectivamente crea la base de datos:
-      * comando: node base-orm/sqlite-init
-      * verificamos en el carpeta data, buscando el archivo pymes.db el que podemos abrir con alguna aplicacion/extension adecuada para ver su contenido.
+  * Ahora ejecutaremos unicamente el codigo recien creado, para testear su correcto funcionamiento, verificando si efectivamente crea la base de datos:
+    * comando: node base-orm/sqlite-init
+    * verificamos en el carpeta data, buscando el archivo pymes.db el que podemos abrir con alguna aplicacion/extension adecuada para ver su contenido.
   * Agregamos el archivo "sequelize-init.js" que contiene la definicion del  modelo de datos del ORM sequelize:
-  ```javascript
+
+````javascript
 // configurar ORM sequelize
 const { Sequelize, DataTypes } = require("sequelize");
 const sequelize = new Sequelize("sqlite:" + process.env.base );
@@ -512,8 +513,8 @@ module.exports = {
   articulosfamilias,
   articulos,
 };
-
 ````
+
 **Observe:**
   1 la definicion del modelo de articulosfamilias
   2 la definicion del modelo de articulos
@@ -521,12 +522,12 @@ module.exports = {
   4 los hooks para pasar a mayusculas los datos antes de validarlos
 
 * para poder interpretar los datos de las peticiones que vienen en formato json, necesitamos agregar la funcionalidad para que express interprete los datos enviados en el body de la peticion para lo cual agregamos el siguiente codigo en el index.js justo despues de crear el objeto "app"
-```javascript
+````javascript
 app.use(express.json()); // para poder leer json en el body
-```
+````
 
 * en la carpeta routes creamos el archivo "articulosfamilias.js" que gestionara el recurso articulosfamilias con los datos provenientes de la base de datos a traves del ORM; con el siguiente codigo:
-```javascript
+````javascript
 const express = require("express");
 const router = express.Router();
 
@@ -540,8 +541,8 @@ router.get("/api/articulosfamilias", async function (req, res, next) {
 });
 
 module.exports = router;
-```
-  * observe:
+````
+  **Observe:**
     * el acceso al ORM mediante el modulo: sequelize-init
     * el controlador GET de la ruta "/api/articulosfamilas" que devolvera serializado como json el array de datos, obtenido desde la base
 
@@ -549,7 +550,7 @@ module.exports = router;
 ```javascript
 const articulosfamiliasRouter = require("./routes/articulosfamilias");
 app.use(articulosfamiliasRouter);
- ```
+ ````
 * Para testear nuestro recurso, iniciemos nuestra aplicacion y consultemos desde el explorador la siguiente url: http://localhost:3000/api/articulosfamilias
 
 ---
@@ -561,14 +562,32 @@ app.use(articulosfamiliasRouter);
 ## webapi Articulos
 Ahora implentaremos la webapi articulos, que contendra toda la funcionalidad para la gestion del recurso articulos (CRUD = ABM)
 * En la carpeta routes creamos el archivo "articulos.js", con el siguiente codigo:
-```javascript
+````javascript
 const express = require("express");
 const router = express.Router();
 const db = require("../base-orm/sequelize-init");
 const { Op, ValidationError } = require("sequelize");
 
 router.get("/api/articulos", async function (req, res, next) {
-    let items = await db.articulos.findAll({
+  // #swagger.tags = ['Articulos']
+  // #swagger.summary = 'obtiene todos los Articulos'
+  // consulta de articulos con filtros y paginacion
+
+  if (req.query.Pagina) {
+    let where = {};
+    if (req.query.Nombre != undefined && req.query.Nombre !== "") {
+      where.Nombre = {
+        [Op.like]: "%" + req.query.Nombre + "%",
+      };
+    }
+    if (req.query.Activo != undefined && req.query.Activo !== "") {
+      // true o false en el modelo, en base de datos es 1 o 0
+      // convierto el string a booleano
+      where.Activo = (req.query.Activo === 'true'); 
+    }
+    const Pagina = req.query.Pagina ?? 1;
+    const TamañoPagina = 10;
+    const { count, rows } = await db.articulos.findAndCountAll({
       attributes: [
         "IdArticulo",
         "Nombre",
@@ -578,12 +597,36 @@ router.get("/api/articulos", async function (req, res, next) {
         "Activo",
       ],
       order: [["Nombre", "ASC"]],
+      where,
+      offset: (Pagina - 1) * TamañoPagina,
+      limit: TamañoPagina,
+    });
+
+    return res.json({ Items: rows, RegistrosTotal: count });
+    
+  } else {
+    let items = await db.articulos.findAll({
+      attributes: [
+        "IdArticulo",
+        "Nombre",
+        "Precio",
+        "CodigoDeBarra",
+        "IdArticuloFamilia",
+        "Stock",
+        "FechaAlta",
+        "Activo",
+      ],
+      order: [["Nombre", "ASC"]],
     });
     res.json(items);
+  }
 });
 
 router.get("/api/articulos/:id", async function (req, res, next) {
-  let items = await db.articulos.findAll({
+  // #swagger.tags = ['Articulos']
+  // #swagger.summary = 'obtiene un Articulo'
+  // #swagger.parameters['id'] = { description: 'identificador del Articulo...' }
+  let items = await db.articulos.findOne({
     attributes: [
       "IdArticulo",
       "Nombre",
@@ -600,6 +643,13 @@ router.get("/api/articulos/:id", async function (req, res, next) {
 });
 
 router.post("/api/articulos/", async (req, res) => {
+  // #swagger.tags = ['Articulos']
+  // #swagger.summary = 'agrega un Articulos'
+  /*    #swagger.parameters['item'] = {
+                in: 'body',
+                description: 'nuevo Articulo',
+                schema: { $ref: '#/definitions/Articulos' }
+    } */
   try {
     let data = await db.articulos.create({
       Nombre: req.body.Nombre,
@@ -612,30 +662,30 @@ router.post("/api/articulos/", async (req, res) => {
     });
     res.status(200).json(data.dataValues); // devolvemos el registro agregado!
   } catch (err) {
-    const messages = {};
     if (err instanceof ValidationError) {
-      err.errors.forEach((error) => {
-        let message;
-        switch (error.validatorKey) {
-          case "not_unique":
-            message = (error.value ?? 'el valor de este campo') + " ya existe en la tabla";
-            error.path = error.path.replace("_UNIQUE", "");
-            break;
-          default:
-            message = error.message;  // msg del modelo o por defecto
-        }
-        messages[error.path] = message;
-      });
-      res.status(400).json(messages);
-    } else throw err; // desencadeno el mismo error inicial (error desconocido)
+      // si son errores de validacion, los devolvemos
+      let messages = '';
+      err.errors.forEach((x) => messages += (x.path ?? 'campo') + ": " + x.message + '\n');
+      res.status(400).json({message : messages});
+    } else {
+      // si son errores desconocidos, los dejamos que los controle el middleware de errores
+      throw err;
+    }
   }
 });
 
 router.put("/api/articulos/:id", async (req, res) => {
+  // #swagger.tags = ['Articulos']
+  // #swagger.summary = 'actualiza un Articulo'
+  // #swagger.parameters['id'] = { description: 'identificador del Articulo...' }
+  /*    #swagger.parameters['Articulo'] = {
+                in: 'body',
+                description: 'Articulo a actualizar',
+                schema: { $ref: '#/definitions/Articulos' }
+    } */
 
-    try {
-      let data = await db.articulos
-    .update(
+  try {
+    let data = await db.articulos.update(
       {
         Nombre: req.body.Nombre,
         Precio: req.body.Precio,
@@ -647,38 +697,59 @@ router.put("/api/articulos/:id", async (req, res) => {
       },
       { where: { IdArticulo: req.params.id } }
     );
-    res.status(200).json(data.dataValues); // devolvemos el registro modificado!
+    res.sendStatus(200);
   } catch (err) {
-    const messages = {};
     if (err instanceof ValidationError) {
-      err.errors.forEach((error) => {
-        let message;
-        switch (error.validatorKey) {
-          case "not_unique":
-            message = (error.value ?? 'el valor de este campo') + " ya existe en la tabla";
-            error.path = error.path.replace("_UNIQUE", "");
-            break;
-          default:
-            message = error.message;  // msg del modelo o por defecto
-        }
-        messages[error.path] = message;
-      });
-      res.status(400).json(messages);
-    } else throw err; // desencadeno el mismo error inicial (error desconocido)
+      // si son errores de validacion, los devolvemos
+      let messages = '';
+      err.errors.forEach((x) => messages += x.path + ": " + x.message + '\n');
+      res.status(400).json({message : messages});
+    } else {
+      // si son errores desconocidos, los dejamos que los controle el middleware de errores
+      throw err;
+    }
   }
 });
 
 router.delete("/api/articulos/:id", async (req, res) => {
-  let data = await db.articulos.destroy({
-    where: { IdArticulo: req.params.id },
-  });
-  if (data==1) res.sendStatus(200);
-  else res.sendStatus(404);
-});
+  // #swagger.tags = ['Articulos']
+  // #swagger.summary = 'elimina un Articulo'
+  // #swagger.parameters['id'] = { description: 'identificador del Articulo..' }
 
+  let bajaFisica = false;
+
+  if (bajaFisica) {
+    // baja fisica
+    let filasBorradas = await db.articulos.destroy({
+      where: { IdArticulo: req.params.id },
+    });
+    if (filasBorradas == 1) res.sendStatus(200);
+    else res.sendStatus(404);
+  } else {
+    // baja logica
+    try {
+      let data = await db.sequelize.query(
+        "UPDATE articulos SET Activo = case when Activo = 1 then 0 else 1 end WHERE IdArticulo = :IdArticulo",
+        {
+          replacements: { IdArticulo: +req.params.id },
+        }
+      );
+      res.sendStatus(200);
+    } catch (err) {
+      if (err instanceof ValidationError) {
+        // si son errores de validacion, los devolvemos
+        const messages = err.errors.map((x) => x.message);
+        res.status(400).json(messages);
+      } else {
+        // si son errores desconocidos, los dejamos que los controle el middleware de errores
+        throw err;
+      }
+    }
+  }
+});
 module.exports = router;
-```
- * observe:
+````
+ **Observe:**
     * bla 
     * bla, bla
 
@@ -710,6 +781,6 @@ module.exports = router;
   * test varios simples
   * test get articulofamilias
   * test crud articulos
-  * test seguridad JWT
+  * test seguridad JWT articulos
 
 
