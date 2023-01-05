@@ -1,11 +1,6 @@
 // configurar ORM sequelize
 const { Sequelize, DataTypes } = require("sequelize");
-const sequelize = new Sequelize("sqlite:./.data/pymes.db");
-
-const DISABLE_SEQUELIZE_DEFAULTS = {
-  timestamps: false,
-  freezeTableName: true,
-};
+const sequelize = new Sequelize("sqlite:" + process.env.base );
 
 // definicion del modelo de datos
 const articulosfamilias = sequelize.define(
@@ -17,31 +12,32 @@ const articulosfamilias = sequelize.define(
       autoIncrement: true,
     },
     Nombre: {
+      // todo evitar que string autocomplete con espacios en blanco, deberia ser varchar sin espacios
       type: DataTypes.STRING(30),
       allowNull: false,
-      // https://sequelize.org/docs/v6/core-concepts/validations-and-constraints/
       validate: {
         notEmpty: {
           args: true,
-          msg: "este dato no puede estar vacio",
+          msg: "Nombre es requerido",
         },
         len: {
           args: [5, 30],
-          msg: "dato tipo carateres, entre 5 y 30",
+          msg: "Nombre debe ser tipo carateres, entre 5 y 30 de longitud",
         },
       },
     },
   },
   {
     // pasar a mayusculas
-    // hooks: {
-    //   beforeValidate: function (articulofamilia, options) {
-    //     if (typeof articulofamilia.Nombre === "string") {
-    //       articulofamilia.Nombre = articulofamilia.Nombre.toUpperCase();
-    //     }
-    //   },
-    // },
-    ... DISABLE_SEQUELIZE_DEFAULTS
+    hooks: {
+      beforeValidate: function (articulofamilia, options) {
+        if (typeof articulofamilia.Nombre === "string") {
+          articulofamilia.Nombre = articulofamilia.Nombre.toUpperCase();
+        }
+      },
+    },
+
+    timestamps: false,
   }
 );
 
@@ -51,15 +47,102 @@ const articulos = sequelize.define(
     IdArticulo: {
       type: DataTypes.INTEGER,
       primaryKey: true,
-      autoIncrement: true
+      autoIncrement: true,
     },
-    Nombre: { 
-      type: DataTypes.STRING, 
-      allowNull: false 
-    }
+    Nombre: {
+      type: DataTypes.STRING(60),
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: "Nombre es requerido",
+        },
+        len: {
+          args: [5, 60],
+          msg: "Nombre debe ser tipo carateres, entre 5 y 60 de longitud",
+        },
+      },
+      unique: {
+        args: true,
+        msg: "este Nombre ya existe en la tabla!",
+      },
+    },
+    Precio: {
+      type: DataTypes.DECIMAL(10, 2),
+      allowNull: false,
+      validate: {
+        notNull: {
+          args: true,
+          msg: "Precio es requerido",
+        }
+      }
+    },
+    CodigoDeBarra: {
+      type: DataTypes.STRING(13),
+      allowNull: false,
+      validate: {
+        notNull: {
+          args: true,
+          msg: "Codigo De Barra es requerido",
+        },
+        is: {
+          args: ["^[0-9]{13}$", "i"],
+          msg: "Codigo de Barra debe ser numerico de 13 digitos",
+        },
+      },
+    },
+    IdArticuloFamilia: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notNull: {
+          args: true,
+          msg: "IdArticuloFamilia es requerido",
+        }
+      }
+    },
+    Stock: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notNull: {
+          args: true,
+          msg: "Stock es requerido",
+        }
+      }
+    },
+    FechaAlta: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          args: true,
+          msg: "Fecha Alta es requerido",
+        }
+      }
+    },
+    Activo: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      validate: {
+        notNull: {
+          args: true,
+          msg: "Activo es requerido",
+        }
+      }
+    },
   },
   {
-    DISABLE_SEQUELIZE_DEFAULTS
+    // pasar a mayusculas
+    hooks: {
+      beforeValidate: function (articulo, options) {
+        if (typeof articulo.Nombre === "string") {
+          articulo.Nombre = articulo.Nombre.toUpperCase();
+        }
+      },
+    },
+
+    timestamps: false,
   }
 );
 
