@@ -71,7 +71,7 @@ const articulos = sequelize.define(
       type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
       validate: {
-        notEmpty: {
+        notNull: {
           args: true,
           msg: "Precio es requerido",
         }
@@ -81,7 +81,7 @@ const articulos = sequelize.define(
       type: DataTypes.STRING(13),
       allowNull: false,
       validate: {
-        notEmpty: {
+        notNull: {
           args: true,
           msg: "Codigo De Barra es requerido",
         },
@@ -95,7 +95,7 @@ const articulos = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
-        notEmpty: {
+        notNull: {
           args: true,
           msg: "IdArticuloFamilia es requerido",
         }
@@ -105,7 +105,7 @@ const articulos = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
-        notEmpty: {
+        notNull: {
           args: true,
           msg: "Stock es requerido",
         }
@@ -115,7 +115,7 @@ const articulos = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        notEmpty: {
+        notNull: {
           args: true,
           msg: "Fecha Alta es requerido",
         }
@@ -125,7 +125,7 @@ const articulos = sequelize.define(
       type: DataTypes.BOOLEAN,
       allowNull: false,
       validate: {
-        notEmpty: {
+        notNull: {
           args: true,
           msg: "Activo es requerido",
         }

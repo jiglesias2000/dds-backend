@@ -6,8 +6,10 @@ Objetivo: crear una aplicación backend con una interface WebApiRest,  programad
 ## Etapa1
 ## Crear proyecto basico
 * creamos la carpeta del proyecto: dds-express
-* Ubicado en la carpeta, inicializamos el proyecto node
-    * comando: npm init
+* Ubicado en la carpeta, inicializamos el proyecto node, con el comando:
+  ```
+  npm init
+  ```
 
   |parametro | valor |
   |--- |--|
@@ -16,10 +18,12 @@ Objetivo: crear una aplicación backend con una interface WebApiRest,  programad
   |entry point| index.js|
   |etc| etc|
 
-    * ??? Podriamos usar la sintaxis de import en lugar de require, agregando en el package.json: "type":"module".
+  * Nota: Podriamos usar la sintaxis de import en lugar de require, agregando en el package.json: "type":"module".
 
-  * instalamos la libreria express: 
-    * comando: npm i express
+  * instalamos la libreria express, con el comando:
+    ```
+    npm i express
+    ```
   * creamos el archivo inicial de la aplicacion: index.js
     * codificamos la aplicacion web basica:
 
@@ -40,25 +44,40 @@ app.listen(port, () => {
     console.log(`sitio escuchando en el puerto ${port}`);
 });
 ```
-  * Ejecutamos el proyecto
-    * comando: node index.js
+  * Ejecutamos el proyecto:
+    ```
+    node index.js
+    ```
   * Testeamos la aplicacion desde el explorador, url: localhost:3000
   * Inicializamos repositorio y hacemos el primer commit.
-    * comando: git init
+    ```
+    git init
+    ```
     * agregamos el archivo .gitignore
       * contenido: node_modules/
-    * comando: git add 
-    * comando: git commit -m "etapa 1 completa"
+    * ejecutamos: 
+    ```
+    git add 
+    ```
+    * y luego hacemos commit
+    ```
+    git commit -m "etapa 1 completa"
+    ```
 
   * para mejorar la experiencia de desarrollo, haremos uso de nodemon
-    * instalamos nodemon, comando: npm i nodemon -D
+    * instalamos nodemon, comando: 
+      ```
+      npm i nodemon -D
+      ```
     * agregamos a package.json en "scripts" el siguiente script
        "dev": "nodemon index.js"
     * finalmente para ejecutar el proyecto de aqui en adelante usaremos:
-       * comando: npm run dev
+      ```
+      npm run dev
+      ```
     
      
----
+
 ---
 ## Etapa2
 ## weapi articulosfamiliasmock
@@ -224,7 +243,7 @@ router.delete('/api/articulosfamiliasmock/:id', (req, res) => {
     * 3
 * Testeamos este metodo, con la ayuda de la  aplicacion Postman que nos facilitara invocar la url con el verbo DELETE y los parametros necesarios.
 ---
-* Ejercicio: implementar una mejora al metodo GET que devuelve todos los articulosfamilias. Debera retornar solo aquellos que coincidan con un parametro opcional: "Nombre", si no se recibiece dicho parametro,seguira funcionando como antes devolviendo todos los registros.
+* Ejercicio: implementar una mejora al metodo GET que devuelve todos los articulosfamilias. Debera retornar solo aquellos que coincidan con un parametro opcional: "Nombre", si no se recibiese dicho parametro,seguira funcionando como antes devolviendo todos los registros.
   * para leer el parametro usaremos el objeto  "query" del request
 
 * Pendiente:
@@ -238,7 +257,9 @@ Esta api accedera a la base de datos sqlite: Pymes.db, mediante el orm Sequelize
 * Agregamos al proyecto la carpeta ".data" en donde se alojara el archivo de base de datos de sqlite: "pymes.db", el mismo sera creado mediante codigo.
 * Agregamos al proyecto la carpeta "base-orm" en donde pondremos el codigo relacionado a la base de datos
   * Inicialmente instalaremos los paquetes necesarios para acceder a la base de datos "sqlite3", una libreria para simplificar el acceso asicrono "aa-sqlite" y el ORM elegido "sequelize".
-    * comando: npm i sqlite3 aa-sqlite sequelize
+    ```
+    npm i sqlite3 aa-sqlite sequelize
+    ```
   * Agregamos el archivo "sqlite-init.js" que contiene el codigo con la ejecucion del script para crear la base de datos:
 
 ```javascript
@@ -340,8 +361,7 @@ export default CrearBaseSiNoExiste;
   ```javascript
 // configurar ORM sequelize
 const { Sequelize, DataTypes } = require("sequelize");
-const sequelize = new Sequelize("sqlite:./.data/pymes.db");
-
+const sequelize = new Sequelize("sqlite:" + process.env.base );
 
 // definicion del modelo de datos
 const articulosfamilias = sequelize.define(
@@ -353,31 +373,32 @@ const articulosfamilias = sequelize.define(
       autoIncrement: true,
     },
     Nombre: {
+      // todo evitar que string autocomplete con espacios en blanco, deberia ser varchar sin espacios
       type: DataTypes.STRING(30),
       allowNull: false,
-      // https://sequelize.org/docs/v6/core-concepts/validations-and-constraints/
       validate: {
         notEmpty: {
           args: true,
-          msg: "este dato no puede estar vacio",
+          msg: "Nombre es requerido",
         },
         len: {
           args: [5, 30],
-          msg: "dato tipo carateres, entre 5 y 30",
+          msg: "Nombre debe ser tipo carateres, entre 5 y 30 de longitud",
         },
       },
     },
   },
   {
     // pasar a mayusculas
-    // hooks: {
-    //   beforeValidate: function (articulofamilia, options) {
-    //     if (typeof articulofamilia.Nombre === "string") {
-    //       articulofamilia.Nombre = articulofamilia.Nombre.toUpperCase();
-    //     }
-    //   },
-    // },
-    timestamps: false
+    hooks: {
+      beforeValidate: function (articulofamilia, options) {
+        if (typeof articulofamilia.Nombre === "string") {
+          articulofamilia.Nombre = articulofamilia.Nombre.toUpperCase();
+        }
+      },
+    },
+
+    timestamps: false,
   }
 );
 
@@ -387,35 +408,101 @@ const articulos = sequelize.define(
     IdArticulo: {
       type: DataTypes.INTEGER,
       primaryKey: true,
-      autoIncrement: true
+      autoIncrement: true,
     },
-    Nombre: { 
-      type: DataTypes.STRING(60), 
-      allowNull: false 
+    Nombre: {
+      type: DataTypes.STRING(60),
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: "Nombre es requerido",
+        },
+        len: {
+          args: [5, 60],
+          msg: "Nombre debe ser tipo carateres, entre 5 y 60 de longitud",
+        },
+      },
+      unique: {
+        args: true,
+        msg: "este Nombre ya existe en la tabla!",
+      },
     },
     Precio: {
       type: DataTypes.DECIMAL(10, 2),
-      allowNull: false 
+      allowNull: false,
+      validate: {
+        notNull: {
+          args: true,
+          msg: "Precio es requerido",
+        }
+      }
     },
-    CodigoDeBarra: { 
-      type: DataTypes.STRING(50), 
-      allowNull: false 
+    CodigoDeBarra: {
+      type: DataTypes.STRING(13),
+      allowNull: false,
+      validate: {
+        notNull: {
+          args: true,
+          msg: "Codigo De Barra es requerido",
+        },
+        is: {
+          args: ["^[0-9]{13}$", "i"],
+          msg: "Codigo de Barra debe ser numerico de 13 digitos",
+        },
+      },
+    },
+    IdArticuloFamilia: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notNull: {
+          args: true,
+          msg: "IdArticuloFamilia es requerido",
+        }
+      }
     },
     Stock: {
       type: DataTypes.INTEGER,
-      allowNull: false 
+      allowNull: false,
+      validate: {
+        notNull: {
+          args: true,
+          msg: "Stock es requerido",
+        }
+      }
     },
-    FechaAlta: { 
-      type: DataTypes.STRING, 
-      allowNull: false 
+    FechaAlta: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          args: true,
+          msg: "Fecha Alta es requerido",
+        }
+      }
     },
-    Activo: { 
-      type: DataTypes.INTEGER, 
-      allowNull: false 
-    }
-
+    Activo: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      validate: {
+        notNull: {
+          args: true,
+          msg: "Activo es requerido",
+        }
+      }
+    },
   },
   {
+    // pasar a mayusculas
+    hooks: {
+      beforeValidate: function (articulo, options) {
+        if (typeof articulo.Nombre === "string") {
+          articulo.Nombre = articulo.Nombre.toUpperCase();
+        }
+      },
+    },
+
     timestamps: false,
   }
 );
@@ -425,11 +512,13 @@ module.exports = {
   articulosfamilias,
   articulos,
 };
+
 ````
-    * Observe:
-        1 la definicion del modelo de articulosfamilias
-        2 la definicion del modelo de articulos
-        3 las validaciones del modelo con sus mensajes de error
+**Observe:**
+  1 la definicion del modelo de articulosfamilias
+  2 la definicion del modelo de articulos
+  3 las validaciones del modelo con sus mensajes de error
+  4 los hooks para pasar a mayusculas los datos antes de validarlos
 
 * para poder interpretar los datos de las peticiones que vienen en formato json, necesitamos agregar la funcionalidad para que express interprete los datos enviados en el body de la peticion para lo cual agregamos el siguiente codigo en el index.js justo despues de crear el objeto "app"
 ```javascript
