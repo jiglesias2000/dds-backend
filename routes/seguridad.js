@@ -21,17 +21,17 @@ const users = [
 router.post("/api/token", (req, res) => {
   // #swagger.tags = ['Seguridad']
   // #swagger.summary = 'refresh token'
-  const { token } = req.body;
+  const { refreshToken } = req.body;
 
-  if (!token) {
+  if (!refreshToken) {
     return res.sendStatus(401);
   }
 
-  if (!refreshTokens.includes(token)) {
+  if (!refreshTokens.includes(refreshToken)) {
     return res.sendStatus(403);
   }
 
-  jwt.verify(token, auth.refreshTokenSecret, (err, user) => {
+  jwt.verify(refreshToken, auth.refreshTokenSecret, (err, user) => {
     if (err) {
       return res.sendStatus(403);
     }
@@ -61,7 +61,6 @@ router.post("/api/login", (req, res) => {
 
   if (user) {
     // Generate an access token
-    // generate an access token
     const accessToken = jwt.sign(
       { usuario: user.usuario, rol: user.rol },
       auth.accessTokenSecret,

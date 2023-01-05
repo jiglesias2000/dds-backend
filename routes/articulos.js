@@ -39,6 +39,7 @@ router.get("/api/articulos", async function (req, res, next) {
     });
 
     return res.json({ Items: rows, RegistrosTotal: count });
+    
   } else {
     let items = await db.articulos.findAll({
       attributes: [

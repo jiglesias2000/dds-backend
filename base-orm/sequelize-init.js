@@ -18,7 +18,7 @@ const articulosfamilias = sequelize.define(
       validate: {
         notEmpty: {
           args: true,
-          msg: "Nombre no puede estar vacio",
+          msg: "Nombre es requerido",
         },
         len: {
           args: [5, 30],
@@ -29,13 +29,14 @@ const articulosfamilias = sequelize.define(
   },
   {
     // pasar a mayusculas
-    // hooks: {
-    //   beforeValidate: function (articulofamilia, options) {
-    //     if (typeof articulofamilia.Nombre === "string") {
-    //       articulofamilia.Nombre = articulofamilia.Nombre.toUpperCase();
-    //     }
-    //   },
-    // },
+    hooks: {
+      beforeValidate: function (articulofamilia, options) {
+        if (typeof articulofamilia.Nombre === "string") {
+          articulofamilia.Nombre = articulofamilia.Nombre.toUpperCase();
+        }
+      },
+    },
+
     timestamps: false,
   }
 );
@@ -54,7 +55,7 @@ const articulos = sequelize.define(
       validate: {
         notEmpty: {
           args: true,
-          msg: "Nombre no puede estar vacio",
+          msg: "Nombre es requerido",
         },
         len: {
           args: [5, 60],
@@ -69,11 +70,21 @@ const articulos = sequelize.define(
     Precio: {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: "Precio es requerido",
+        }
+      }
     },
     CodigoDeBarra: {
       type: DataTypes.STRING(13),
       allowNull: false,
       validate: {
+        notEmpty: {
+          args: true,
+          msg: "Codigo De Barra es requerido",
+        },
         is: {
           args: ["^[0-9]{13}$", "i"],
           msg: "Codigo de Barra debe ser numerico de 13 digitos",
@@ -83,21 +94,54 @@ const articulos = sequelize.define(
     IdArticuloFamilia: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: "IdArticuloFamilia es requerido",
+        }
+      }
     },
     Stock: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: "Stock es requerido",
+        }
+      }
     },
     FechaAlta: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: "Fecha Alta es requerido",
+        }
+      }
     },
     Activo: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: "Activo es requerido",
+        }
+      }
     },
   },
   {
+    // pasar a mayusculas
+    hooks: {
+      beforeValidate: function (articulo, options) {
+        if (typeof articulo.Nombre === "string") {
+          articulo.Nombre = articulo.Nombre.toUpperCase();
+        }
+      },
+    },
+
     timestamps: false,
   }
 );
