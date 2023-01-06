@@ -3,7 +3,7 @@ articulosfamilias( IdArticuloFamilia INTEGER PRIMARY KEY AUTOINCREMENT, Nombre t
 
 DELETE FROM articulosfamilias;
 
-insert or IGNORE into articulosfamilias values	(1,'Accesorioss'),(2,'Audio'),(3,'Celulares'),(4,'Cuidado Personal'),(5,'Dvd'),(6,'Fotografia'),(7,'Frio-Calor'),(8,'Gps'),(9,'Informatica'),(10,'Led - Lcd');
+insert or IGNORE into articulosfamilias values	(1,'ACCESORIOS'),(2,'AUDIO'),(3,'CELULARES'),(4,'CUIDADO PERSONAL'),(5,'DVD'),(6,'FOTOGRAFIA'),(7,'FRIO-CALOR'),(8,'GPS'),(9,'INFORMATICA'),(10,'LED - LCD');
 
 create table if not exists 
      articulos( 

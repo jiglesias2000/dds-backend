@@ -32,7 +32,7 @@ const articulosfamilias = sequelize.define(
     hooks: {
       beforeValidate: function (articulofamilia, options) {
         if (typeof articulofamilia.Nombre === "string") {
-          articulofamilia.Nombre = articulofamilia.Nombre.toUpperCase();
+          articulofamilia.Nombre = articulofamilia.Nombre.toUpperCase().trim();
         }
       },
     },
@@ -137,7 +137,7 @@ const articulos = sequelize.define(
     hooks: {
       beforeValidate: function (articulo, options) {
         if (typeof articulo.Nombre === "string") {
-          articulo.Nombre = articulo.Nombre.toUpperCase();
+          articulo.Nombre = articulo.Nombre.toUpperCase().trim();
         }
       },
     },

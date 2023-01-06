@@ -1,7 +1,7 @@
 # Desarrollo de Sotware: Backend
 Objetivo: crear una aplicación backend con una interface WebApiRest,  programada en NodeJs/Javascritp, usando el framework expresss y con acceso a una base de datos (sqlite) mediante un ORM (Sequelize)
 
-* Version final del proyecto: https://dds-express.azurewebsites.net
+* Version final del proyecto: https://dds-backend.azurewebsites.net
 
 ## Etapa1
 ## Crear proyecto basico
@@ -394,7 +394,7 @@ const articulosfamilias = sequelize.define(
     hooks: {
       beforeValidate: function (articulofamilia, options) {
         if (typeof articulofamilia.Nombre === "string") {
-          articulofamilia.Nombre = articulofamilia.Nombre.toUpperCase();
+          articulofamilia.Nombre = articulofamilia.Nombre.toUpperCase().trim();
         }
       },
     },
@@ -499,7 +499,7 @@ const articulos = sequelize.define(
     hooks: {
       beforeValidate: function (articulo, options) {
         if (typeof articulo.Nombre === "string") {
-          articulo.Nombre = articulo.Nombre.toUpperCase();
+          articulo.Nombre = articulo.Nombre.toUpperCase().trim();
         }
       },
     },
@@ -519,7 +519,7 @@ module.exports = {
   1 la definicion del modelo de articulosfamilias
   2 la definicion del modelo de articulos
   3 las validaciones del modelo con sus mensajes de error
-  4 los hooks para pasar a mayusculas los datos antes de validarlos
+  4 los hooks para pasar a mayusculas los datos y evitan que se ingresen datos con espacios en blanco al inicio o al final, antes de validarlos; y que junto a estilos en el frontend, dan coherencia a los datos ingresados por el usuario.
 
 * para poder interpretar los datos de las peticiones que vienen en formato json, necesitamos agregar la funcionalidad para que express interprete los datos enviados en el body de la peticion para lo cual agregamos el siguiente codigo en el index.js justo despues de crear el objeto "app"
 ````javascript
