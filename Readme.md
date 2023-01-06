@@ -5,7 +5,7 @@ Objetivo: crear una aplicación backend con una interface WebApiRest,  programad
 
 ## Etapa1
 ## Crear proyecto basico
-* creamos la carpeta del proyecto: dds-express
+* creamos la carpeta del proyecto: dds-backend
 * Ubicado en la carpeta, inicializamos el proyecto node, con el comando:
   ````
   npm init
@@ -13,7 +13,7 @@ Objetivo: crear una aplicación backend con una interface WebApiRest,  programad
 
   |parametro | valor |
   |--- |--|
-  |name|dds-express|
+  |name|dds-backend|
   |description| backend con express|
   |entry point| index.js|
   |etc| etc|
@@ -35,7 +35,7 @@ const app = express();
 
 // controlar ruta
 app.get("/", (req, res) => {
-  res.send("Backend inicial DDS-EXPRESS!");
+  res.send("Backend inicial dds-backend!");
 });
 
 // levantar servidor
@@ -754,7 +754,7 @@ module.exports = router;
     * bla, bla
 
 * haremos testing del esta webapi desde postman
-  * En postman importar coleccion de pruebas desde el archivo: DDS-Express.postman_collection.json
+  * En postman importar coleccion de pruebas desde el archivo: dds-backend.postman_collection.json
     * verifique los errores devueltos por el modelo de ORM
       * Nombre: caracteres entre 4 y 50
     * verifique los errores devueltos por las restricciones de la base de datos: 

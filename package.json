@@ -1,5 +1,5 @@
 {
-  "name": "dds-express",
+  "name": "dds-backend",
   "version": "1.0.0",
   "scripts": {
     "swagger-autogen": "node ./swagger/swagger.js",

@@ -1,5 +1,5 @@
-# construir: docker build -t dds-express .
-# ejecutar: docker run -e NODE_ENV=dev  -p 3000:3000 dds-express
+# construir: docker build -t dds-backend .
+# ejecutar: docker run -e NODE_ENV=dev  -p 3000:3000 dds-backend
 
 FROM node:16
 
