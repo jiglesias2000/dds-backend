@@ -3,7 +3,7 @@ const express = require("express");
 const path = require("path");
 
 // leer archivo de configuracion
-require("dotenv").config();
+require('dotenv').config();
 console.log("WEBSITE_SITE_NAME", process.env.WEBSITE_SITE_NAME);
 
 // configurar si corre en azure
