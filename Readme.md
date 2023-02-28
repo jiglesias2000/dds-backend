@@ -3,6 +3,8 @@ Objetivo: crear una aplicación backend con una interface WebApiRest,  programad
 
 * Version final del proyecto: https://dds-backend.azurewebsites.net
 
+> Todos los comandos se ejecutan desde una consola de `git bash`
+
 ## Etapa1 
 ## Crear proyecto basico
 * creamos la carpeta del proyecto: dds-backend
