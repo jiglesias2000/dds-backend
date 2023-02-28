@@ -606,7 +606,7 @@
             "schema": {
               "type": "object",
               "properties": {
-                "token": {
+                "refreshToken": {
                   "example": "any"
                 }
               }
@@ -672,6 +672,37 @@
               "type": "object",
               "properties": {
                 "token": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/loginsqlinjection": {
+      "post": {
+        "tags": [
+          "Seguridad"
+        ],
+        "summary": "Login de usuarios con sqlinjection: \"usuario\": \"\\' or 1=1 --\", \"clave\": \"cualquier cosa\"",
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "usuario": {
+                  "example": "any"
+                },
+                "clave": {
                   "example": "any"
                 }
               }

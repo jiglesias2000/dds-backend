@@ -91,13 +91,13 @@ router.put('/api/articulosfamiliasmock/:id', (req, res) => {
                 schema: { $ref: '#/definitions/ArticulosFamiliasMock' }
     } */
 
-  let articuloFamilia = arr_ArticulosFamiliasMock.find(
+  let indexArticuloFamilia = arr_ArticulosFamiliasMock.findIndex(
     (x) => x.IdArticuloFamilia == req.params.id
   );
 
-  if (articuloFamilia) {
+  if (indexArticuloFamilia>=0) {
     const { Nombre } = req.body;
-    articuloFamilia.Nombre = Nombre;
+    arr_ArticulosFamiliasMock[indexArticuloFamilia].Nombre = Nombre;
     res.json({ message: 'articulofamilia actualizado' });
   } else {
     res.status(404).json({ message: 'articulofamilia no encontrado' })
