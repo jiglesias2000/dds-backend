@@ -925,10 +925,10 @@ module.exports = router;
 ````
 
 **Observe:**
-    * la definicion de usuarios (clave y roles) en forma hardcodeada para simplificar el ejemplo.
-    * router.post("/api/login"): es el metodo que se encarga de autenticar al usuario, para lo cual se debe enviar el usuario y clave
-    * router.post("/api/logout"): es el metodo que se encarga de invalidar el token de refresco, para lo cual se debe enviar el token de refresco
-    * router.post("/api/token"): es el metodo que se encarga de refrescar el token de acceso, para lo cual se debe enviar el token de refresco
+  * la definicion de usuarios (clave y roles) en forma hardcodeada para simplificar el ejemplo.
+  * router.post("/api/login"): es el metodo que se encarga de autenticar al usuario, para lo cual se debe enviar el usuario y clave
+  * router.post("/api/logout"): es el metodo que se encarga de invalidar el token de refresco, para lo cual se debe enviar el token de refresco
+  * router.post("/api/token"): es el metodo que se encarga de refrescar el token de acceso, para lo cual se debe enviar el token de refresco
 
 
 * Autenticacion: finalmente haremos uso de la autenticacion en la webapi, para lo cual modificaremos el archivo: routes/articulos.js, agregandole una ruta segura, para lo cual agregaremos el siguiente codigo:
@@ -969,11 +969,12 @@ router.get(
 );
 ````
 **Observe:**
-    * router.get("/api/jwt/articulos", ...): es la ruta segura que solo puede ser accedida por usuarios con rol: admin
-    * auth.authenticateJWT: es el middleware que se encarga de validar el token de acceso y autorizar el acceso a las rutas seguras  
+  * router.get("/api/jwt/articulos", ...): es la ruta segura que solo puede ser accedida por usuarios con rol: admin
+  * auth.authenticateJWT: es el middleware que se encarga de validar el token de acceso y autorizar el acceso a las rutas seguras  
 
 
 
+---
 
 ## Etapa 6
 
