@@ -5,7 +5,7 @@
     "swagger-autogen": "node ./swagger/swagger.js",
     "dev": "nodemon index.js",
     "start": "node index.js",
-    "test": "cross-env NODE_ENV=test jest --testTimeout=10000"
+    "test": "cross-env NODE_ENV=test WEBSITE_SITE_NAME=dds-api jest --testTimeout=10000"
   },
   "dependencies": {
     "@apidevtools/swagger-express-middleware": "^4.0.2",
@@ -13,7 +13,6 @@
     "aa-sqlite": "^1.0.29",
     "axios": "^0.27.2",
     "cors": "^2.8.5",
-    "cross-env": "^7.0.3",
     "dotenv": "^16.0.3",
     "express": "^4.18.1",
     "express-async-errors": "^3.1.1",
@@ -32,6 +31,7 @@
   "devDependencies": {
     "jest": "^29.0.3",
     "nodemon": "^2.0.20",
-    "supertest": "^6.2.4"
+    "supertest": "^6.2.4",
+    "cross-env": "^7.0.3"
   }
 }

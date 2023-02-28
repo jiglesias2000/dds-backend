@@ -776,7 +776,7 @@ module.exports = router;
   * Autorizacion: ruta segura segun rol
 ---
 ## Etapa 6
-
+>La API debe estar levantada para que los test se ejecute correctamente.
 * test unitarios
   * test varios simples
   * test get articulofamilias
