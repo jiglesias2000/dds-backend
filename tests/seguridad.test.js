@@ -1,15 +1,6 @@
 const request = require("supertest");
 const app = require("../index");
 
-//let token = "";
-// beforeAll( async () => {
-//     const res = await request(app)
-//         .post("/api/login")
-//         .set('Content-type', 'application/json')
-//         .send({usuario:'admin', clave:'123'});
-//     token = res.body.accessToken;
-// });
-
 const usuarioAdmin = { usuario: "admin", clave: "123" };
 const usuarioMiembro = { usuario: "juan", clave: "123" };
 

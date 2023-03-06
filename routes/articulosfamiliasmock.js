@@ -71,7 +71,7 @@ router.post('/api/articulosfamiliasmock/', (req, res) => {
     } */
   const { Nombre } = req.body;
   let articuloFamilia = {
-    IdArticuloFamilia: arr_ArticulosFamiliasMock.length+1,
+    IdArticuloFamilia: Math.floor(Math.random()*100000),
     Nombre
   };
 

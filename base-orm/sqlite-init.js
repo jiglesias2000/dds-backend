@@ -3,13 +3,12 @@ const db = require("aa-sqlite");
 
 async function CrearBaseSiNoExiste() {
   // abrir base, si no existe el archivo/base lo crea
-  //await db.open("./.data/pymes.db");
-  await db.open(process.env.base);
+  await db.open("./.data/pymes.db");
+  //await db.open(process.env.base);
   
   // journal_mode para que no se bloquee la base en escritura en azure
   // d:/portables/sqlite/sqlite3  pymes.db "PRAGMA journal_mode=wal;"
-  // await db.run("PRAGMA journal_mode=WAL;")
-
+  
   let existe = false;
   let res = null;
 
@@ -24,7 +23,7 @@ async function CrearBaseSiNoExiste() {
     );
     console.log("tabla usuarios creada!");
     await db.run(
-      "insert into usuarios values	(1,'ADMIN','123','admin'),(2,'JUAN','123','member');"
+      "insert into usuarios values	(1,'admin','123','admin'),(2,'juan','123','member');"
     );
   }
 

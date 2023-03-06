@@ -1,4 +1,11 @@
 create table if not exists 
+usuarios( IdUsuario INTEGER PRIMARY KEY AUTOINCREMENT, Nombre text NOT NULL UNIQUE, Clave text NOT NULL, Rol text NOT NULL);
+
+DELETE FROM usuarios;
+
+insert or IGNORE into usuarios values	(1,'admin','123','admin'),(2,'juan','123','member');
+
+create table if not exists 
 articulosfamilias( IdArticuloFamilia INTEGER PRIMARY KEY AUTOINCREMENT, Nombre text NOT NULL UNIQUE);
 
 DELETE FROM articulosfamilias;
@@ -209,3 +216,7 @@ insert or ignore into articulos values
       (199,'CAMARA DIGITAL C1433 SLVER GE',899.00, '0084695100018', 6, 528,'2017-02-02', 1 ),
       (200,'LIMPIADOR CD SV 8336 ONE FOR ALL',55.00, '0871618404342', 1, 508,'2016-12-27', 1 ),
       (201,'LIMPIADOR LCD SV 8410 ONE FOR ALL',102.00, '0871618404333', 1, 186,'2017-02-02', 1 );
+
+-- update articulos
+
+

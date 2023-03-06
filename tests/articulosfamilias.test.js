@@ -1,5 +1,3 @@
-// https://dev.to/nedsoft/testing-nodejs-express-api-with-jest-and-supertest-1km6
-
 const request = require("supertest");
 const app = require("../index");
 
