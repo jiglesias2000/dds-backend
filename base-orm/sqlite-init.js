@@ -3,16 +3,31 @@ const db = require("aa-sqlite");
 
 async function CrearBaseSiNoExiste() {
   // abrir base, si no existe el archivo/base lo crea
-  //await db.open("./.data/pymes.db");
-  await db.open(process.env.base);
+  await db.open("./.data/pymes.db");
+  //await db.open(process.env.base);
   
   // journal_mode para que no se bloquee la base en escritura en azure
   // d:/portables/sqlite/sqlite3  pymes.db "PRAGMA journal_mode=wal;"
-  // await db.run("PRAGMA journal_mode=WAL;")
-
+  
   let existe = false;
   let res = null;
 
+  res = await db.get(
+    "SELECT count(*) as contar FROM sqlite_schema WHERE type = 'table' and name= 'usuarios'",
+    []
+  );
+  if (res.contar > 0) existe = true;
+  if (!existe) {
+    await db.run(
+      "CREATE table usuarios( IdUsuario INTEGER PRIMARY KEY AUTOINCREMENT, Nombre text NOT NULL UNIQUE, Clave text NOT NULL, Rol text NOT NULL);"
+    );
+    console.log("tabla usuarios creada!");
+    await db.run(
+      "insert into usuarios values	(1,'admin','123','admin'),(2,'juan','123','member');"
+    );
+  }
+
+  existe = false;
   res = await db.get(
     "SELECT count(*) as contar FROM sqlite_schema WHERE type = 'table' and name= 'articulosfamilias'",
     []
@@ -24,7 +39,7 @@ async function CrearBaseSiNoExiste() {
     );
     console.log("tabla articulosfamilias creada!");
     await db.run(
-      "insert into articulosfamilias values	(1,'Accesorioss'),(2,'Audio'),(3,'Celulares'),(4,'Cuidado Personal'),(5,'Dvd'),(6,'Fotografia'),(7,'Frio-Calor'),(8,'Gps'),(9,'Informatica'),(10,'Led - Lcd');"
+      "insert into articulosfamilias values	(1,'ACCESORIOS'),(2,'AUDIO'),(3,'CELULARES'),(4,'CUIDADO PERSONAL'),(5,'DVD'),(6,'FOTOGRAFIA'),(7,'FRIO-CALOR'),(8,'GPS'),(9,'INFORMATICA'),(10,'LED - LCD');"
     );
   }
 

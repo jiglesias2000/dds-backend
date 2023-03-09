@@ -14,6 +14,8 @@ if (process.env.WEBSITE_SITE_NAME) {
   process.env.logErrores = process.env.logErrores_azure;
 }
 
+
+
 console.log("base", process.env.base);
 console.log("NODE_ENV", process.env.NODE_ENV);
 
@@ -25,15 +27,18 @@ const app = express();
 // configurar servidor
 const cors = require("cors");
 app.use(cors({
-  origin: '*'
+  origin: '*'    // origin: 'https://dds-frontend.azurewebsites.net'
 }));
 
-var allowCrossDomain = function(req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-  //res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  next();
-}
+// var allowCrossDomain = function(req, res, next) {
+//   res.setHeader('Access-Control-Allow-Origin', '*');
+//   res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+//   //res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+//   next();
+// }
+
+const cookieParser = require("cookie-parser");
+app.use(cookieParser()); // entiende cookies
 
 app.use(express.text()); // entiende texto
 app.use(express.urlencoded({ extended: false })); // for parsing application/x-www-form-urlencoded
@@ -88,7 +93,7 @@ app.use(_404Handler);
 //-- INICIO ---------------------------
 //------------------------------------
 
-if (!module.parent) { // si no es llamado por otro modulo, es decir, si es el modulo principal
+if (!module.parent) {   // si no es llamado por otro modulo, es decir, si es el modulo principal -> levantamos el servidor
   const port = process.env.PORT || 3000;   // en produccion se usa el puerto de la variable de entorno PORT
   app.locals.fechaInicio = new Date();
   app.listen(port, () => {
