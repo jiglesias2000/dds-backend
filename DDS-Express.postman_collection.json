@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "e184cb34-0097-48cc-8ac4-e7e8615e0a7c",
-		"name": "DDS-Express",
+		"name": "dds-backend",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "10363707"
 	},

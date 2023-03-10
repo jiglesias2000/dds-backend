@@ -6,7 +6,7 @@ app.use(express.json()); // para poder leer json en el body
 
 // controlar ruta
 app.get("/", (req, res) => {
-  res.send("Backend inicial DDS-EXPRESS!");
+  res.send("Backend inicial dds-backend!");
 });
 
 const articulosfamiliasRouter = require("./routes/articulosfamilias");
