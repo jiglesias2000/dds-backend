@@ -269,6 +269,7 @@ const db = require("aa-sqlite");
 async function CrearBaseSiNoExiste() {
   // abrir base, si no existe el archivo/base lo crea
   await db.open("./.data/pymes.db");
+  //await db.open(process.env.base);
 
   let existe = false;
   let res = null;
@@ -526,7 +527,8 @@ async function CrearBaseSiNoExiste() {
 }
 
 CrearBaseSiNoExiste();
-export default CrearBaseSiNoExiste;
+
+module.exports =  CrearBaseSiNoExiste;
 ````
 
 **Observe:**
@@ -539,6 +541,12 @@ export default CrearBaseSiNoExiste;
   * Ahora ejecutaremos unicamente el codigo recien creado, para testear su correcto funcionamiento, verificando si efectivamente crea la base de datos:
     * comando: node base-orm/sqlite-init
     * verificamos en el carpeta data, buscando el archivo pymes.db el que podemos abrir con alguna aplicacion/extension adecuada para ver su contenido.
+
+  Una vez probado nuestro codigo de creacion de base de datos, lo invocaremos en la aplicacion en el index.js justo despues de crear el objeto "app", mediante la siguiente linea:
+  ````javascript
+  require("./base-orm/sqlite-init");  // crear base si no existe
+  ````
+
   * Agregamos el archivo "sequelize-init.js" que contiene la definicion del  modelo de datos del ORM sequelize:
 
 ````javascript
@@ -703,6 +711,7 @@ module.exports = {
   3 las validaciones del modelo con sus mensajes de error
   4 los hooks para pasar a mayusculas los datos y evitan que se ingresen datos con espacios en blanco al inicio o al final, antes de validarlos; y que junto a estilos en el frontend, dan coherencia a los datos ingresados por el usuario.
 
+
 * para poder interpretar los datos de las peticiones que vienen en formato json, necesitamos agregar la funcionalidad para que express interprete los datos enviados en el body de la peticion para lo cual agregamos el siguiente codigo en el index.js justo despues de crear el objeto "app"
 ````javascript
 app.use(express.json()); // para poder leer json en el body
@@ -721,6 +730,19 @@ router.get("/api/articulosfamilias", async function (req, res, next) {
   });
   res.json(data);
 });
+
+
+router.get("/api/articulosfamilias/:id", async function (req, res, next) {
+    // #swagger.tags = ['ArticulosFamilias']
+    // #swagger.summary = 'obtiene un ArticuloFamilia'
+    // #swagger.parameters['id'] = { description: 'identificador del ArticulosFamilias...' }
+    let data = await db.articulosfamilias.findAll({
+      attributes: ["IdArticuloFamilia", "Nombre"],
+      where: { IdArticuloFamilia: req.params.id },
+    });
+    if (data.length > 0 ) res.json(data[0]);
+    else res.status(404).json({mensaje:'No econtrado!!'})
+  });
 
 module.exports = router;
 ````

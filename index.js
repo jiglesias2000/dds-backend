@@ -24,6 +24,10 @@ require("./base-orm/sqlite-init"); // crear base si no existe
 // crear servidor
 const app = express();
 
+// seguridad XSS
+const helmet = require('helmet');
+app.use(helmet());
+
 // configurar servidor
 const cors = require("cors");
 app.use(cors({
