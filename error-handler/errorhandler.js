@@ -29,7 +29,8 @@ const errorHandler = async function (err, req, res, next) {
 const _404Handler = function (req, res, next) {
     res.status(404).send("No encontrada!");
 }
-
+ 
+// espacio comentado
 process.on('uncaughtException', err => {
   // si se cae el sevidor, logueamos la causa para poder analizarlo y corregirlo a posterior.
   console.log(`Uncaught Exception: ${err.message}`)
