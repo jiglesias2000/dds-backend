@@ -30,7 +30,7 @@ const _404Handler = function (req, res, next) {
     res.status(404).send("No encontrada!");
 }
  
-// espacio comentado
+// espacio comentado desde github
 process.on('uncaughtException', err => {
   // si se cae el sevidor, logueamos la causa para poder analizarlo y corregirlo a posterior.
   console.log(`Uncaught Exception: ${err.message}`)
