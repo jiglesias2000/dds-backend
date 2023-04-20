@@ -889,18 +889,45 @@ router.put("/api/articulos/:id", async (req, res) => {
     } */
 
   try {
-    let data = await db.articulos.update(
-      {
-        Nombre: req.body.Nombre,
-        Precio: req.body.Precio,
-        CodigoDeBarra: req.body.CodigoDeBarra,
-        IdArticuloFamilia: req.body.IdArticuloFamilia,
-        Stock: req.body.Stock,
-        FechaAlta: req.body.FechaAlta,
-        Activo: req.body.Activo,
-      },
-      { where: { IdArticulo: req.params.id } }
-    );
+    let item = await db.articulos.findOne({
+      attributes: [
+        "IdArticulo",
+        "Nombre",
+        "Precio",
+        "CodigoDeBarra",
+        "IdArticuloFamilia",
+        "Stock",
+        "FechaAlta",
+        "Activo",
+      ],
+      where: { IdArticulo: req.params.id },
+    });
+    if (!item) {
+      res.status(404).json({ message: "Articulo no encontrado" });
+      return;
+    }
+    item.Nombre = req.body.Nombre;
+    item.Precio = req.body.Precio;
+    item.CodigoDeBarra = req.body.CodigoDeBarra;
+    item.IdArticuloFamilia = req.body.IdArticuloFamilia;
+    item.Stock = req.body.Stock;
+    item.FechaAlta = req.body.FechaAlta;
+    item.Activo = req.body.Activo;
+    await item.save();
+
+    // otra forma de hacerlo
+    // let data = await db.articulos.update(
+    //   {
+    //     Nombre: req.body.Nombre,
+    //     Precio: req.body.Precio,
+    //     CodigoDeBarra: req.body.CodigoDeBarra,
+    //     IdArticuloFamilia: req.body.IdArticuloFamilia,
+    //     Stock: req.body.Stock,
+    //     FechaAlta: req.body.FechaAlta,
+    //     Activo: req.body.Activo,
+    //   },
+    //   { where: { IdArticulo: req.params.id } }
+    // );
     res.sendStatus(200);
   } catch (err) {
     if (err instanceof ValidationError) {
