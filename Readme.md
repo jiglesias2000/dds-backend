@@ -59,7 +59,7 @@ app.listen(port, () => {
       * contenido: node_modules/
     * ejecutamos: 
     ````
-    git add -all
+    git add --all
     ````
     * y luego hacemos commit
     ````
