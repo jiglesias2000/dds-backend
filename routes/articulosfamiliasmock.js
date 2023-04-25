@@ -78,7 +78,7 @@ router.post('/api/articulosfamiliasmock/', (req, res) => {
   // aqui agregar a la coleccion
   arr_ArticulosFamiliasMock.push(articuloFamilia);
 
-  res.status(204).json(articuloFamilia);
+  res.status(201).json(articuloFamilia);
 });
 
 router.put('/api/articulosfamiliasmock/:id', (req, res) => {

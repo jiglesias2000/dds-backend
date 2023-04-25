@@ -184,13 +184,13 @@ router.post('/api/articulosfamiliasmock/', (req, res) => {
   // aqui agregar a la coleccion
   arr_ArticulosFamiliasMock.push(articuloFamilia);
 
-  res.status(204).json(articuloFamilia);
+  res.status(201).json(articuloFamilia);
 });
 ````
   **Observe:**
     * como se recupera el dato del Nombre desde el objeto "body" del request
     * el campo IdArticuloFamilia, en base de datos seria un autonumerico, aqui usamos un solucion poco fiable pero sencilla, solo valida para una demostracion rapida.
-    * devolvemos el codigo de status 204 y el objeto recien creado; tal ves quien consuma esta api buscara alli, entre otros valores, el IdArticuloFamilia recien generado.
+    * devolvemos el codigo de status 201 y el objeto recien creado; tal ves quien consuma esta api buscara alli, entre otros valores, el IdArticuloFamilia recien generado.
 
 * para que este metodo funcione, express necesita un midleware que le permita interpretar el json que recibe en el body, para lo cual agregamos en el index.js, luego de crear la constante app, el codigo siguiente:
 ````javascript
@@ -552,7 +552,8 @@ module.exports =  CrearBaseSiNoExiste;
 ````javascript
 // configurar ORM sequelize
 const { Sequelize, DataTypes } = require("sequelize");
-const sequelize = new Sequelize("sqlite:" + process.env.base );
+//const sequelize = new Sequelize("sqlite:" + process.env.base );
+const sequelize = new Sequelize("sqlite:" + "./.data/pymes.db");
 
 // definicion del modelo de datos
 const articulosfamilias = sequelize.define(

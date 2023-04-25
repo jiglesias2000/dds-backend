@@ -58,7 +58,7 @@ router.get("/api/articulos", async function (req, res, next) {
   }
 });
 
-router.get("/api/articulos/:id", async function (req, res, next) {
+router.get("/api/articulos/:idArt", async function (req, res, next) {
   // #swagger.tags = ['Articulos']
   // #swagger.summary = 'obtiene un Articulo'
   // #swagger.parameters['id'] = { description: 'identificador del Articulo...' }
@@ -73,7 +73,7 @@ router.get("/api/articulos/:id", async function (req, res, next) {
       "FechaAlta",
       "Activo",
     ],
-    where: { IdArticulo: req.params.id },
+    where: { IdArticulo: req.params.idArt },
   });
   res.json(item);
 });
