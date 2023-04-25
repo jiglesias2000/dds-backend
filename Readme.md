@@ -139,10 +139,11 @@ router.get('/api/articulosfamiliasmock', async function (req, res) {
 module.exports = router;
 ````
   **Observe:**
-    * la clase express.Router para crear controladores de rutas montables y modulares.
-    * la definicion mockeada del array de datos de articulosfamilias.
-    * el controlador GET de la ruta "/api/articulosfamilasmock" que devolvera serializado como json el array de datos.
-    * la funcion se define como asincrona "async", que aunque no tenga sentido actualmente, la usamos previendo cuando obtengamos datos desde la base de datos donde sera necesaria.
+
+  * la clase express.Router para crear controladores de rutas montables y modulares.
+  * la definicion mockeada del array de datos de articulosfamilias.
+  * el controlador GET de la ruta "/api/articulosfamilasmock" que devolvera serializado como json el array de datos.
+  * la funcion se define como asincrona "async", que aunque no tenga sentido actualmente, la usamos previendo cuando obtengamos datos desde la base de datos donde sera necesaria.
 
 
 * Una vez defindo el controlador de nuestro recurso debemos vincularlo a nuestra aplicacion express, cargando el modulo de ruta en el archivo index.js antes de levantar el servidor
@@ -164,10 +165,11 @@ router.get('/api/articulosfamiliasmock/:id', async function (req, res) {
 });
 ````
   **Observe:**
-    * como se recupera el id del segmento de la url, mediante la coleccion params
-    * como se busca en el array el dato solicitado
-      * si se encuentra se devuelve el mismo en formato de json 
-      * si no se encuentra se devuelve un error 404 com un mensaje adecuado.
+
+  * como se recupera el id del segmento de la url, mediante la coleccion params
+  * como se busca en el array el dato solicitado
+    * si se encuentra se devuelve el mismo en formato de json 
+    * si no se encuentra se devuelve un error 404 com un mensaje adecuado.
 
 * Para testearlo, iniciemos nuestra aplicacion y consultemos desde el explorador la siguiente url: http://localhost:3000/api/articulosfamiliasmock/1
   * testemos cambiando el numero final de la url que indica el id del recurso a buscar.
@@ -188,9 +190,10 @@ router.post('/api/articulosfamiliasmock/', (req, res) => {
 });
 ````
   **Observe:**
-    * como se recupera el dato del Nombre desde el objeto "body" del request
-    * el campo IdArticuloFamilia, en base de datos seria un autonumerico, aqui usamos un solucion poco fiable pero sencilla, solo valida para una demostracion rapida.
-    * devolvemos el codigo de status 201 y el objeto recien creado; tal ves quien consuma esta api buscara alli, entre otros valores, el IdArticuloFamilia recien generado.
+
+  * como se recupera el dato del Nombre desde el objeto "body" del request
+  * el campo IdArticuloFamilia, en base de datos seria un autonumerico, aqui usamos un solucion poco fiable pero sencilla, solo valida para una demostracion rapida.
+  * devolvemos el codigo de status 201 y el objeto recien creado; tal ves quien consuma esta api buscara alli, entre otros valores, el IdArticuloFamilia recien generado.
 
 * para que este metodo funcione, express necesita un midleware que le permita interpretar el json que recibe en el body, para lo cual agregamos en el index.js, luego de crear la constante app, el codigo siguiente:
 ````javascript
@@ -216,9 +219,10 @@ router.put('/api/articulosfamiliasmock/:id', (req, res) => {
 });
 ````
   **Observe:**
-    * el uso del metodo find para buscar el recurso a modificar
-    * la modificacion del objeto encontrado y la devolucion de un mensaje de exito.
-    * la devolucion del codigo de status 404 si no se encuentra el recurso a modificar
+
+  * el uso del metodo find para buscar el recurso a modificar
+  * la modificacion del objeto encontrado y la devolucion de un mensaje de exito.
+  * la devolucion del codigo de status 404 si no se encuentra el recurso a modificar
     
 * Testeamos este metodo, con la ayuda de la  aplicacion Postman que nos facilitara invocar la url con el verbo PUT y los parametros necesarios.
 ---
@@ -241,9 +245,11 @@ router.delete('/api/articulosfamiliasmock/:id', (req, res) => {
 });
 ````
   **Observe:**
-    * el uso del metodo filter para eliminar el recurso
-    * la devolucion de un mensaje de exito.
-    * la devolucion del codigo de status 404 si no se encuentra el recurso a eliminar
+
+  * el uso del metodo filter para eliminar el recurso
+  * la devolucion de un mensaje de exito.
+  * la devolucion del codigo de status 404 si no se encuentra el recurso a eliminar
+
 * Testeamos este metodo, con la ayuda de la  aplicacion Postman que nos facilitara invocar la url con el verbo DELETE y los parametros necesarios.
 ---
 * Ejercicio: implementar una mejora al metodo GET que devuelve todos los articulosfamilias. Debera retornar solo aquellos que coincidan con un parametro opcional: "Nombre", si no se recibiese dicho parametro, seguira funcionando como antes devolviendo todos los registros.
@@ -532,11 +538,12 @@ module.exports =  CrearBaseSiNoExiste;
 ````
 
 **Observe:**
-  1 inicialmente se crea el archivo/base: pymes.db
-  2 se verifica consultado el esquema de sqlite si existe la tabla articulosfamilias y si corresponde, se la crea.
-  3 si se creo la tabla, se insertan un conjunto de registros
-  4 se verifica consultando el equema de sqlite si existe la tabla articulos y si corresponde, se la crea.
-  5 si se creo la tabla articulos, se insertan un conjunto de registros.
+
+  1. inicialmente se crea el archivo/base: pymes.db
+  2. se verifica consultado el esquema de sqlite si existe la tabla articulosfamilias y si corresponde, se la crea.
+  3. si se creo la tabla, se insertan un conjunto de registros
+  4. se verifica consultando el equema de sqlite si existe la tabla articulos y si corresponde, se la crea.
+  5. si se creo la tabla articulos, se insertan un conjunto de registros.
     
   * Ahora ejecutaremos unicamente el codigo recien creado, para testear su correcto funcionamiento, verificando si efectivamente crea la base de datos:
     * comando: node base-orm/sqlite-init
@@ -707,10 +714,11 @@ module.exports = {
 ````
 
 **Observe:**
-  1 la definicion del modelo de articulosfamilias
-  2 la definicion del modelo de articulos
-  3 las validaciones del modelo con sus mensajes de error
-  4 los hooks para pasar a mayusculas los datos y evitan que se ingresen datos con espacios en blanco al inicio o al final, antes de validarlos; y que junto a estilos en el frontend, dan coherencia a los datos ingresados por el usuario.
+
+  1. la definicion del modelo de articulosfamilias
+  2. la definicion del modelo de articulos
+  3. las validaciones del modelo con sus mensajes de error
+  4. los hooks para pasar a mayusculas los datos y evitan que se ingresen datos con espacios en blanco al inicio o al final, antes de validarlos; y que junto a estilos en el frontend, dan coherencia a los datos ingresados por el usuario.
 
 
 * para poder interpretar los datos de las peticiones que vienen en formato json, necesitamos agregar la funcionalidad para que express interprete los datos enviados en el body de la peticion para lo cual agregamos el siguiente codigo en el index.js justo despues de crear el objeto "app"
@@ -748,8 +756,9 @@ router.get("/api/articulosfamilias/:id", async function (req, res, next) {
 module.exports = router;
 ````
   **Observe:**
-    * el acceso al ORM mediante el modulo: sequelize-init
-    * el controlador GET de la ruta "/api/articulosfamilas" que devolvera serializado como json el array de datos, obtenido desde la base
+
+  * el acceso al ORM mediante el modulo: sequelize-init
+  * el controlador GET de la ruta "/api/articulosfamilas" que devolvera serializado como json el array de datos, obtenido desde la base
 
 * Una vez defindo el controlador de nuestro recurso debemos vincularlo a nuestra aplicacion express, cargando el modulo de ruta en el archivo index.js antes de levantar el servidor
 ```javascript
@@ -982,6 +991,7 @@ router.delete("/api/articulos/:id", async (req, res) => {
 module.exports = router;
 ````
  **Observe:**
+
 * el uso de la libreria swagger-jsdoc para documentar la api
 * el uso de la libreria sequelize para acceder a la base de datos
 
@@ -1038,11 +1048,12 @@ module.exports = { authenticateJWT, accessTokenSecret, refreshTokenSecret };
 ````
 
 **Observe:**
-    * el uso de la libreria jsonwebtoken para validar el token que se recive en el header de la peticion
-    * accessTokenSecret: es la clave secreta para firmar el token de acceso
-    * refreshTokenSecret: es la clave secreta para firmar el token de refresco
-    * si el token es valido, se guarda el usuario en el objeto res.locals.user, para que pueda ser utilizado para luego autorizar las rutas seguras
-    * si el token no es valido, se devuelve un error 401 (acceso denegado) o 403 (token no valido)
+
+  * el uso de la libreria jsonwebtoken para validar el token que se recive en el header de la peticion
+  * accessTokenSecret: es la clave secreta para firmar el token de acceso
+  * refreshTokenSecret: es la clave secreta para firmar el token de refresco
+  * si el token es valido, se guarda el usuario en el objeto res.locals.user, para que pueda ser utilizado para luego autorizar las rutas seguras
+  * si el token no es valido, se devuelve un error 401 (acceso denegado) o 403 (token no valido)
 
 * Seguidamente en la carpeta routes, crearemos el archivo: seguridad.js, con el siguiente contenido:
   
@@ -1154,6 +1165,7 @@ module.exports = router;
 ````
 
 **Observe:**
+
   * la definicion de usuarios (clave y roles) en forma hardcodeada para simplificar el ejemplo.
   * router.post("/api/login"): es el metodo que se encarga de autenticar al usuario, para lo cual se debe enviar el usuario y clave
   * router.post("/api/logout"): es el metodo que se encarga de invalidar el token de refresco, para lo cual se debe enviar el token de refresco
@@ -1198,6 +1210,7 @@ router.get(
 );
 ````
 **Observe:**
+
   * router.get("/api/jwt/articulos", ...): es la ruta segura que solo puede ser accedida por usuarios con rol: admin
   * auth.authenticateJWT: es el middleware que se encarga de validar el token de acceso y autorizar el acceso a las rutas seguras  
 
@@ -1263,6 +1276,7 @@ if (!module.parent) {
 }
 ````
 **Observe:**
+
   * module.parent: es una variable que se define cuando se ejecuta un modulo desde otro modulo, en este caso cuando se ejecuta el test desde el archivo: test/pruebainicial.test.js, esta variable se define, por lo tanto el servidor web no se inicia, pero si se ejecuta el test desde el navegador, esta variable no se define, por lo tanto el servidor web se inicia
 
 Ahora ejecutaremos el test, para lo cual ejecutaremos el siguiente comando:
@@ -1271,6 +1285,7 @@ jest test/pruebainicial.test.js
 ```
 
 **Observe:** 
+
   * si ejecuta el comando: jest, sin especificar el archivo de test, se ejecutaran todos los test que se encuentren en la carpeta test
   * si alguna prueba falla, indica que dicha prueba no paso, y muestra el error que se produjo. 
   
@@ -1321,6 +1336,7 @@ describe("GET /api/articulosfamilias/:id", function () {
 ````
 
 **Observe:**
+
   * solo se testean los metodos GET; el primero testea la webapi de articulosfamilias y verifica que la respuesta sea un array con objetos que contengan los atributos IdArticuloFamilia y Nombre. El segundo testea la webapi de articulosfamilias/:id y verifica que la respuesta sea un objeto que contenga los atributos IdArticuloFamilia y Nombre
   
 Ejercicio:
@@ -1442,6 +1458,7 @@ describe("DELETE /api/articulos/:id", () => {
 ```
 
 **Observe:**
+
   * se testean los metodos GET, POST, PUT y DELETE de la webapi de articulos
   * se prepara un objeto articuloAlta para testear el metodo POST
   * se prepata un objeto articuloModificacion para testear el metodo PUT
