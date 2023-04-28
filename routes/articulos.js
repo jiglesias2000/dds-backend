@@ -9,53 +9,35 @@ router.get("/api/articulos", async function (req, res, next) {
   // #swagger.summary = 'obtiene todos los Articulos'
   // consulta de articulos con filtros y paginacion
 
-  if (req.query.Pagina) {
-    let where = {};
-    if (req.query.Nombre != undefined && req.query.Nombre !== "") {
-      where.Nombre = {
-        [Op.like]: "%" + req.query.Nombre + "%",
-      };
-    }
-    if (req.query.Activo != undefined && req.query.Activo !== "") {
-      // true o false en el modelo, en base de datos es 1 o 0
-      // convierto el string a booleano
-      where.Activo = (req.query.Activo === 'true'); 
-    }
-    const Pagina = req.query.Pagina ?? 1;
-    const TamañoPagina = 10;
-    const { count, rows } = await db.articulos.findAndCountAll({
-      attributes: [
-        "IdArticulo",
-        "Nombre",
-        "Precio",
-        "Stock",
-        "FechaAlta",
-        "Activo",
-      ],
-      order: [["Nombre", "ASC"]],
-      where,
-      offset: (Pagina - 1) * TamañoPagina,
-      limit: TamañoPagina,
-    });
-
-    return res.json({ Items: rows, RegistrosTotal: count });
-    
-  } else {
-    let items = await db.articulos.findAll({
-      attributes: [
-        "IdArticulo",
-        "Nombre",
-        "Precio",
-        "CodigoDeBarra",
-        "IdArticuloFamilia",
-        "Stock",
-        "FechaAlta",
-        "Activo",
-      ],
-      order: [["Nombre", "ASC"]],
-    });
-    res.json(items);
+  let where = {};
+  if (req.query.Nombre != undefined && req.query.Nombre !== "") {
+    where.Nombre = {
+      [Op.like]: "%" + req.query.Nombre + "%",
+    };
   }
+  if (req.query.Activo != undefined && req.query.Activo !== "") {
+    // true o false en el modelo, en base de datos es 1 o 0
+    // convierto el string a booleano
+    where.Activo = req.query.Activo === "true";
+  }
+  const Pagina = req.query.Pagina ?? 1;
+  const TamañoPagina = 10;
+  const { count, rows } = await db.articulos.findAndCountAll({
+    attributes: [
+      "IdArticulo",
+      "Nombre",
+      "Precio",
+      "Stock",
+      "FechaAlta",
+      "Activo",
+    ],
+    order: [["Nombre", "ASC"]],
+    where,
+    offset: (Pagina - 1) * TamañoPagina,
+    limit: TamañoPagina,
+  });
+
+  return res.json({ Items: rows, RegistrosTotal: count });
 });
 
 router.get("/api/articulos/:idArt", async function (req, res, next) {
@@ -100,9 +82,11 @@ router.post("/api/articulos/", async (req, res) => {
   } catch (err) {
     if (err instanceof ValidationError) {
       // si son errores de validacion, los devolvemos
-      let messages = '';
-      err.errors.forEach((x) => messages += (x.path ?? 'campo') + ": " + x.message + '\n');
-      res.status(400).json({message : messages});
+      let messages = "";
+      err.errors.forEach(
+        (x) => (messages += (x.path ?? "campo") + ": " + x.message + "\n")
+      );
+      res.status(400).json({ message: messages });
     } else {
       // si son errores desconocidos, los dejamos que los controle el middleware de errores
       throw err;
@@ -164,9 +148,9 @@ router.put("/api/articulos/:id", async (req, res) => {
   } catch (err) {
     if (err instanceof ValidationError) {
       // si son errores de validacion, los devolvemos
-      let messages = '';
-      err.errors.forEach((x) => messages += x.path + ": " + x.message + '\n');
-      res.status(400).json({message : messages});
+      let messages = "";
+      err.errors.forEach((x) => (messages += x.path + ": " + x.message + "\n"));
+      res.status(400).json({ message: messages });
     } else {
       // si son errores desconocidos, los dejamos que los controle el middleware de errores
       throw err;

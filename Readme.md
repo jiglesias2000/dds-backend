@@ -554,7 +554,7 @@ module.exports =  CrearBaseSiNoExiste;
   require("./base-orm/sqlite-init");  // crear base si no existe
   ````
 
-  * Agregamos el archivo "sequelize-init.js" que contiene la definicion del  modelo de datos del ORM sequelize:
+  * Agregamos el archivo "sequelize-init.js" (dentro de la carpeta /base) que contiene la definicion del  modelo de datos del ORM sequelize:
 
 ````javascript
 // configurar ORM sequelize
@@ -787,53 +787,35 @@ router.get("/api/articulos", async function (req, res, next) {
   // #swagger.summary = 'obtiene todos los Articulos'
   // consulta de articulos con filtros y paginacion
 
-  if (req.query.Pagina) {
-    let where = {};
-    if (req.query.Nombre != undefined && req.query.Nombre !== "") {
-      where.Nombre = {
-        [Op.like]: "%" + req.query.Nombre + "%",
-      };
-    }
-    if (req.query.Activo != undefined && req.query.Activo !== "") {
-      // true o false en el modelo, en base de datos es 1 o 0
-      // convierto el string a booleano
-      where.Activo = (req.query.Activo === 'true'); 
-    }
-    const Pagina = req.query.Pagina ?? 1;
-    const TamañoPagina = 10;
-    const { count, rows } = await db.articulos.findAndCountAll({
-      attributes: [
-        "IdArticulo",
-        "Nombre",
-        "Precio",
-        "Stock",
-        "FechaAlta",
-        "Activo",
-      ],
-      order: [["Nombre", "ASC"]],
-      where,
-      offset: (Pagina - 1) * TamañoPagina,
-      limit: TamañoPagina,
-    });
-
-    return res.json({ Items: rows, RegistrosTotal: count });
-    
-  } else {
-    let items = await db.articulos.findAll({
-      attributes: [
-        "IdArticulo",
-        "Nombre",
-        "Precio",
-        "CodigoDeBarra",
-        "IdArticuloFamilia",
-        "Stock",
-        "FechaAlta",
-        "Activo",
-      ],
-      order: [["Nombre", "ASC"]],
-    });
-    res.json(items);
+  let where = {};
+  if (req.query.Nombre != undefined && req.query.Nombre !== "") {
+    where.Nombre = {
+      [Op.like]: "%" + req.query.Nombre + "%",
+    };
   }
+  if (req.query.Activo != undefined && req.query.Activo !== "") {
+    // true o false en el modelo, en base de datos es 1 o 0
+    // convierto el string a booleano
+    where.Activo = req.query.Activo === "true";
+  }
+  const Pagina = req.query.Pagina ?? 1;
+  const TamañoPagina = 10;
+  const { count, rows } = await db.articulos.findAndCountAll({
+    attributes: [
+      "IdArticulo",
+      "Nombre",
+      "Precio",
+      "Stock",
+      "FechaAlta",
+      "Activo",
+    ],
+    order: [["Nombre", "ASC"]],
+    where,
+    offset: (Pagina - 1) * TamañoPagina,
+    limit: TamañoPagina,
+  });
+
+  return res.json({ Items: rows, RegistrosTotal: count });
 });
 
 router.get("/api/articulos/:id", async function (req, res, next) {
@@ -1049,7 +1031,7 @@ module.exports = { authenticateJWT, accessTokenSecret, refreshTokenSecret };
 
 **Observe:**
 
-  * el uso de la libreria jsonwebtoken para validar el token que se recive en el header de la peticion
+  * el uso de la libreria jsonwebtoken para validar el token que se recibe en el header de la peticion
   * accessTokenSecret: es la clave secreta para firmar el token de acceso
   * refreshTokenSecret: es la clave secreta para firmar el token de refresco
   * si el token es valido, se guarda el usuario en el objeto res.locals.user, para que pueda ser utilizado para luego autorizar las rutas seguras
