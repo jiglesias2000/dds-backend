@@ -1078,13 +1078,13 @@ router.post("/api/login", (req, res) => {
       { expiresIn: "20m" }
     );
 
-    // Avanzaado!
-    // const refreshToken = jwt.sign(
-    //   { usuario: user.usuario, rol: user.rol },
-    //   auth.refreshTokenSecret
-    // );
+    // Avanzado!
+    const refreshToken = jwt.sign(
+      { usuario: user.usuario, rol: user.rol },
+      auth.refreshTokenSecret
+    );
 
-    // refreshTokens.push(refreshToken);
+    refreshTokens.push(refreshToken);
 
     res.json({
       accessToken,
@@ -1196,7 +1196,7 @@ router.get(
   * router.get("/api/jwt/articulos", ...): es la ruta segura que solo puede ser accedida por usuarios con rol: admin
   * auth.authenticateJWT: es el middleware que se encarga de validar el token de acceso y autorizar el acceso a las rutas seguras  
 
-
+** recuerde que para usar un middleware debe importarlo (require...)
 
 ---
 
