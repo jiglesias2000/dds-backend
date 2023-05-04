@@ -27,6 +27,8 @@ describe("GET /api/articulos", () => {
     const res = await request(app).get("/api/articulos");
     expect(res.statusCode).toEqual(200);
     expect(res.body).toEqual(
+     expect.objectContaining({
+      Items: 
       expect.arrayContaining([
         expect.objectContaining({
           IdArticulo: expect.any(Number),
@@ -36,9 +38,11 @@ describe("GET /api/articulos", () => {
           IdArticuloFamilia: expect.any(Number),
           Stock: expect.any(Number),
           FechaAlta: expect.any(String),
-          Activo: expect.any(Boolean),
-        }),
-      ])
+          Activo: expect.any(Boolean)
+        })
+      ]),
+      RegistrosTotal:  expect.any(Number) 
+     })
     );
   });
 });

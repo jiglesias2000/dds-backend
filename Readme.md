@@ -1247,16 +1247,28 @@ describe("GET 404", () => {
 });
 ```` 
 
-Antes de ejecutarlo necesitamos hacer un cambio a nuestra aplicacion, para que la misma no inicie el servidor web  al momento de ejecutar los test, para lo cual modificaremos el archivo: index.js, condicionando el inicio del servidor web, para que solo se ejecute cuando no se este ejecutando los test, para lo cual agregaremos el siguiente codigo:
+Antes de ejecutarlo necesitamos hacer un cambio a nuestra aplicacion, para que la misma no inicie el servidor web al momento de ejecutar los test, para lo cual modificaremos el archivo: index.js, condicionando el inicio del servidor web, para que solo se ejecute cuando no se este ejecutando los test y tambien exporte la aplicacion express, para haremos el siguiente cambio:
+
+Reemplazar:
 ````javascript
-if (!module.parent) {
-  const port = process.env.PORT || 3000; 
+  const port = process.env.PORT || 3000;   // en produccion se usa el puerto de la variable de entorno PORT
+  app.locals.fechaInicio = new Date();
+  app.listen(port, () => {
+    console.log(`sitio escuchando en el puerto ${port}`);
+  });
+````
+por:
+````javascript
+if (!module.parent) {   // si no es llamado por otro modulo, es decir, si es el modulo principal -> levantamos el servidor
+  const port = process.env.PORT || 3000;   // en produccion se usa el puerto de la variable de entorno PORT
   app.locals.fechaInicio = new Date();
   app.listen(port, () => {
     console.log(`sitio escuchando en el puerto ${port}`);
   });
 }
+module.exports = app; // para testing
 ````
+
 **Observe:**
 
   * module.parent: es una variable que se define cuando se ejecuta un modulo desde otro modulo, en este caso cuando se ejecuta el test desde el archivo: test/pruebainicial.test.js, esta variable se define, por lo tanto el servidor web no se inicia, pero si se ejecuta el test desde el navegador, esta variable no se define, por lo tanto el servidor web se inicia
@@ -1275,6 +1287,7 @@ Ejercicio:
   * En el caso de la funcionalidad Hola mundo!, si la misma no esta implementada en la aplicacion, le proponemos implementarla y volver a verificarla.
   * En el caso de la funcionalidad _isalive, si la misma no esta implementada en la aplicacion, le proponemos implementarla y volver a verificarla.
 
+
 Seguidamente crearemos un test para validar la webapi de articulosfamilias, para lo cual crearemos el archivo: test/articulos.test.js, con el siguiente contenido:
 ````javascript
 const request = require("supertest");
@@ -1284,7 +1297,7 @@ describe("GET /api/articulosfamilias", function () {
   it("Devolveria todos los artciulosfamilias", async function () {
     const res = await request(app)
       .get("/api/articulosfamilias")
-      .set("Accept", "application/json");
+      .set("content-type", "application/json");
     expect(res.headers["content-type"]).toEqual(
       "application/json; charset=utf-8"
     );
@@ -1308,7 +1321,7 @@ describe("GET /api/articulosfamilias/:id", function () {
     expect(res.statusCode).toEqual(200);
     expect(res.body).toEqual(
       expect.objectContaining({
-        IdArticuloFamilia: expect.any(Number),
+        IdArticuloFamilia: 1,
         Nombre: expect.any(String),
       })
     );
@@ -1319,7 +1332,7 @@ describe("GET /api/articulosfamilias/:id", function () {
 
 **Observe:**
 
-  * solo se testean los metodos GET; el primero testea la webapi de articulosfamilias y verifica que la respuesta sea un array con objetos que contengan los atributos IdArticuloFamilia y Nombre. El segundo testea la webapi de articulosfamilias/:id y verifica que la respuesta sea un objeto que contenga los atributos IdArticuloFamilia y Nombre
+  * solo se testean los metodos GET; el primero testea la webapi de articulosfamilias y verifica que la respuesta sea un array con objetos que contengan los atributos IdArticuloFamilia y Nombre. El segundo testea la webapi de articulosfamilias/:id y verifica que la respuesta sea un objeto que contenga los atributos IdArticuloFamilia = 1 y Nombre sea un texto.
   
 Ejercicio:
   * Implemente los test para metodos faltantes de la webapi de articulosfamilias.
@@ -1356,6 +1369,8 @@ describe("GET /api/articulos", () => {
     const res = await request(app).get("/api/articulos");
     expect(res.statusCode).toEqual(200);
     expect(res.body).toEqual(
+     expect.objectContaining({
+      Items: 
       expect.arrayContaining([
         expect.objectContaining({
           IdArticulo: expect.any(Number),
@@ -1365,9 +1380,11 @@ describe("GET /api/articulos", () => {
           IdArticuloFamilia: expect.any(Number),
           Stock: expect.any(Number),
           FechaAlta: expect.any(String),
-          Activo: expect.any(Boolean),
-        }),
-      ])
+          Activo: expect.any(Boolean)
+        })
+      ]),
+      RegistrosTotal:  expect.any(Number) 
+     })
     );
   });
 });
@@ -1543,7 +1560,7 @@ describe("GET /api/jwt/articulos", () => {
 Finalmente, para poder ejecutar todos los tests, como un scripts en el archivo package.json, agregaremos la siguiente propiedad al objeto script:
 
 ```json
-  "test": "cross-env NODE_ENV=test WEBSITE_SITE_NAME=dds-api jest --testTimeout=10000"
+  "test": "jest --testTimeout=10000"
 ```
 con lo cual podremos ejecutar los test con el comando:
 ````bash
