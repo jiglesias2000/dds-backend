@@ -1247,7 +1247,7 @@ describe("GET 404", () => {
 });
 ```` 
 
-Antes de ejecutarlo necesitamos hacer un cambio a nuestra aplicacion, para que la misma no inicie el servidor web al momento de ejecutar los test, para lo cual modificaremos el archivo: index.js, condicionando el inicio del servidor web, para que solo se ejecute cuando no se este ejecutando los test y tambien exporte la aplicacion express, para haremos el siguiente cambio:
+Antes de ejecutarlo necesitamos hacer un cambio a nuestra aplicacion, para que la misma no inicie el servidor web al momento de ejecutar los test, para lo cual modificaremos el archivo: index.js, condicionando el inicio del servidor web, para que solo se ejecute cuando no se este ejecutando los test y tambien exporte la aplicacion express, para lo cual haremos el siguiente cambio:
 
 Reemplazar:
 ````javascript
@@ -1555,6 +1555,11 @@ describe("GET /api/jwt/articulos", () => {
 
 });
 ````
+
+**Observe:**
+
+  * se testean metodos con resultados exitosos
+  * se testean los metodos con resultados erroneos
 
 
 Finalmente, para poder ejecutar todos los tests, como un scripts en el archivo package.json, agregaremos la siguiente propiedad al objeto script:
