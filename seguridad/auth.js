@@ -4,18 +4,18 @@ const accessTokenSecret = "youraccesstokensecret";
 const refreshTokenSecret = "yourrefreshtokensecrethere";
 
 const authenticateJWT = (req, res, next) => {
-  const authHeader = req.headers.authorization;
+  const authHeader = req.headers.authorization;  // Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVC
 
   if (authHeader) {
     const token = authHeader.split(" ")[1];
 
-    jwt.verify(token, accessTokenSecret, (err, user) => {
+    jwt.verify(token, accessTokenSecret, (err, contenidoDelTokenDesencriptado) => {
       if (err) {
         //return res.sendStatus(400);
         return res.status(403).json({ message: "token no es valido" });
       }
       
-      res.locals.user = user;
+      res.locals.user = contenidoDelTokenDesencriptado;
       next();
     });
   } else {

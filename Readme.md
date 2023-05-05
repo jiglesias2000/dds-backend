@@ -1288,7 +1288,7 @@ Ejercicio:
   * En el caso de la funcionalidad _isalive, si la misma no esta implementada en la aplicacion, le proponemos implementarla y volver a verificarla.
 
 
-Seguidamente crearemos un test para validar la webapi de articulosfamilias, para lo cual crearemos el archivo: test/articulos.test.js, con el siguiente contenido:
+Seguidamente crearemos un test para validar la webapi de articulosfamilias, para lo cual crearemos el archivo: test/articulosfamilias.test.js, con el siguiente contenido:
 ````javascript
 const request = require("supertest");
 const app = require("../index");
