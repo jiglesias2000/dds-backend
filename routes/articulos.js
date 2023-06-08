@@ -144,7 +144,7 @@ router.put("/api/articulos/:id", async (req, res) => {
     //   },
     //   { where: { IdArticulo: req.params.id } }
     // );
-    res.sendStatus(200);
+    res.sendStatus(204);
   } catch (err) {
     if (err instanceof ValidationError) {
       // si son errores de validacion, los devolvemos

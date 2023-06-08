@@ -147,8 +147,60 @@ const articulos = sequelize.define(
   }
 );
 
+// Definición del modelo Ventas
+const Ventas = sequelize.define('Ventas', {
+  IdVenta: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
+  IdCliente: {
+    type: DataTypes.INTEGER
+  },
+  Fecha: {
+    type: DataTypes.TEXT
+  },
+  Total: {
+    type: DataTypes.REAL
+  }
+}, {
+  tableName: 'Ventas',
+  timestamps: false
+});
+
+// Definición del modelo VentasDetalles
+const VentasDetalles = sequelize.define('VentasDetalles', {
+  IdDetalle: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
+  IdVenta: {
+    type: DataTypes.INTEGER
+  },
+  IdArticulo: {
+    type: DataTypes.INTEGER
+  },
+  Cantidad: {
+    type: DataTypes.INTEGER
+  },
+  Precio: {
+    type: DataTypes.REAL
+  }
+}, {
+  tableName: 'VentasDetalles',
+  timestamps: false,
+  freezeTableName: true
+});
+
+// Establecer la relación entre los modelos Ventas y VentasDetalles
+Ventas.hasMany(VentasDetalles, { foreignKey: 'IdVenta' });
+VentasDetalles.belongsTo(Ventas, { foreignKey: 'IdVenta' });
+
 module.exports = {
   sequelize,
   articulosfamilias,
   articulos,
+  Ventas,
+  VentasDetalles
 };

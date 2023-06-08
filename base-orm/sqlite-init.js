@@ -5,10 +5,10 @@ async function CrearBaseSiNoExiste() {
   // abrir base, si no existe el archivo/base lo crea
   await db.open("./.data/pymes.db");
   //await db.open(process.env.base);
-  
+
   // journal_mode para que no se bloquee la base en escritura en azure
   // d:/portables/sqlite/sqlite3  pymes.db "PRAGMA journal_mode=wal;"
-  
+
   let existe = false;
   let res = null;
 
@@ -260,10 +260,32 @@ async function CrearBaseSiNoExiste() {
     );
   }
 
+  // Crear la tabla Ventas
+  db.run(`
+CREATE TABLE  IF NOT EXISTS Ventas (
+  IdVenta INTEGER PRIMARY KEY AUTOINCREMENT,
+  IdCliente INTEGER,
+  Fecha TEXT,
+  Total REAL
+)
+`);
+
+  // Crear la tabla VentasDetalles
+  db.run(`
+CREATE TABLE  IF NOT EXISTS VentasDetalles (
+  IdDetalle INTEGER PRIMARY KEY AUTOINCREMENT,
+  IdVenta INTEGER,
+  IdArticulo INTEGER,
+  Cantidad INTEGER,
+  Precio REAL,
+  FOREIGN KEY (IdVenta) REFERENCES Ventas (IdVenta)
+)
+`);
+
   // cerrar la base
   db.close();
 }
 
 CrearBaseSiNoExiste();
 
-module.exports =  CrearBaseSiNoExiste;
+module.exports = CrearBaseSiNoExiste;

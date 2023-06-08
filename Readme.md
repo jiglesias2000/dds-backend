@@ -920,7 +920,7 @@ router.put("/api/articulos/:id", async (req, res) => {
     //   },
     //   { where: { IdArticulo: req.params.id } }
     // );
-    res.sendStatus(200);
+    res.sendStatus(204);
   } catch (err) {
     if (err instanceof ValidationError) {
       // si son errores de validacion, los devolvemos
@@ -1343,7 +1343,7 @@ Ahora continuaremos con la implementacion de test para la webapi de articulos, p
 const request = require("supertest");
 const app = require("../index");
 const articuloAlta = {
-  Nombre: "Articulo " + (( ) => (Math.random() + 1).toString(36).substring(2))(),  // Genera un nombre aleatorio
+  Nombre: "Articulo " + (() => (Math.random() + 1).toString(36).substring(2))(), // Genera un nombre aleatorio
   Precio: 10.5,
   CodigoDeBarra: "1234567890123",
   IdArticuloFamilia: 1,
@@ -1353,7 +1353,7 @@ const articuloAlta = {
 };
 const articuloModificacion = {
   IdArticulo: 1,
-  Nombre: "Articulo " + (( ) => (Math.random() + 1).toString(36).substring(2))(),  // Genera un nombre aleatorio
+  Nombre: "Articulo " + (() => (Math.random() + 1).toString(36).substring(2))(), // Genera un nombre aleatorio
   Precio: 10.5,
   CodigoDeBarra: "1234567890123",
   IdArticuloFamilia: 1,
@@ -1362,30 +1362,47 @@ const articuloModificacion = {
   Activo: true,
 };
 
-
 // test route/articulos GET
 describe("GET /api/articulos", () => {
   it("Deberia devolver todos los articulos", async () => {
     const res = await request(app).get("/api/articulos");
     expect(res.statusCode).toEqual(200);
+
     expect(res.body).toEqual(
-     expect.objectContaining({
-      Items: 
-      expect.arrayContaining([
-        expect.objectContaining({
-          IdArticulo: expect.any(Number),
-          Nombre: expect.any(String),
-          Precio: expect.any(Number),
-          CodigoDeBarra: expect.any(String),
-          IdArticuloFamilia: expect.any(Number),
-          Stock: expect.any(Number),
-          FechaAlta: expect.any(String),
-          Activo: expect.any(Boolean)
-        })
-      ]),
-      RegistrosTotal:  expect.any(Number) 
-     })
+      expect.objectContaining({
+        Items: expect.arrayContaining([
+          expect.objectContaining({
+            IdArticulo: expect.any(Number),
+            Nombre: expect.any(String),
+            Precio: expect.any(Number),
+            Stock: expect.any(Number),
+            FechaAlta: expect.any(String),
+            Activo: expect.any(Boolean)
+          }),
+        ]),
+        RegistrosTotal: expect.any(Number),
+      })
     );
+  });
+});
+
+// test route/articulos GET
+describe("GET /api/articulos con filtros", () => {
+  it("Deberia devolver los articulos segun filtro ", async () => {
+    const res = await request(app).get("/api/articulos?Nombre=AIRE&Activo=true&Pagina=1");
+    expect(res.statusCode).toEqual(200);
+
+    expect(verificarPropiedades(res.body.Items) ).toEqual(true );
+  
+    function verificarPropiedades(array) {
+      for (let i = 0; i < array.length; i++) {
+        if ( !array[i].Nombre.includes("AIRE") || !array[i].Activo ) {
+          return false;
+        }
+      }
+      return true;
+    }
+    
   });
 });
 
@@ -1432,8 +1449,10 @@ describe("POST /api/articulos", () => {
 // test route/articulos/:id PUT
 describe("PUT /api/articulos/:id", () => {
   it("Deberia devolver el articulo con el id 1 modificado", async () => {
-    const res = await request(app).put("/api/articulos/1").send(articuloModificacion);
-    expect(res.statusCode).toEqual(200);
+    const res = await request(app)
+      .put("/api/articulos/1")
+      .send(articuloModificacion);
+    expect(res.statusCode).toEqual(204);
   });
 });
 
@@ -1442,7 +1461,7 @@ describe("DELETE /api/articulos/:id", () => {
   it("Deberia devolver el articulo con el id 1 borrado", async () => {
     const res = await request(app).delete("/api/articulos/1");
     expect(res.statusCode).toEqual(200);
-    
+
     // baja logica, no se borra realmente
     // expect(res.body).toEqual(
     //   expect.objectContaining({
@@ -1451,9 +1470,9 @@ describe("DELETE /api/articulos/:id", () => {
     //     Precio: expect.any(Number),
     //   })
     // );
-
   });
 });
+
 ```
 
 **Observe:**
