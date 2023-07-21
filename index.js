@@ -3,18 +3,16 @@ const express = require("express");
 const path = require("path");
 
 // leer archivo de configuracion
-require('dotenv').config();
+require("dotenv").config();
 console.log("WEBSITE_SITE_NAME", process.env.WEBSITE_SITE_NAME);
 
 // configurar si corre en azure
-if (process.env.WEBSITE_SITE_NAME) { 
-  // ejecutando en azure, usamos un carpeta de escritura/lectura persistente 
+if (process.env.WEBSITE_SITE_NAME) {
+  // ejecutando en azure, usamos un carpeta de escritura/lectura persistente
   //process.env.base = "/archivos/pymes.db";
   process.env.base = process.env.base_azure;
   process.env.logErrores = process.env.logErrores_azure;
 }
-
-
 
 console.log("base", process.env.base);
 console.log("NODE_ENV", process.env.NODE_ENV);
@@ -25,14 +23,16 @@ require("./base-orm/sqlite-init"); // crear base si no existe
 const app = express();
 
 // seguridad XSS
-const helmet = require('helmet');
+const helmet = require("helmet");
 app.use(helmet());
 
 // configurar servidor
 const cors = require("cors");
-app.use(cors({
-  origin: '*'    // origin: 'https://dds-frontend.azurewebsites.net'
-}));
+app.use(
+  cors({
+    origin: "*", // origin: 'https://dds-frontend.azurewebsites.net'
+  })
+);
 
 // var allowCrossDomain = function(req, res, next) {
 //   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -71,22 +71,83 @@ app.get("/", (req, res) => {
 
 const articulosfamiliasRouter = require("./routes/articulosfamilias");
 const articulosfamiliasmockRouter = require("./routes/articulosfamiliasmock");
-const articulosRouter = require("./routes/articulos");
+
 const ecoRouter = require("./routes/eco");
 const seguridadRouter = require("./routes/seguridad");
 const jsonexternoRouter = require("./routes/jsonexterno");
-const equiposRouter = require("./routes/equipos");
+//const equiposRouter = require("./routes/equipos");
 const erroresRouter = require("./routes/errores");
 const ventasRouter = require("./routes/ventas");
 app.use(articulosfamiliasRouter);
 app.use(articulosfamiliasmockRouter);
-app.use(articulosRouter);
 app.use(ecoRouter);
 app.use(seguridadRouter);
 app.use(jsonexternoRouter);
-app.use(equiposRouter);
+//app.use(equiposRouter);
 app.use(erroresRouter);
-app.use(ventasRouter)
+app.use(ventasRouter);
+
+//const articulosRouter = require("./routes/articulos");
+
+const createRoutesForModel = require("./routes/createRoutesForModel");
+const modelosDinamicos = [
+  {
+    modelName: "articulos",
+    fieldPK: "IdArticulo",
+    fieldActivo: "Activo",
+    arrayOrder: [["Nombre", "ASC"]],
+    filterFields: { Nombre: "text", Activo: "boolean" },
+  },
+  {
+    modelName: "Jugadores",
+    fieldPK: "IdJugador",
+    fieldActivo: "Activo",
+    arrayOrder: [["Nombre", "ASC"], ["Apellido", "ASC"]],
+    filterFields: { Nombre: "text", Apellido: "text", Activo: "boolean" },
+  },
+  {
+    modelName: "Ligas",
+    fieldPK: "IdLiga",
+    arrayOrder: [["Nombre", "ASC"]],
+    fieldActivo: "",
+    filterFields: { Nombre: "text", FechaInicio: "date" },
+  },
+  {
+    modelName: "Equipos",
+    fieldPK: "IdEquipo",
+    fieldActivo: "Activo",
+    arrayOrder: [["Nombre", "ASC"]],
+    filterFields: { Nombre: "text", FechaAlta: "date", Activo:"boolean" },
+  },
+  {
+    modelName: "Copas",
+    fieldPK: "IdCopa",
+    fieldActivo: "",
+    arrayOrder: [["Nombre", "ASC"]],
+    filterFields: { Nombre: "text", FechaInicio: "date"},
+  },
+  {
+    modelName: "Estadios",
+    fieldPK: "IdEstadio",
+    fieldActivo: "",
+    arrayOrder: [["Nombre", "ASC"]],
+    filterFields: { Nombre: "text", FechaInauguracion: "date"},
+  }
+]
+
+
+//recorrer modelosdinamicos y crear rutas
+modelosDinamicos.forEach((modelo) => {
+  const router = createRoutesForModel(modelo);
+  app.use(router);
+});
+
+
+
+
+
+
+
 
 //------------------------------------
 //-- Control de errores --------------
@@ -99,8 +160,9 @@ app.use(_404Handler);
 //-- INICIO ---------------------------
 //------------------------------------
 
-if (!module.parent) {   // si no es llamado por otro modulo, es decir, si es el modulo principal -> levantamos el servidor
-  const port = process.env.PORT || 3000;   // en produccion se usa el puerto de la variable de entorno PORT
+if (!module.parent) {
+  // si no es llamado por otro modulo, es decir, si es el modulo principal -> levantamos el servidor
+  const port = process.env.PORT || 3000; // en produccion se usa el puerto de la variable de entorno PORT
   app.locals.fechaInicio = new Date();
   app.listen(port, () => {
     console.log(`sitio escuchando en el puerto ${port}`);

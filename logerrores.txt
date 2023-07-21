@@ -5243,3 +5243,1133 @@ ReferenceError: sequelize is not defined
     at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
     at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
 
+10/7/2023, 18:30:44
+TypeError: Cannot read properties of undefined (reading 'findAndCountAll')
+    at findAndCountAll (D:\DDS\dds-backend-final\routes\createRoutesForModel.js:20:41)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\DDS\dds-backend-final\node_modules\express\lib\router\route.js:114:3)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at SendStream.error (D:\DDS\dds-backend-final\node_modules\serve-static\index.js:121:7)
+    at SendStream.emit (node:events:513:28)
+
+10/7/2023, 18:30:44
+ReferenceError: Op is not defined
+    at Op (D:\DDS\dds-backend-final\routes\createRoutesForModel.js:14:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\DDS\dds-backend-final\node_modules\express\lib\router\route.js:114:3)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at SendStream.error (D:\DDS\dds-backend-final\node_modules\serve-static\index.js:121:7)
+    at SendStream.emit (node:events:513:28)
+
+10/7/2023, 18:30:44
+TypeError: Cannot read properties of undefined (reading 'findByPk')
+    at findByPk (D:\DDS\dds-backend-final\routes\createRoutesForModel.js:30:28)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\DDS\dds-backend-final\node_modules\express\lib\router\route.js:114:3)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:284:15
+    at param (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:365:14)
+    at param (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:376:14)
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:421:3)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+
+10/7/2023, 18:30:45
+TypeError: Cannot read properties of undefined (reading 'create')
+    at create (D:\DDS\dds-backend-final\routes\createRoutesForModel.js:40:30)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\DDS\dds-backend-final\node_modules\express\lib\router\route.js:114:3)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at serveStatic (D:\DDS\dds-backend-final\node_modules\serve-static\index.js:75:16)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+
+10/7/2023, 18:30:45
+TypeError: Cannot read properties of undefined (reading 'findByPk')
+    at findByPk (D:\DDS\dds-backend-final\routes\createRoutesForModel.js:59:30)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\DDS\dds-backend-final\node_modules\express\lib\router\route.js:114:3)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:284:15
+    at param (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:365:14)
+    at param (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:376:14)
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:421:3)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+
+10/7/2023, 18:30:45
+ReferenceError: bajaFisica is not defined
+    at D:\DDS\dds-backend-final\routes\createRoutesForModel.js:82:5
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\DDS\dds-backend-final\node_modules\express\lib\router\route.js:114:3)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:284:15
+    at param (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:365:14)
+    at param (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:376:14)
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:421:3)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+
+10/7/2023, 18:33:16
+ReferenceError: Op is not defined
+    at Op (D:\DDS\dds-backend-final\routes\createRoutesForModel.js:14:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\DDS\dds-backend-final\node_modules\express\lib\router\route.js:114:3)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at SendStream.error (D:\DDS\dds-backend-final\node_modules\serve-static\index.js:121:7)
+    at SendStream.emit (node:events:513:28)
+
+10/7/2023, 18:33:16
+ReferenceError: pkKey is not defined
+    at pkKey (D:\DDS\dds-backend-final\routes\createRoutesForModel.js:64:48)
+
+10/7/2023, 18:33:16
+ReferenceError: bajaFisica is not defined
+    at D:\DDS\dds-backend-final\routes\createRoutesForModel.js:82:5
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\DDS\dds-backend-final\node_modules\express\lib\router\route.js:114:3)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:284:15
+    at param (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:365:14)
+    at param (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:376:14)
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:421:3)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+
+10/7/2023, 18:46:05
+ReferenceError: pkKey is not defined
+    at pkKey (D:\DDS\dds-backend-final\routes\createRoutesForModel.js:66:48)
+
+10/7/2023, 18:46:05
+ReferenceError: bajaFisica is not defined
+    at D:\DDS\dds-backend-final\routes\createRoutesForModel.js:84:5
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\DDS\dds-backend-final\node_modules\express\lib\router\route.js:114:3)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:284:15
+    at param (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:365:14)
+    at param (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:376:14)
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:421:3)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:646:15
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:265:14)
+    at Function.handle (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:47:12)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:328:13)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+
+10/7/2023, 18:47:02
+ReferenceError: pkKey is not defined
+    at pkKey (D:\DDS\dds-backend-final\routes\createRoutesForModel.js:66:48)
+
+10/7/2023, 18:47:02
+ReferenceError: pkKey is not defined
+    at pkKey (D:\DDS\dds-backend-final\routes\createRoutesForModel.js:99:91)
+
+10/7/2023, 18:47:57
+Error: 
+    at Database.<anonymous> (D:\DDS\dds-backend-final\node_modules\sequelize\src\dialects\sqlite\query.js:236:27)
+    at D:\DDS\dds-backend-final\node_modules\sequelize\src\dialects\sqlite\query.js:234:50
+    at new Promise (<anonymous>)
+    at Query.run (D:\DDS\dds-backend-final\node_modules\sequelize\src\dialects\sqlite\query.js:234:12)
+    at D:\DDS\dds-backend-final\node_modules\sequelize\src\sequelize.js:650:28
+    at SQLiteQueryInterface.bulkUpdate (D:\DDS\dds-backend-final\node_modules\sequelize\src\dialects\abstract\query-interface.js:930:12)
+    at Function.update (D:\DDS\dds-backend-final\node_modules\sequelize\src\model.js:3280:28)
+    at D:\DDS\dds-backend-final\routes\createRoutesForModel.js:66:7
+
+10/7/2023, 18:47:57
+Error: 
+    at Database.<anonymous> (D:\DDS\dds-backend-final\node_modules\sequelize\src\dialects\sqlite\query.js:236:27)
+    at D:\DDS\dds-backend-final\node_modules\sequelize\src\dialects\sqlite\query.js:234:50
+    at new Promise (<anonymous>)
+    at Query.run (D:\DDS\dds-backend-final\node_modules\sequelize\src\dialects\sqlite\query.js:234:12)
+    at D:\DDS\dds-backend-final\node_modules\sequelize\src\sequelize.js:650:28
+    at SQLiteQueryInterface.bulkUpdate (D:\DDS\dds-backend-final\node_modules\sequelize\src\dialects\abstract\query-interface.js:930:12)
+    at Function.update (D:\DDS\dds-backend-final\node_modules\sequelize\src\model.js:3280:28)
+    at D:\DDS\dds-backend-final\routes\createRoutesForModel.js:99:9
+
+10/7/2023, 19:11:56
+Error
+    at Database.<anonymous> (D:\DDS\dds-backend-final\node_modules\sequelize\lib\dialects\sqlite\query.js:185:27)
+    at D:\DDS\dds-backend-final\node_modules\sequelize\lib\dialects\sqlite\query.js:183:50
+    at new Promise (<anonymous>)
+    at Query.run (D:\DDS\dds-backend-final\node_modules\sequelize\lib\dialects\sqlite\query.js:183:12)
+    at D:\DDS\dds-backend-final\node_modules\sequelize\lib\sequelize.js:315:28
+    at async SQLiteQueryInterface.bulkUpdate (D:\DDS\dds-backend-final\node_modules\sequelize\lib\dialects\abstract\query-interface.js:366:12)
+    at async articulos.update (D:\DDS\dds-backend-final\node_modules\sequelize\lib\model.js:1958:28)
+    at async D:\DDS\dds-backend-final\routes\createRoutesForModel.js:66:7
+
+10/7/2023, 19:12:26
+Error
+    at Database.<anonymous> (D:\DDS\dds-backend-final\node_modules\sequelize\lib\dialects\sqlite\query.js:185:27)
+    at D:\DDS\dds-backend-final\node_modules\sequelize\lib\dialects\sqlite\query.js:183:50
+    at new Promise (<anonymous>)
+    at Query.run (D:\DDS\dds-backend-final\node_modules\sequelize\lib\dialects\sqlite\query.js:183:12)
+    at D:\DDS\dds-backend-final\node_modules\sequelize\lib\sequelize.js:315:28
+    at async SQLiteQueryInterface.bulkUpdate (D:\DDS\dds-backend-final\node_modules\sequelize\lib\dialects\abstract\query-interface.js:366:12)
+    at async articulos.update (D:\DDS\dds-backend-final\node_modules\sequelize\lib\model.js:1958:28)
+    at async D:\DDS\dds-backend-final\routes\createRoutesForModel.js:66:7
+
+12/7/2023, 15:22:59
+TypeError: Cannot read properties of undefined (reading 'findAndCountAll')
+    at D:\DDS\dds-backend-final\routes\createRoutesForModel.js:34:41
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\DDS\dds-backend-final\node_modules\express\lib\router\route.js:114:3)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+
+12/7/2023, 15:23:06
+TypeError: Cannot read properties of undefined (reading 'findAndCountAll')
+    at D:\DDS\dds-backend-final\routes\createRoutesForModel.js:34:41
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\DDS\dds-backend-final\node_modules\express\lib\router\route.js:114:3)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+
+12/7/2023, 15:26:21
+TypeError: Cannot read properties of undefined (reading 'findAndCountAll')
+    at D:\DDS\dds-backend-final\routes\createRoutesForModel.js:34:41
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\DDS\dds-backend-final\node_modules\express\lib\router\route.js:114:3)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:280:10)
+
+13/7/2023, 17:32:36
+ReferenceError: item is not defined
+    at D:\DDS\dds-backend-final\routes\createRoutesForModel.js:116:29
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\DDS\dds-backend-final\node_modules\express\lib\router\route.js:114:3)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:284:15
+    at param (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:365:14)
+    at param (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:376:14)
+
+13/7/2023, 17:32:41
+ReferenceError: item is not defined
+    at D:\DDS\dds-backend-final\routes\createRoutesForModel.js:116:29
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\DDS\dds-backend-final\node_modules\express\lib\router\route.js:114:3)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:284:15
+    at param (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:365:14)
+    at param (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:376:14)
+
+13/7/2023, 17:33:04
+ReferenceError: item is not defined
+    at D:\DDS\dds-backend-final\routes\createRoutesForModel.js:116:29
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\DDS\dds-backend-final\node_modules\express\lib\router\route.js:114:3)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:284:15
+    at param (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:365:14)
+    at param (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:376:14)
+
+13/7/2023, 17:35:53
+ReferenceError: item is not defined
+    at D:\DDS\dds-backend-final\routes\createRoutesForModel.js:116:29
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\DDS\dds-backend-final\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\DDS\dds-backend-final\node_modules\express\lib\router\route.js:114:3)
+    at newFn (D:\DDS\dds-backend-final\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (D:\DDS\dds-backend-final\node_modules\express\lib\router\layer.js:95:5)
+    at D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:284:15
+    at param (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:365:14)
+    at param (D:\DDS\dds-backend-final\node_modules\express\lib\router\index.js:376:14)
+
+13/7/2023, 18:59:35
+Error
+    at Database.<anonymous> (D:\DDS\dds-backend-final\node_modules\sequelize\lib\dialects\sqlite\query.js:185:27)
+    at D:\DDS\dds-backend-final\node_modules\sequelize\lib\dialects\sqlite\query.js:183:50
+    at new Promise (<anonymous>)
+    at Query.run (D:\DDS\dds-backend-final\node_modules\sequelize\lib\dialects\sqlite\query.js:183:12)
+    at D:\DDS\dds-backend-final\node_modules\sequelize\lib\sequelize.js:315:28
+    at async SQLiteQueryInterface.select (D:\DDS\dds-backend-final\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async Copas.findAll (D:\DDS\dds-backend-final\node_modules\sequelize\lib\model.js:1134:21)
+    at async Promise.all (index 1)
+    at async Copas.findAndCountAll (D:\DDS\dds-backend-final\node_modules\sequelize\lib\model.js:1304:27)
+    at async D:\DDS\dds-backend-final\routes\createRoutesForModel.js:38:29
+
+13/7/2023, 18:59:38
+Error
+    at Database.<anonymous> (D:\DDS\dds-backend-final\node_modules\sequelize\lib\dialects\sqlite\query.js:185:27)
+    at D:\DDS\dds-backend-final\node_modules\sequelize\lib\dialects\sqlite\query.js:183:50
+    at new Promise (<anonymous>)
+    at Query.run (D:\DDS\dds-backend-final\node_modules\sequelize\lib\dialects\sqlite\query.js:183:12)
+    at D:\DDS\dds-backend-final\node_modules\sequelize\lib\sequelize.js:315:28
+    at async SQLiteQueryInterface.select (D:\DDS\dds-backend-final\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async Copas.findAll (D:\DDS\dds-backend-final\node_modules\sequelize\lib\model.js:1134:21)
+    at async Promise.all (index 1)
+    at async Copas.findAndCountAll (D:\DDS\dds-backend-final\node_modules\sequelize\lib\model.js:1304:27)
+    at async D:\DDS\dds-backend-final\routes\createRoutesForModel.js:38:29
+
+13/7/2023, 19:00:10
+Error
+    at Database.<anonymous> (D:\DDS\dds-backend-final\node_modules\sequelize\lib\dialects\sqlite\query.js:185:27)
+    at D:\DDS\dds-backend-final\node_modules\sequelize\lib\dialects\sqlite\query.js:183:50
+    at new Promise (<anonymous>)
+    at Query.run (D:\DDS\dds-backend-final\node_modules\sequelize\lib\dialects\sqlite\query.js:183:12)
+    at D:\DDS\dds-backend-final\node_modules\sequelize\lib\sequelize.js:315:28
+    at async SQLiteQueryInterface.select (D:\DDS\dds-backend-final\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async Copas.findAll (D:\DDS\dds-backend-final\node_modules\sequelize\lib\model.js:1134:21)
+    at async Promise.all (index 1)
+    at async Copas.findAndCountAll (D:\DDS\dds-backend-final\node_modules\sequelize\lib\model.js:1304:27)
+    at async D:\DDS\dds-backend-final\routes\createRoutesForModel.js:38:29
+
+13/7/2023, 19:10:02
+Error
+    at Database.<anonymous> (D:\DDS\dds-backend-final\node_modules\sequelize\lib\dialects\sqlite\query.js:185:27)
+    at D:\DDS\dds-backend-final\node_modules\sequelize\lib\dialects\sqlite\query.js:183:50
+    at new Promise (<anonymous>)
+    at Query.run (D:\DDS\dds-backend-final\node_modules\sequelize\lib\dialects\sqlite\query.js:183:12)
+    at D:\DDS\dds-backend-final\node_modules\sequelize\lib\sequelize.js:315:28
+    at async SQLiteQueryInterface.select (D:\DDS\dds-backend-final\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async Equipos.findAll (D:\DDS\dds-backend-final\node_modules\sequelize\lib\model.js:1134:21)
+    at async Promise.all (index 1)
+    at async Equipos.findAndCountAll (D:\DDS\dds-backend-final\node_modules\sequelize\lib\model.js:1304:27)
+    at async D:\DDS\dds-backend-final\routes\createRoutesForModel.js:38:29
+

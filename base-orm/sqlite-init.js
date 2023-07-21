@@ -272,15 +272,97 @@ CREATE TABLE  IF NOT EXISTS Ventas (
 
   // Crear la tabla VentasDetalles
   db.run(`
-CREATE TABLE  IF NOT EXISTS VentasDetalles (
-  IdDetalle INTEGER PRIMARY KEY AUTOINCREMENT,
-  IdVenta INTEGER,
-  IdArticulo INTEGER,
-  Cantidad INTEGER,
-  Precio REAL,
-  FOREIGN KEY (IdVenta) REFERENCES Ventas (IdVenta)
-)
-`);
+  CREATE TABLE  IF NOT EXISTS VentasDetalles (
+    IdDetalle INTEGER PRIMARY KEY AUTOINCREMENT,
+    IdVenta INTEGER,
+    IdArticulo INTEGER,
+    Cantidad INTEGER,
+    Precio REAL,
+    FOREIGN KEY (IdVenta) REFERENCES Ventas (IdVenta)
+  )
+  `);
+
+
+  //-- genericos
+  existe = false;
+  res = await db.get(
+    "SELECT count(*) as contar FROM sqlite_schema WHERE type = 'table' and name= 'Jugadores'",
+    []
+  );
+  if (res.contar > 0) existe = true;
+  if (!existe) {
+    await db.run(
+      "CREATE TABLE IF NOT EXISTS Jugadores (IdJugador INTEGER PRIMARY KEY AUTOINCREMENT, Nombre TEXT NOT NULL, Apellido TEXT NOT NULL, FechaNacimiento DATE NOT NULL, Activo BOOLEAN NOT NULL);"
+    );
+    await db.run(
+      "INSERT OR IGNORE INTO Jugadores (Nombre, Apellido, FechaNacimiento, Activo) VALUES ('Leo', 'Messi', '1990-01-19', 1), ('Lautaro', 'Martinez', '1990-01-25', 1), ('Julian', 'Alvarez', '1995-04-30', 1), ('Miguel', 'Borja', '1996-06-20', 1), ('Leo', 'Paredes', '1989-09-25', 1), ('Santiago', 'Simon', '1987-09-20', 1), ('Nicolas', 'tagliafico', '1988-12-1', 1), ('Alexis', 'McAllister', '1990-08-13', 1), ('Enzo', 'Fernandez', '1997-12-01', 1), ('Paulo', 'Dybala', '1996-10-01', 1);"
+    );
+    console.log("tabla Jugadores creada!");
+  }
+
+  existe = false;
+  res = await db.get(
+    "SELECT count(*) as contar FROM sqlite_schema WHERE type = 'table' and name= 'Ligas'",
+    []
+  );
+  if (res.contar > 0) existe = true;
+  if (!existe) {
+    await db.run(
+      "CREATE TABLE IF NOT EXISTS Ligas (IdLiga INTEGER PRIMARY KEY AUTOINCREMENT, Nombre VARCHAR (100) NOT NULL, FechaInicio DATE NOT NULL);"
+    );
+    await db.run(
+      "INSERT OR IGNORE INTO Ligas (IdLiga, Nombre, FechaInicio) VALUES (1,'Primera Division', '2023-12-1'), (2,'B Nacional','2023-11-1'), (3,'Premier League','2023-10-16'), (4,'Serie A','2023-04-16'), (5,'La Liga','2024-01-20'), (6,'Bundesliga','2023-10-19'), (7,'Brasileirao','2023-09-15'), (8,'MLS','2023-07-15'), (9,'Serie B','2024-02-18'), (10,'League One','2023-08-13');"
+    );
+    console.log("tabla Ligas creada!");
+  }
+
+  existe = false;
+  res = await db.get(
+    "SELECT count(*) as contar FROM sqlite_schema WHERE type = 'table' and name= 'Equipos'",
+    []
+  );
+  if (res.contar > 0) existe = true;
+  if (!existe) {
+    await db.run(
+      "CREATE TABLE IF NOT EXISTS Equipos (IdEquipo INTEGER PRIMARY KEY AUTOINCREMENT, Nombre VARCHAR(100) NOT NULL, Precio REAL, CdadJugadores INTEGER, FechaAlta TEXT, Activo BOOLEAN NOT NULL);"
+    );
+    await db.run(
+      "INSERT INTO Equipos (IdEquipo, Nombre, Precio, CdadJugadores, FechaAlta, Activo) VALUES (1, 'Manchester City', 299.00, 29, '2017-01-19', true), (2, 'Manchester United', 349.00, 48, '2017-01-31', true), (3, 'Arsenal', 2669.00, 36, '2017-01-12', true), (4, 'Barcelona', 2999.00, 69, '2017-01-30', true), (5, 'Real Madrid', 3129.00, 26, '2016-12-28', true), (6, 'Ajax', 3432.00, 32, '2014-12-23', true), (7, 'River Plate', 4830.00, 38, '2017-01-01', true), (8, 'Boca Juniors', 5405.00, 50, '2017-01-18', true), (9, 'Bayern Munchen', 5290.00, 51, '2017-02-03', true), (10, 'Inter de Milan', 4837.00, 28, '2016-12-25', true);"
+    );
+    console.log("tabla Equipos creada!");
+  }
+
+  existe = false;
+  res = await db.get(
+    "SELECT count(*) as contar FROM sqlite_schema WHERE type = 'table' and name= 'Copas'",
+    []
+  );
+  if (res.contar > 0) existe = true;
+  if (!existe) {
+    await db.run(
+      "CREATE TABLE IF NOT EXISTS Copas (IdCopa INTEGER PRIMARY KEY AUTOINCREMENT, Nombre VARCHAR (100) NOT NULL, FechaInicio DATE NOT NULL);"
+    );
+    await db.run(
+      "INSERT INTO Copas (IdCopa, Nombre, FechaInicio) VALUES (1,'Copa Libertadores', '2020-12-1'), (2,'Copa Sudamericana','2020-11-1'), (3,'champions League','2023-10-16'), (4,'Mundial de Clubes','2020-04-16'), (5,'Copa Del Rey','2020-01-20'), (6,'Copa Alemana','2020-10-19'), (7,'Copa Argentina','2020-09-15'), (8,'EuroCopa','2020-07-15'), (9,'Conferences','2020-02-18'), (10,'Copa Africana','2023-08-13');"
+    );
+    console.log("tabla Copas creada!");
+  }
+
+  existe = false;
+  res = await db.get(
+    "SELECT count(*) as contar FROM sqlite_schema WHERE type = 'table' and name= 'Estadios'",
+    []
+  );
+  if (res.contar > 0) existe = true;
+  if (!existe) {
+    await db.run(
+      "CREATE TABLE IF NOT EXISTS Estadios (IdEstadio INTEGER PRIMARY KEY AUTOINCREMENT, Nombre VARCHAR (100) NOT NULL, FechaInauguracion DATE NOT NULL);"
+    );
+    await db.run(
+      "INSERT INTO Estadios (IdEstadio, Nombre, FechaInauguracion) VALUES (1,'Monumental', '1900-01-19'), (2,'Bombonera','1900-01-25'), (3,'Camp Nou','1905-04-30'), (4,'Santiago Bernabeu','1906-06-20'), (5,'Wanda Metropolitano','1909-09-25'), (6,'Allianz Arena','1907-09-20'), (7,'Maracana','1908-12-1'), (8,'Wembley','1900-08-13'), (9,'Anfield','1907-12-1'), (10,'Duco','1996-10-1');"
+    );
+    console.log("tabla Estadios creada!");
+  }
 
   // cerrar la base
   db.close();
