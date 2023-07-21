@@ -44,17 +44,17 @@
         "description": "",
         "parameters": [
           {
-            "name": "Pagina",
-            "in": "query",
-            "type": "string"
-          },
-          {
             "name": "Nombre",
             "in": "query",
             "type": "string"
           },
           {
             "name": "Activo",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Pagina",
             "in": "query",
             "type": "string"
           }
@@ -66,7 +66,7 @@
         }
       }
     },
-    "/api/articulos/{id}": {
+    "/api/articulos/{idArt}": {
       "get": {
         "tags": [
           "Articulos"
@@ -75,75 +75,21 @@
         "description": "",
         "parameters": [
           {
-            "name": "id",
+            "name": "idArt",
             "in": "path",
             "required": true,
-            "type": "string",
-            "description": "identificador del Articulo..."
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "description": "identificador del Articulo...",
+            "in": "query",
+            "type": "string"
           }
         ],
         "responses": {
           "200": {
             "description": "OK"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Articulos"
-        ],
-        "summary": "actualiza un Articulo",
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "identificador del Articulo..."
-          },
-          {
-            "name": "Articulo",
-            "in": "body",
-            "description": "Articulo a actualizar",
-            "schema": {
-              "$ref": "#/definitions/Articulos"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Articulos"
-        ],
-        "summary": "elimina un Articulo",
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "identificador del Articulo.."
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "404": {
-            "description": "Not Found"
           }
         }
       }
@@ -171,6 +117,70 @@
           },
           "400": {
             "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/articulos/{id}": {
+      "put": {
+        "tags": [
+          "Articulos"
+        ],
+        "summary": "actualiza un Articulo",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "identificador del Articulo..."
+          },
+          {
+            "name": "Articulo",
+            "in": "body",
+            "description": "Articulo a actualizar",
+            "schema": {
+              "$ref": "#/definitions/Articulos"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Articulos"
+        ],
+        "summary": "elimina un Articulo",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "identificador del Articulo.."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
           }
         }
       }
@@ -448,8 +458,133 @@
           }
         ],
         "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/api/${modelName}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "modelName",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Pagina",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "modelName",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/${modelName}/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "modelName",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "modelName",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
           "204": {
             "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "modelName",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
           }
         }
       }
@@ -712,6 +847,54 @@
         "responses": {
           "200": {
             "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/ventas": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "IdCliente": {
+                  "example": "any"
+                },
+                "Fecha": {
+                  "example": "any"
+                },
+                "Total": {
+                  "example": "any"
+                },
+                "VentasDetalles": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }

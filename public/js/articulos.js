@@ -1,10 +1,10 @@
 async function cargarTabla() {
   const response = await fetch('/api/articulos');
-  const items = await response.json();
-  console.log(items);
+  const data = await response.json();
+  console.log(data);
 
   let body = '';
-  items.forEach((item) => {
+  data.Items.forEach((item) => {
     body += `<tr>
           <td>${item.Nombre}</td>
           <td>${item.Precio}</td>
