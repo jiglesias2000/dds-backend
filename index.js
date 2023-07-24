@@ -10,14 +10,19 @@ console.log("WEBSITE_SITE_NAME", process.env.WEBSITE_SITE_NAME);
 if (process.env.WEBSITE_SITE_NAME) {
   // ejecutando en azure, usamos un carpeta de escritura/lectura persistente
   //process.env.base = "/archivos/pymes.db";
-  process.env.base = process.env.base_azure;
+  process.env.base = cbase_azure;
   process.env.logErrores = process.env.logErrores_azure;
 }
 
 console.log("base", process.env.base);
 console.log("NODE_ENV", process.env.NODE_ENV);
 
-require("./base-orm/sqlite-init"); // crear base si no existe
+if (process.env.sqlengine === "sqlite") {
+  require("./base-orm/sqlite-init"); // crear base si no existe
+}
+else if (process.env.sqlengine === "mysql") {
+  require("./base-orm/mysql-init"); // crear base si no existe
+}
 
 // crear servidor
 const app = express();

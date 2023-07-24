@@ -1,12 +1,34 @@
 // configurar ORM sequelize
 const { Sequelize, DataTypes } = require("sequelize");
 //const sequelize = new Sequelize("sqlite:" + process.env.base );
-const sequelize = new Sequelize("sqlite:" + "./.data/pymes.db", {
-  define: {
-    freezeTableName: true,   // para evitar que pluralise el nombre de la tabla
-    timestamps: false,
-  },
-});
+
+console.log("sql engine: " + process.env.sqlengine);
+
+let sequelize;
+if (process.env.sqlengine === "sqlite") {
+
+  sequelize = new Sequelize("sqlite:" + "./.data/pymes.db", {
+    define: {
+      freezeTableName: true,   // para evitar que pluralise el nombre de la tabla
+      timestamps: false,
+    },
+  });
+} else if (process.env.sqlengine === "mysql") {
+
+  sequelize = new Sequelize({
+    dialect: "mysql", // Utilizamos el controlador de MySQL
+    host: "localhost", // Cambiar por la dirección del servidor MySQL
+    port: 3306, // Cambiar el puerto si es diferente para MySQL
+    username: "root",
+    password: "passmysql",
+    database: "pymes",
+    define: {
+      freezeTableName: true, // para evitar que pluralice el nombre de la tabla
+      timestamps: false,
+    },
+  });
+  
+}
 
 // definicion del modelo de datos
 const articulosfamilias = sequelize.define(
