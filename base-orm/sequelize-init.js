@@ -17,11 +17,11 @@ if (process.env.sqlengine === "sqlite") {
 
   sequelize = new Sequelize({
     dialect: "mysql", // Utilizamos el controlador de MySQL
-    host: "localhost", // Cambiar por la dirección del servidor MySQL
+    host: process.env.RDS_HOSTNAME || "localhost", // Cambiar por la dirección del servidor MySQL
     port: 3306, // Cambiar el puerto si es diferente para MySQL
-    username: "root",
-    password: "passmysql",
-    database: "pymes",
+    username: process.env.RDS_USERNAME || "localhost",
+    password: process.env.RDS_PASSWORD || "passmysql",
+    database: process.env.RDS_DB_NAME || "pymes",
     define: {
       freezeTableName: true, // para evitar que pluralice el nombre de la tabla
       timestamps: false,
