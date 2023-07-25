@@ -480,51 +480,54 @@ const Jugadores = sequelize.define(
     freezeTableName: true,
   }
 );
-const Ligas = sequelize.define(
-  "Ligas",
-  {
-    IdLiga: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-    },
-    Nombre: {
-      type: DataTypes.STRING(30),
-      allowNull: false,
-      validate: {
-        notEmpty: {
-          args: true,
-          msg: "Nombre liga es requerido",
-        },
-        len: {
-          args: [5, 15],
-          msg: "Nombre liga debe ser tipo caracteres, entre 5 y 15 de longitud",
-        },
-      },
-    },
-    FechaInicio: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notNull: {
-          args: true,
-          msg: "Fecha inicio es requerida",
-        },
-      },
+
+
+const Ligas = sequelize.define('Ligas', {
+  IdLiga: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  },
+  Nombre: {
+    type: DataTypes.STRING(100),
+    allowNull: false,
+  },
+  Descripcion: {
+    type: DataTypes.TEXT,
+  },
+  FechaInicio: {
+    type: DataTypes.DATE,
+    allowNull: false,
+  },
+  NumEquipos: {
+    type: DataTypes.INTEGER,
+  },
+  Activo: {
+    type: DataTypes.BOOLEAN,
+  },
+  IngresosMediosEquipo: {
+    type: DataTypes.DECIMAL(13, 2),
+  },
+  Pais: {
+    type: DataTypes.STRING(60),
+  },
+},
+{
+  hooks: {
+    beforeValidate: (item) => {
+      if (typeof item.Nombre === "string") {
+        item.Nombre = item.Nombre.toUpperCase().trim();
+      }
+      if (typeof item.Pais === "string") {
+        item.Pais = item.Pais.toUpperCase().trim();
+      }
     },
   },
-  {
-    hooks: {
-      beforeValidate: (liga) => {
-        if (typeof liga.Nombre === "string") {
-          liga.Nombre = liga.Nombre.toUpperCase().trim();
-        }
-      },
-    },
-    timestamps: false,
-    freezeTableName: true,
-  }
+  timestamps: false,
+  freezeTableName: true,
+}
 );
+
 
 //--------------------------------------------
 
