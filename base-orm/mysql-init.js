@@ -6,7 +6,7 @@ async function CrearBaseSiNoExiste() {
     // Crear la conexión a la base de datos de MySQL
     const connection = await mysql.createConnection({
       host:  process.env.RDS_HOSTNAME || "localhost" , // Cambiar por la dirección del servidor MySQL
-      user: process.env.RDS_USERNAME || "localhost",
+      user: process.env.RDS_USERNAME || "root",
       password: process.env.RDS_PASSWORD || "passmysql",
       database: process.env.RDS_DB_NAME || "pymes",
     });

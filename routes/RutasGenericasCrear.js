@@ -4,7 +4,7 @@ const db = require("../base-orm/sequelize-init");
 const { Op, ValidationError } = require("sequelize");
 const auth = require("../seguridad/auth");
 
-function createRoutesForModel({
+function RutasGenericasCrear({
   modelName,
   fieldPK,
   fieldActivo,
@@ -130,4 +130,4 @@ function createRoutesForModel({
 
   return router;
 }
-module.exports = createRoutesForModel;
+module.exports = RutasGenericasCrear;
