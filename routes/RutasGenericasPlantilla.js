@@ -4,7 +4,7 @@ const db = require("../base-orm/sequelize-init");
 const { Op, ValidationError } = require("sequelize");
 const auth = require("../seguridad/auth");
 
-function RutasGenericasCrear({
+function RutasGenericasPlantilla({
   modelName,
   fieldPK,
   fieldActivo,
@@ -30,6 +30,12 @@ function RutasGenericasCrear({
         } else if (filterFields[field] == "number") {
           // convierto el string a number
           where[field] = Number(req.query[field]);
+        } else if (filterFields[field] == "date") {
+          // convierto a fecha, suponemos que el modelo es DATEONLY
+          // con hora hay que considerar la zona horaria
+          try {
+            where[field] = req.query[field];
+          } catch (err) {}
         }
       }
     }
@@ -130,4 +136,4 @@ function RutasGenericasCrear({
 
   return router;
 }
-module.exports = RutasGenericasCrear;
+module.exports = RutasGenericasPlantilla;

@@ -9,6 +9,7 @@ if (process.env.sqlengine === "sqlite") {
 
   sequelize = new Sequelize("sqlite:" + "./.data/pymes.db", {
     define: {
+      timezone: 'local', // Establecer la zona horaria local
       freezeTableName: true,   // para evitar que pluralise el nombre de la tabla
       timestamps: false,
     },
@@ -22,7 +23,10 @@ if (process.env.sqlengine === "sqlite") {
     username: process.env.RDS_USERNAME || "root",
     password: process.env.RDS_PASSWORD || "passmysql",
     database: process.env.RDS_DB_NAME || "pymes",
+
+    
     define: {
+      timezone: 'local', // Establecer la zona horaria local
       freezeTableName: true, // para evitar que pluralice el nombre de la tabla
       timestamps: false,
     },
@@ -141,7 +145,7 @@ const articulos = sequelize.define(
       },
     },
     FechaAlta: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATEONLY,
       allowNull: false,
       validate: {
         notNull: {
@@ -189,7 +193,7 @@ const Ventas = sequelize.define(
       type: DataTypes.INTEGER,
     },
     Fecha: {
-      type: DataTypes.TEXT,
+      type: DataTypes.DATEONLY,
     },
     Total: {
       type: DataTypes.REAL,
@@ -281,7 +285,7 @@ const Equipos = sequelize.define(
       },
     },
     FechaAlta: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATEONLY,
       allowNull: false,
       validate: {
         notNull: {
@@ -339,7 +343,7 @@ const Copas = sequelize.define(
     },
 
     FechaInicio: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATEONLY,
       allowNull: false,
       validate: {
         notNull: {
@@ -385,7 +389,7 @@ const Estadios = sequelize.define(
       },
     },
     FechaInauguracion: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATEONLY,
       allowNull: false,
       validate: {
         notNull: {
@@ -445,7 +449,7 @@ const Jugadores = sequelize.define(
       },
     },
     FechaNacimiento: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATEONLY,
       allowNull: false,
       validate: {
         notNull: {
@@ -496,7 +500,7 @@ const Ligas = sequelize.define('Ligas', {
     type: DataTypes.TEXT,
   },
   FechaInicio: {
-    type: DataTypes.DATE,
+    type: DataTypes.DATEONLY,
     allowNull: false,
   },
   NumEquipos: {

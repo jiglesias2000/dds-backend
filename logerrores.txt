@@ -1,0 +1,14 @@
+25/7/2023, 20:17:19
+SequelizeConnectionError: Unknown or incorrect time zone: 'local'
+    at ConnectionManager.connect (D:\DDS\dds-backend-final\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:102:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async ConnectionManager._connect (D:\DDS\dds-backend-final\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async D:\DDS\dds-backend-final\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32
+
+25/7/2023, 20:17:19
+SequelizeConnectionError: Unknown or incorrect time zone: 'local'
+    at ConnectionManager.connect (D:\DDS\dds-backend-final\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:102:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async ConnectionManager._connect (D:\DDS\dds-backend-final\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async D:\DDS\dds-backend-final\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32
+

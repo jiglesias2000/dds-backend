@@ -2,10 +2,10 @@ const RutasGenericasDefinicion = require("./RutasGenericasDefinicion");
 
 async function RutasGenericasCargar(app) {
   try {
-    const RutasGenericasCrear = require("./RutasGenericasCrear");
+    const RutasGenericasPlantilla = require("./RutasGenericasPlantilla");
     //recorrer modelosdinamicos y crear rutas
     RutasGenericasDefinicion.forEach((modelo) => {
-      const router = RutasGenericasCrear(modelo);
+      const router = RutasGenericasPlantilla(modelo);
       app.use(router);
     });
   } catch (error) {

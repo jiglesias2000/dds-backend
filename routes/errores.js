@@ -1,5 +1,8 @@
 const express = require("express");
 const router = express.Router();
+const fs = require('fs');
+const path = require('path');
+
 
 // para verificar si el sitio esta funcionando, o hay que recuperarlo de un crash
 router.get("/_isalive", (req, res) => {
@@ -93,6 +96,23 @@ router.get("/testeventloop", async function (req, res, next) {
   //   }
 
   res.json("peticion " + peticion + " ejecutada");
+});
+
+
+
+router.get('/api/descargar-logerrores', (req, res) => {
+  const logErroresPath = path.join(__dirname, '../logerrores.txt');
+  // Verifica si el archivo existe
+  if (!fs.existsSync(logErroresPath)) {
+    return res.status(404).send('El archivo "logerrores.txt" no existe.');
+  }
+
+  // Descarga el archivo
+  res.download(logErroresPath, 'logerrores.txt', (err) => {
+    if (err) {
+      res.status(500).send('No se pudo descargar el archivo.');
+    }
+  });
 });
 
 module.exports = router;
