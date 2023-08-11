@@ -1,10 +1,10 @@
-const RutasGenericasDefinicion = require("./RutasGenericasDefinicion");
+const modelos_rutas_conmponentes = require("../configModelosRutasComponentes");
 
 async function RutasGenericasCargar(app) {
   try {
     const RutasGenericasPlantilla = require("./RutasGenericasPlantilla");
     //recorrer modelosdinamicos y crear rutas
-    RutasGenericasDefinicion.forEach((modelo) => {
+    modelos_rutas_conmponentes.forEach((modelo) => {
       const router = RutasGenericasPlantilla(modelo);
       app.use(router);
     });

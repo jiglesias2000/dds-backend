@@ -76,15 +76,16 @@ app.get("/", (req, res) => {
 
 const articulosfamiliasRouter = require("./routes/articulosfamilias");
 const articulosfamiliasmockRouter = require("./routes/articulosfamiliasmock");
+const articulosRouter = require("./routes/articulos");
 
 const ecoRouter = require("./routes/eco");
 const seguridadRouter = require("./routes/seguridad");
 const jsonexternoRouter = require("./routes/jsonexterno");
-//const equiposRouter = require("./routes/equipos");
 const erroresRouter = require("./routes/errores");
 const ventasRouter = require("./routes/ventas");
 app.use(articulosfamiliasRouter);
 app.use(articulosfamiliasmockRouter);
+app.use(articulosRouter);
 app.use(ecoRouter);
 app.use(seguridadRouter);
 app.use(jsonexternoRouter);

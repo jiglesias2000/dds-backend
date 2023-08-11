@@ -6,16 +6,15 @@ console.log("sql engine: " + process.env.sqlengine);
 
 let sequelize;
 if (process.env.sqlengine === "sqlite") {
-
   sequelize = new Sequelize("sqlite:" + "./.data/pymes.db", {
     define: {
-      timezone: 'local', // Establecer la zona horaria local
-      freezeTableName: true,   // para evitar que pluralise el nombre de la tabla
+      //timezone: "local", // Establecer la zona horaria local  (ojo considera la fecha de la base como zona horaria 0)
+      timezone: '-03:00', // Establecer la zona horaria en UTC
+      freezeTableName: true, // para evitar que pluralise el nombre de la tabla
       timestamps: false,
     },
   });
 } else if (process.env.sqlengine === "mysql") {
-
   sequelize = new Sequelize({
     dialect: "mysql", // Utilizamos el controlador de MySQL
     host: process.env.RDS_HOSTNAME || "localhost", // Cambiar por la dirección del servidor MySQL
@@ -24,14 +23,13 @@ if (process.env.sqlengine === "sqlite") {
     password: process.env.RDS_PASSWORD || "passmysql",
     database: process.env.RDS_DB_NAME || "pymes",
 
-    
     define: {
-      timezone: 'local', // Establecer la zona horaria local
+      timezone: "local", // Establecer la zona horaria local  
+      // en mysql definir
       freezeTableName: true, // para evitar que pluralice el nombre de la tabla
       timestamps: false,
     },
   });
-  
 }
 
 // definicion del modelo de datos
@@ -237,303 +235,6 @@ const VentasDetalles = sequelize.define(
 Ventas.hasMany(VentasDetalles, { foreignKey: "IdVenta" });
 VentasDetalles.belongsTo(Ventas, { foreignKey: "IdVenta" });
 
-//--------------------------------------------
-const Equipos = sequelize.define(
-  "Equipos",
-  {
-    IdEquipo: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-    },
-    Nombre: {
-      type: DataTypes.STRING(60),
-      allowNull: false,
-      validate: {
-        notEmpty: {
-          args: true,
-          msg: "Nombre equipo es requerido",
-        },
-        len: {
-          args: [5, 30],
-          msg: "Nombre equipo debe ser tipo caracteres, entre 5 y 30 de longitud",
-        },
-      },
-      unique: {
-        args: true,
-        msg: "Este Nombre ya existe en la tabla!",
-      },
-    },
-    Precio: {
-      type: DataTypes.DECIMAL(10, 2),
-      allowNull: false,
-      validate: {
-        notNull: {
-          args: true,
-          msg: "Precio es requerido",
-        },
-      },
-    },
-    CdadJugadores: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      validate: {
-        notNull: {
-          args: true,
-          msg: "Cantidad de jugadores es requerido",
-        },
-      },
-    },
-    FechaAlta: {
-      type: DataTypes.DATEONLY,
-      allowNull: false,
-      validate: {
-        notNull: {
-          args: true,
-          msg: "Fecha Alta  es requerida",
-        },
-      },
-    },
-    Activo: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-      validate: {
-        notNull: {
-          args: true,
-          msg: "Activo es requerido",
-        },
-      },
-    },
-  },
-  {
-    hooks: {
-      beforeValidate: (equipo) => {
-        if (typeof equipo.Nombre === "string") {
-          equipo.Nombre = equipo.Nombre.toUpperCase().trim();
-        }
-      },
-    },
-    timestamps: false,
-    freezeTableName: true,
-  }
-);
-
-const Copas = sequelize.define(
-  "Copas",
-  {
-    IdCopa: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-    },
-
-    Nombre: {
-      type: DataTypes.STRING(30),
-      allowNull: false,
-      validate: {
-        notEmpty: {
-          args: true,
-          msg: "Nombre copa es requerido",
-        },
-        len: {
-          args: [5, 15],
-          msg: "Nombre copa debe ser tipo carateres, entre 5 y 15 de longitud",
-        },
-      },
-    },
-
-    FechaInicio: {
-      type: DataTypes.DATEONLY,
-      allowNull: false,
-      validate: {
-        notNull: {
-          args: true,
-          msg: "Fecha inicio copa es requerida",
-        },
-      },
-    },
-  },
-  {
-    hooks: {
-      beforeValidate: (copa) => {
-        if (typeof copa.Nombre === "string") {
-          copa.Nombre = copa.Nombre.toUpperCase().trim();
-        }
-      },
-    },
-    timestamps: false,
-    freezeTableName: true,
-  }
-);
-
-const Estadios = sequelize.define(
-  "Estadios",
-  {
-    IdEstadio: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-    },
-    Nombre: {
-      type: DataTypes.STRING(30),
-      allowNull: false,
-      validate: {
-        notEmpty: {
-          args: true,
-          msg: "Nombre Estadio es requerido",
-        },
-        len: {
-          args: [5, 15],
-          msg: "Nombre Estadio debe ser tipo caracteres, entre 5 y 15 de longitud",
-        },
-      },
-    },
-    FechaInauguracion: {
-      type: DataTypes.DATEONLY,
-      allowNull: false,
-      validate: {
-        notNull: {
-          args: true,
-          msg: "Fecha Inauguracion es requerida",
-        },
-      },
-    },
-  },
-  {
-    hooks: {
-      beforeValidate: (estadio) => {
-        if (typeof estadio.Nombre === "string") {
-          estadio.Nombre = estadio.Nombre.toUpperCase().trim();
-        }
-      },
-    },
-    timestamps: false,
-    freezeTableName: true,
-  }
-);
-
-const Jugadores = sequelize.define(
-  "Jugadores",
-  {
-    IdJugador: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-    },
-    Nombre: {
-      type: DataTypes.STRING(30),
-      allowNull: false,
-      validate: {
-        notEmpty: {
-          args: true,
-          msg: "Nombre jugador es requerido",
-        },
-        len: {
-          args: [5, 15],
-          msg: "Nombre jugador debe ser tipo caracteres, entre 5 y 15 de longitud",
-        },
-      },
-    },
-    Apellido: {
-      type: DataTypes.STRING(30),
-      allowNull: false,
-      validate: {
-        notEmpty: {
-          args: true,
-          msg: "Apellido es requerido",
-        },
-        len: {
-          args: [5, 15],
-          msg: "Apellido debe ser tipo caracteres, entre 5 y 15 de longitud",
-        },
-      },
-    },
-    FechaNacimiento: {
-      type: DataTypes.DATEONLY,
-      allowNull: false,
-      validate: {
-        notNull: {
-          args: true,
-          msg: "Fecha nacimiento es requerida",
-        },
-      },
-    },
-    Activo: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-      validate: {
-        notNull: {
-          args: true,
-          msg: "Activo es requerido",
-        },
-      },
-    },
-  },
-  {
-    hooks: {
-      beforeValidate: (jugador) => {
-        if (typeof jugador.Nombre === "string") {
-          jugador.Nombre = jugador.Nombre.toUpperCase().trim();
-        }
-        if (typeof jugador.Apellido === "string") {
-          jugador.Apellido = jugador.Apellido.toUpperCase().trim();
-        }
-      },
-    },
-    timestamps: false,
-    freezeTableName: true,
-  }
-);
-
-
-const Ligas = sequelize.define('Ligas', {
-  IdLiga: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
-  },
-  Nombre: {
-    type: DataTypes.STRING(100),
-    allowNull: false,
-  },
-  Descripcion: {
-    type: DataTypes.TEXT,
-  },
-  FechaInicio: {
-    type: DataTypes.DATEONLY,
-    allowNull: false,
-  },
-  NumEquipos: {
-    type: DataTypes.INTEGER,
-  },
-  Activo: {
-    type: DataTypes.BOOLEAN,
-  },
-  IngresosMediosEquipo: {
-    type: DataTypes.DECIMAL(13, 2),
-  },
-  Pais: {
-    type: DataTypes.STRING(60),
-  },
-},
-{
-  hooks: {
-    beforeValidate: (item) => {
-      if (typeof item.Nombre === "string") {
-        item.Nombre = item.Nombre.toUpperCase().trim();
-      }
-      if (typeof item.Pais === "string") {
-        item.Pais = item.Pais.toUpperCase().trim();
-      }
-    },
-  },
-  timestamps: false,
-  freezeTableName: true,
-}
-);
-
-
-//--------------------------------------------
 
 module.exports = {
   sequelize,
@@ -541,9 +242,73 @@ module.exports = {
   articulos,
   Ventas,
   VentasDetalles,
-  Copas,
-  Equipos,
-  Estadios,
-  Jugadores,
-  Ligas,
 };
+
+const modelos_rutas_conmponentes = require("../configModelosRutasComponentes");
+for (let i = 0; i < modelos_rutas_conmponentes.length; i++) {
+  const element = modelos_rutas_conmponentes[i];
+  const modelName = element.abmConfigAbm.Modelo_Recurso;
+  const fieldPK = element.abmConfigAbm.IdCampo;
+
+  let registro = {};
+  registro[fieldPK] = {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  };
+  for (let j = 0; j < element.abmConfigRegistro.length; j++) {
+    const element2 = element.abmConfigRegistro[j];
+    if (element2.typeForm === "subtitulo") continue; // 
+    element2.type = element2.type ?? "C(30)";
+    registro[element2.name] = {
+      type: element2.type==="N(10,2)" ? DataTypes.DECIMAL(10,2): element2.type.startsWith("N") ? DataTypes.INTEGER : element2.type==="F" ? DataTypes.DATEONLY : element2.type==="B" ? DataTypes.BOOLEAN : DataTypes.TEXT,
+      allowNull: element2.required ? false : true,
+      validate: {}
+    };
+    
+    if (element2.required) 
+    {
+      registro[element2.name].validate.notEmpty = {
+        args: true,
+        msg: element2.requiredMsj ?? "Este campo es requerido",
+      }
+    }
+    if (element2.minLength && !element2.maxLength) {
+      registro[element2.name].validate.len = {
+        args: [element2.minLength],
+        msg: element2.minLengthMsj ?? "Este campo debe entre " + element2.minLength + " y  caracteres",
+      }
+    }
+    if (element2.maxLength && !element2.minLength) {
+      registro[element2.name].validate.len = {
+        args: [element2.maxLength],
+        msg: element2.maxLengthMsj ?? "Este campo debe tener como maximo "+ element2.maxLength +" caracteres",
+      }
+    }
+    if (element2.minLength && element2.maxLength) {
+      registro[element2.name].validate.len = {
+        args: [element2.minLength, element2.maxLength],
+        msg: element2.minLengthMsj ?? "Este campo debe tener entre " + element2.minLength + " y " + element2.maxLength + " caracteres",
+      }
+    }
+
+  }
+
+  const modelo = sequelize.define(modelName, registro, {
+    hooks: {
+      beforeValidate: (item) => {
+        element.abmConfigRegistro.forEach(element => {
+          if (typeof item[element.name] === "string") {
+            item[element.name] = item[element.name].toUpperCase().trim();
+          }  
+        });
+        
+      },
+    },
+    timestamps: false,
+    freezeTableName: true,
+  });
+
+  module.exports[modelName] = modelo;
+
+}

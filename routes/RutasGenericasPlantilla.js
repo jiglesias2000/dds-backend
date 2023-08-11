@@ -5,12 +5,20 @@ const { Op, ValidationError } = require("sequelize");
 const auth = require("../seguridad/auth");
 
 function RutasGenericasPlantilla({
-  modelName,
-  fieldPK,
-  fieldActivo,
-  arrayOrder,
-  filterFields,
-}) {
+  abmConfigAbm: {
+    Modelo_Recurso : modelName ,
+    IdCampo : fieldPK ,
+    ActivoCampo: fieldActivo,
+    OrdenCampo : arrayOrder 
+  },
+  abmConfigRegistro}
+) {
+
+  let filterFields = {};
+  abmConfigRegistro.filter((x) => x.Buscar).forEach((x) => {
+    filterFields[x.name] = x.type;
+  });
+
   const router = express.Router();
   const model = db[modelName];
 
@@ -19,18 +27,18 @@ function RutasGenericasPlantilla({
     let where = {};
     for (const field in filterFields) {
       if (req.query[field] != undefined && req.query[field] !== "") {
-        if (filterFields[field] == "text") {
+        if (filterFields[field].startsWith("C")) {
           where[field] = {
             [Op.like]: "%" + req.query[field] + "%",
           };
-        } else if (filterFields[field] == "boolean") {
+        } else if (filterFields[field] == "B") {
           // true o false en el modelo, en base de datos es 1 o 0
           // convierto el string a booleano
           where[field] = req.query[field] === "true";
-        } else if (filterFields[field] == "number") {
+        } else if (filterFields[field].startsWith("N")) {
           // convierto el string a number
           where[field] = Number(req.query[field]);
-        } else if (filterFields[field] == "date") {
+        } else if (filterFields[field] == "F") {
           // convierto a fecha, suponemos que el modelo es DATEONLY
           // con hora hay que considerar la zona horaria
           try {
