@@ -13,44 +13,44 @@ async function CrearBaseSiNoExiste() {
   let res = null;
 
   res = await db.get(
-    "SELECT count(*) as contar FROM sqlite_schema WHERE type = 'table' and name= 'usuarios'",
+    "SELECT count(*) as contar FROM sqlite_schema WHERE type = 'table' and name= 'Usuarios'",
     []
   );
   if (res.contar > 0) existe = true;
   if (!existe) {
     await db.run(
-      "CREATE table usuarios( IdUsuario INTEGER PRIMARY KEY AUTOINCREMENT, Nombre text NOT NULL UNIQUE, Clave text NOT NULL, Rol text NOT NULL);"
+      "CREATE table Usuarios( IdUsuario INTEGER PRIMARY KEY AUTOINCREMENT, Nombre text NOT NULL UNIQUE, Clave text NOT NULL, Rol text NOT NULL);"
     );
-    console.log("tabla usuarios creada!");
+    console.log("tabla Usuarios creada!");
     await db.run(
-      "insert into usuarios values	(1,'admin','123','admin'),(2,'juan','123','member');"
+      "insert into Usuarios values	(1,'admin','123','admin'),(2,'juan','123','member');"
     );
   }
 
   existe = false;
   res = await db.get(
-    "SELECT count(*) as contar FROM sqlite_schema WHERE type = 'table' and name= 'articulosfamilias'",
+    "SELECT count(*) as contar FROM sqlite_schema WHERE type = 'table' and name= 'ArticulosFamilias'",
     []
   );
   if (res.contar > 0) existe = true;
   if (!existe) {
     await db.run(
-      "CREATE table articulosfamilias( IdArticuloFamilia INTEGER PRIMARY KEY AUTOINCREMENT, Nombre text NOT NULL UNIQUE);"
+      "CREATE table ArticulosFamilias( IdArticuloFamilia INTEGER PRIMARY KEY AUTOINCREMENT, Nombre text NOT NULL UNIQUE);"
     );
-    console.log("tabla articulosfamilias creada!");
+    console.log("tabla ArticulosFamilias creada!");
     await db.run(
-      "insert into articulosfamilias values	(1,'ACCESORIOS'),(2,'AUDIO'),(3,'CELULARES'),(4,'CUIDADO PERSONAL'),(5,'DVD'),(6,'FOTOGRAFIA'),(7,'FRIO-CALOR'),(8,'GPS'),(9,'INFORMATICA'),(10,'LED - LCD');"
+      "insert into ArticulosFamilias values	(1,'ACCESORIOS'),(2,'AUDIO'),(3,'CELULARES'),(4,'CUIDADO PERSONAL'),(5,'DVD'),(6,'FOTOGRAFIA'),(7,'FRIO-CALOR'),(8,'GPS'),(9,'INFORMATICA'),(10,'LED - LCD');"
     );
   }
 
   existe = false;
   sql =
-    "SELECT count(*) as contar FROM sqlite_schema WHERE type = 'table' and name= 'articulos'";
+    "SELECT count(*) as contar FROM sqlite_schema WHERE type = 'table' and name= 'Articulos'";
   res = await db.get(sql, []);
   if (res.contar > 0) existe = true;
   if (!existe) {
     await db.run(
-      `CREATE table articulos( 
+      `CREATE table Articulos( 
               IdArticulo INTEGER PRIMARY KEY AUTOINCREMENT
             , Nombre TEXT NOT NULL UNIQUE
             , Precio REAL NOT NULL
@@ -59,13 +59,13 @@ async function CrearBaseSiNoExiste() {
             , Stock integer NOT NULL
             , FechaAlta text NOT NULL
             , Activo boolean NOT NULL,
-            FOREIGN KEY (IdArticuloFamilia) REFERENCES articulosfamilias (IdArticuloFamilia)
+            FOREIGN KEY (IdArticuloFamilia) REFERENCES ArticulosFamilias (IdArticuloFamilia)
             );`
     );
-    console.log("tabla articulos creada!");
+    console.log("tabla Articulos creada!");
 
     await db.run(
-      `insert into articulos values
+      `insert into Articulos values
       (1,'KIT DIRECT TV PREPA 0.60MT',299.00, '0779815559001', 10, 329,'2017-01-19', 1 ),
       (2,'KIT DIRECT TV PREPA 0.90MT',349.00, '0779815559002', 10, 468,'2017-01-31', 1 ),
       (3,'LED 22" LG FHD 22MN42APM',2669.00, '0779808338808', 10, 536,'2017-01-12', 1 ),
