@@ -276,12 +276,12 @@ for (let i = 0; i < modelos_rutas_conmponentes.length; i++) {
     if (element2.minLength && !element2.maxLength) {
       registro[element2.name].validate.len = {
         args: [element2.minLength],
-        msg: element2.minLengthMsj ?? "Este campo debe entre " + element2.minLength + " y  caracteres",
+        msg: element2.minLengthMsj ?? "Este campo debe tener como minimo " + element2.minLength + " caracteres",
       }
     }
     if (element2.maxLength && !element2.minLength) {
       registro[element2.name].validate.len = {
-        args: [element2.maxLength],
+        args: [0,element2.maxLength],
         msg: element2.maxLengthMsj ?? "Este campo debe tener como maximo "+ element2.maxLength +" caracteres",
       }
     }
