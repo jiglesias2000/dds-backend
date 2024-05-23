@@ -10,7 +10,7 @@ console.log("WEBSITE_SITE_NAME", process.env.WEBSITE_SITE_NAME);
 if (process.env.WEBSITE_SITE_NAME) {
   // ejecutando en azure, usamos un carpeta de escritura/lectura persistente
   //process.env.base = "/archivos/pymes.db";
-  process.env.base = cbase_azure;
+  process.env.base = process.env.base_azure;
   process.env.logErrores = process.env.logErrores_azure;
 }
 

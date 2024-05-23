@@ -185,7 +185,7 @@
         }
       }
     },
-    "/api/jwt/articulos": {
+    "/api/articulosJWT": {
       "get": {
         "tags": [
           "Articulos"

@@ -24,16 +24,16 @@ describe("POST /api/login admin", function () {
   });
 });
 
-describe("GET /api/jwt/articulos", () => {
+describe("GET /api/articulosJWT", () => {
 
   it("Devolveria error, porque falta token de autorizacion", async function () {
-    const res = await request(app).get("/api/jwt/articulos");
+    const res = await request(app).get("/api/articulosJWT");
     expect(res.statusCode).toEqual(401);
     expect(res.body.message).toEqual("Acceso denegado");
   });
 
   it("Devolveria error, porque el token no es valido", async function () {
-    const res = await request(app).get("/api/jwt/articulos")
+    const res = await request(app).get("/api/articulosJWT")
     .set("Authorization", 'Bearer invalido');
     expect(res.statusCode).toEqual(403);
     expect(res.body.message).toEqual("token no es valido");
@@ -48,7 +48,7 @@ describe("GET /api/jwt/articulos", () => {
     let token = res1.body.accessToken;
 
     const res = await request(app)
-      .get("/api/jwt/articulos")
+      .get("/api/articulosJWT")
       .set("Authorization", `Bearer ${token}`);
 
     expect(res.statusCode).toEqual(200);
@@ -77,7 +77,7 @@ describe("GET /api/jwt/articulos", () => {
     let token = res1.body.accessToken;
 
     const res = await request(app)
-      .get("/api/jwt/articulos")
+      .get("/api/articulosJWT")
       .set("Authorization", `Bearer ${token}`);
 
     expect(res.statusCode).toEqual(403);

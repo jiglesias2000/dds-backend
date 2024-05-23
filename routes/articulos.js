@@ -199,7 +199,7 @@ router.delete("/api/articulos/:id", async (req, res) => {
 //-- SEGURIDAD ---------------------------
 //------------------------------------
 router.get(
-  "/api/jwt/articulos",
+  "/api/articulosJWT",
   auth.authenticateJWT,
   async function (req, res, next) {
     /* #swagger.security = [{

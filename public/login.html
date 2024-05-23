@@ -169,7 +169,7 @@
           datos.innerText = "";
           accessToken = sessionStorage.getItem("accessToken");
           let error = false;
-          const req = await fetch("/api/jwt/articulos", {
+          const req = await fetch("/api/articulosJWT", {
             method: "Get",
             headers: {
               "Content-Type": "application/json",
